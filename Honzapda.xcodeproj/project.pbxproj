@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190791C22B579CEC00F78D48 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C12B579CEC00F78D48 /* SearchView.swift */; };
+		190791C42B579CF900F78D48 /* CurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C32B579CF900F78D48 /* CurationView.swift */; };
+		190791C62B579D0300F78D48 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C52B579D0300F78D48 /* MyPageView.swift */; };
+		190791D32B57AB3100F78D48 /* SCDream9.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CA2B57AB3100F78D48 /* SCDream9.otf */; };
+		190791D42B57AB3100F78D48 /* SCDream8.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CB2B57AB3100F78D48 /* SCDream8.otf */; };
+		190791D52B57AB3100F78D48 /* SCDream4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CC2B57AB3100F78D48 /* SCDream4.otf */; };
+		190791D62B57AB3100F78D48 /* SCDream2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CD2B57AB3100F78D48 /* SCDream2.otf */; };
+		190791D72B57AB3100F78D48 /* SCDream1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CE2B57AB3100F78D48 /* SCDream1.otf */; };
+		190791D82B57AB3100F78D48 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CF2B57AB3100F78D48 /* SCDream5.otf */; };
+		190791D92B57AB3100F78D48 /* SCDream6.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791D02B57AB3100F78D48 /* SCDream6.otf */; };
+		190791DA2B57AB3100F78D48 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791D12B57AB3100F78D48 /* SCDream3.otf */; };
+		190791DB2B57AB3100F78D48 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791D22B57AB3100F78D48 /* SCDream7.otf */; };
+		190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791DD2B57AC2300F78D48 /* CustomFonts.swift */; };
+		1919357D2B56F38600396056 /* ColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1919357C2B56F38600396056 /* ColorCollection.swift */; };
+		1919357F2B5702C700396056 /* IdPwdInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1919357E2B5702C700396056 /* IdPwdInputView.swift */; };
+		19517F3F2B57956600FDA71E /* MainTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19517F3E2B57956600FDA71E /* MainTapView.swift */; };
+		19517F412B57996E00FDA71E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19517F402B57996E00FDA71E /* HomeView.swift */; };
+		1971AD5F2B51D3BD000053F1 /* RegisterSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971AD5E2B51D3BD000053F1 /* RegisterSuccess.swift */; };
+		1971AD612B51D42A000053F1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971AD602B51D42A000053F1 /* LoginView.swift */; };
 		DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */; };
 		DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012E2B46C0DD00DFEE98 /* ContentView.swift */; };
 		DD6001312B46C0DE00DFEE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD6001302B46C0DE00DFEE98 /* Assets.xcassets */; };
@@ -14,6 +33,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		190791C12B579CEC00F78D48 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		190791C32B579CF900F78D48 /* CurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationView.swift; sourceTree = "<group>"; };
+		190791C52B579D0300F78D48 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		190791CA2B57AB3100F78D48 /* SCDream9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream9.otf; sourceTree = "<group>"; };
+		190791CB2B57AB3100F78D48 /* SCDream8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream8.otf; sourceTree = "<group>"; };
+		190791CC2B57AB3100F78D48 /* SCDream4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream4.otf; sourceTree = "<group>"; };
+		190791CD2B57AB3100F78D48 /* SCDream2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream2.otf; sourceTree = "<group>"; };
+		190791CE2B57AB3100F78D48 /* SCDream1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream1.otf; sourceTree = "<group>"; };
+		190791CF2B57AB3100F78D48 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
+		190791D02B57AB3100F78D48 /* SCDream6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream6.otf; sourceTree = "<group>"; };
+		190791D12B57AB3100F78D48 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
+		190791D22B57AB3100F78D48 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
+		190791DC2B57ABA900F78D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		190791DD2B57AC2300F78D48 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
+		1919357C2B56F38600396056 /* ColorCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
+		1919357E2B5702C700396056 /* IdPwdInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdPwdInputView.swift; sourceTree = "<group>"; };
+		19517F3E2B57956600FDA71E /* MainTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapView.swift; sourceTree = "<group>"; };
+		19517F402B57996E00FDA71E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1971AD5E2B51D3BD000053F1 /* RegisterSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccess.swift; sourceTree = "<group>"; };
+		1971AD602B51D42A000053F1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DD6001292B46C0DD00DFEE98 /* Honzapda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honzapda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonzapdaApp.swift; sourceTree = "<group>"; };
 		DD60012E2B46C0DD00DFEE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +71,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		190791C82B57AAC500F78D48 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				190791C92B57AACF00F78D48 /* Fonts */,
+				1919357C2B56F38600396056 /* ColorCollection.swift */,
+				190791DD2B57AC2300F78D48 /* CustomFonts.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		190791C92B57AACF00F78D48 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				190791CE2B57AB3100F78D48 /* SCDream1.otf */,
+				190791CD2B57AB3100F78D48 /* SCDream2.otf */,
+				190791D12B57AB3100F78D48 /* SCDream3.otf */,
+				190791CC2B57AB3100F78D48 /* SCDream4.otf */,
+				190791CF2B57AB3100F78D48 /* SCDream5.otf */,
+				190791D02B57AB3100F78D48 /* SCDream6.otf */,
+				190791D22B57AB3100F78D48 /* SCDream7.otf */,
+				190791CB2B57AB3100F78D48 /* SCDream8.otf */,
+				190791CA2B57AB3100F78D48 /* SCDream9.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1971AD552B51C2FF000053F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19517F3E2B57956600FDA71E /* MainTapView.swift */,
+				1971AD5A2B51D349000053F1 /* LoginRegister */,
+				19517F402B57996E00FDA71E /* HomeView.swift */,
+				190791C12B579CEC00F78D48 /* SearchView.swift */,
+				190791C32B579CF900F78D48 /* CurationView.swift */,
+				190791C52B579D0300F78D48 /* MyPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1971AD562B51C307000053F1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1971AD572B51C312000053F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1971AD5A2B51D349000053F1 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				1971AD5E2B51D3BD000053F1 /* RegisterSuccess.swift */,
+				1971AD602B51D42A000053F1 /* LoginView.swift */,
+				1919357E2B5702C700396056 /* IdPwdInputView.swift */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
 		DD6001202B46C0DD00DFEE98 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +153,11 @@
 		DD60012B2B46C0DD00DFEE98 /* Honzapda */ = {
 			isa = PBXGroup;
 			children = (
+				190791DC2B57ABA900F78D48 /* Info.plist */,
+				190791C82B57AAC500F78D48 /* Resource */,
+				1971AD572B51C312000053F1 /* Model */,
+				1971AD562B51C307000053F1 /* ViewModel */,
+				1971AD552B51C2FF000053F1 /* View */,
 				DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */,
 				DD60012E2B46C0DD00DFEE98 /* ContentView.swift */,
 				DD6001302B46C0DE00DFEE98 /* Assets.xcassets */,
@@ -125,8 +232,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190791D62B57AB3100F78D48 /* SCDream2.otf in Resources */,
+				190791D72B57AB3100F78D48 /* SCDream1.otf in Resources */,
+				190791D52B57AB3100F78D48 /* SCDream4.otf in Resources */,
+				190791D92B57AB3100F78D48 /* SCDream6.otf in Resources */,
+				190791D32B57AB3100F78D48 /* SCDream9.otf in Resources */,
+				190791DB2B57AB3100F78D48 /* SCDream7.otf in Resources */,
+				190791DA2B57AB3100F78D48 /* SCDream3.otf in Resources */,
 				DD6001342B46C0DE00DFEE98 /* Preview Assets.xcassets in Resources */,
+				190791D42B57AB3100F78D48 /* SCDream8.otf in Resources */,
 				DD6001312B46C0DE00DFEE98 /* Assets.xcassets in Resources */,
+				190791D82B57AB3100F78D48 /* SCDream5.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +253,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1919357F2B5702C700396056 /* IdPwdInputView.swift in Sources */,
+				190791C22B579CEC00F78D48 /* SearchView.swift in Sources */,
 				DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */,
 				DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */,
+				1971AD612B51D42A000053F1 /* LoginView.swift in Sources */,
+				1919357D2B56F38600396056 /* ColorCollection.swift in Sources */,
+				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
+				19517F412B57996E00FDA71E /* HomeView.swift in Sources */,
+				19517F3F2B57956600FDA71E /* MainTapView.swift in Sources */,
+				190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */,
+				1971AD5F2B51D3BD000053F1 /* RegisterSuccess.swift in Sources */,
+				190791C42B579CF900F78D48 /* CurationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +401,7 @@
 				DEVELOPMENT_TEAM = 2DF5SKQK2R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Honzapda/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +431,7 @@
 				DEVELOPMENT_TEAM = 2DF5SKQK2R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Honzapda/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
