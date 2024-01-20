@@ -21,11 +21,11 @@
 		190791DB2B57AB3100F78D48 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791D22B57AB3100F78D48 /* SCDream7.otf */; };
 		190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791DD2B57AC2300F78D48 /* CustomFonts.swift */; };
 		1919357D2B56F38600396056 /* ColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1919357C2B56F38600396056 /* ColorCollection.swift */; };
-		1919357F2B5702C700396056 /* IdPwdInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1919357E2B5702C700396056 /* IdPwdInputView.swift */; };
 		19517F3F2B57956600FDA71E /* MainTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19517F3E2B57956600FDA71E /* MainTapView.swift */; };
 		19517F412B57996E00FDA71E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19517F402B57996E00FDA71E /* HomeView.swift */; };
-		1971AD5F2B51D3BD000053F1 /* RegisterSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971AD5E2B51D3BD000053F1 /* RegisterSuccess.swift */; };
-		1971AD612B51D42A000053F1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971AD602B51D42A000053F1 /* LoginView.swift */; };
+		BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C77272B5BE3A100076880 /* OnboardingView.swift */; };
+		BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */; };
+		BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772E2B5BE6E500076880 /* SplashView.swift */; };
 		DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */; };
 		DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012E2B46C0DD00DFEE98 /* ContentView.swift */; };
 		DD6001312B46C0DE00DFEE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD6001302B46C0DE00DFEE98 /* Assets.xcassets */; };
@@ -48,11 +48,13 @@
 		190791DC2B57ABA900F78D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		190791DD2B57AC2300F78D48 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		1919357C2B56F38600396056 /* ColorCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
-		1919357E2B5702C700396056 /* IdPwdInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdPwdInputView.swift; sourceTree = "<group>"; };
 		19517F3E2B57956600FDA71E /* MainTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapView.swift; sourceTree = "<group>"; };
 		19517F402B57996E00FDA71E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		1971AD5E2B51D3BD000053F1 /* RegisterSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccess.swift; sourceTree = "<group>"; };
-		1971AD602B51D42A000053F1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BB9C77272B5BE3A100076880 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFont.swift; sourceTree = "<group>"; };
+		BB9C772E2B5BE6E500076880 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Bold.otf"; sourceTree = "<group>"; };
+		BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Light.otf"; sourceTree = "<group>"; };
 		DD6001292B46C0DD00DFEE98 /* Honzapda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honzapda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonzapdaApp.swift; sourceTree = "<group>"; };
 		DD60012E2B46C0DD00DFEE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,8 @@
 				190791D22B57AB3100F78D48 /* SCDream7.otf */,
 				190791CB2B57AB3100F78D48 /* SCDream8.otf */,
 				190791CA2B57AB3100F78D48 /* SCDream9.otf */,
+				BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */,
+				BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -100,9 +104,10 @@
 		1971AD552B51C2FF000053F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BB9C772D2B5BE6D600076880 /* Splash */,
+				BB9C77262B5BE38200076880 /* Onboarding */,
+				BB9C77252B5A9A1200076880 /* Home */,
 				19517F3E2B57956600FDA71E /* MainTapView.swift */,
-				1971AD5A2B51D349000053F1 /* LoginRegister */,
-				19517F402B57996E00FDA71E /* HomeView.swift */,
 				190791C12B579CEC00F78D48 /* SearchView.swift */,
 				190791C32B579CF900F78D48 /* CurationView.swift */,
 				190791C52B579D0300F78D48 /* MyPageView.swift */,
@@ -110,28 +115,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		1971AD562B51C307000053F1 /* ViewModel */ = {
+		BB9C77252B5A9A1200076880 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				19517F402B57996E00FDA71E /* HomeView.swift */,
 			);
-			path = ViewModel;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		1971AD572B51C312000053F1 /* Model */ = {
+		BB9C77262B5BE38200076880 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				BB9C77272B5BE3A100076880 /* OnboardingView.swift */,
+				BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */,
 			);
-			path = Model;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		1971AD5A2B51D349000053F1 /* LoginRegister */ = {
+		BB9C772D2B5BE6D600076880 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				1971AD5E2B51D3BD000053F1 /* RegisterSuccess.swift */,
-				1971AD602B51D42A000053F1 /* LoginView.swift */,
-				1919357E2B5702C700396056 /* IdPwdInputView.swift */,
+				BB9C772E2B5BE6E500076880 /* SplashView.swift */,
 			);
-			path = LoginRegister;
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		DD6001202B46C0DD00DFEE98 = {
@@ -155,8 +161,6 @@
 			children = (
 				190791DC2B57ABA900F78D48 /* Info.plist */,
 				190791C82B57AAC500F78D48 /* Resource */,
-				1971AD572B51C312000053F1 /* Model */,
-				1971AD562B51C307000053F1 /* ViewModel */,
 				1971AD552B51C2FF000053F1 /* View */,
 				DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */,
 				DD60012E2B46C0DD00DFEE98 /* ContentView.swift */,
@@ -253,17 +257,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1919357F2B5702C700396056 /* IdPwdInputView.swift in Sources */,
+				BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */,
 				190791C22B579CEC00F78D48 /* SearchView.swift in Sources */,
 				DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */,
 				DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */,
-				1971AD612B51D42A000053F1 /* LoginView.swift in Sources */,
+				BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */,
+				BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */,
 				1919357D2B56F38600396056 /* ColorCollection.swift in Sources */,
 				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
 				19517F412B57996E00FDA71E /* HomeView.swift in Sources */,
 				19517F3F2B57956600FDA71E /* MainTapView.swift in Sources */,
 				190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */,
-				1971AD5F2B51D3BD000053F1 /* RegisterSuccess.swift in Sources */,
 				190791C42B579CF900F78D48 /* CurationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
