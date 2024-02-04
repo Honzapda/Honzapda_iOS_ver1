@@ -13,6 +13,7 @@ import SwiftUI
 struct OnboardingView: View {
     @State private var currentPage = 0
     @AppStorage("hasSeenOnboarding", store: UserDefaults.standard) var hasSeenOnboarding = false
+    
     // 온보딩을 보았던 기록을 저장합니다
     
     let onboardingPages: [OnboardingPage] = [
@@ -50,28 +51,31 @@ struct OnboardingView: View {
     
     
     var body: some View {
-                ZStack {
-                    // 배경 이미지
-                    Image("Background_Onboarding")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .edgesIgnoringSafeArea(.all)
-                    
-                    
-                    //페이지 표시 인디케이터
-                    HStack {
-                        ForEach(0..<4, id: \.self) { index in
-                            Image(index == currentPage ? "Ellipse_Full" : "Ellipse_Empty")
-                                .resizable()
-                                .frame(width: 4, height: 4, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                .padding(.horizontal, -2)
-                        }
+        NavigationView{
+            
+            
+            ZStack {
+                // 배경 이미지
+                Image("Background_Onboarding")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                
+                
+                //페이지 표시 인디케이터
+                HStack {
+                    ForEach(0..<4, id: \.self) { index in
+                        Image(index == currentPage ? "Ellipse_Full" : "Ellipse_Empty")
+                            .resizable()
+                            .frame(width: 4, height: 4, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .padding(.horizontal, -2)
                     }
-                    .offset(y: -400)
-
-                        
-                        TabView(selection: $currentPage) {// 탭 뷰 사용
-                            ForEach(0..<onboardingPages.count, id: \.self) { index in
+                }
+                .offset(y: -400)
+                
+                
+                TabView(selection: $currentPage) {// 탭 뷰 사용
+                    ForEach(0..<onboardingPages.count, id: \.self) { index in
                         VStack { // 메인텍스트 서브텍스트 이미지
                             VStack{
                                 HStack{
@@ -88,7 +92,7 @@ struct OnboardingView: View {
                                     .modifier(OnboardingTitleModifier())
                             }
                             .padding()
-                           
+                            
                             
                             Text(onboardingPages[index].subText)
                                 .modifier(OnboardingSubtitleModifier())
@@ -99,47 +103,69 @@ struct OnboardingView: View {
                                 .padding()
                         }
                         .tag(index)
-                       
+                        
                     }
                 }
-                        .frame(width: 500, height: 500, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .offset(y: -170)
-                        .tabViewStyle(PageTabViewStyle())
-                        .onAppear(){
-                            hasSeenOnboarding = true
-                        }
-                            
-                    VStack{
-                        //MARK: Loginbuttons
-                        LoginButton()
-                            .padding(.horizontal)
-                        AppleLoginButtons()
-                            .padding(.bottom)
-                            .padding(.horizontal)
-                        
-                        HStack{
-                            Text("사장님으로 시작하신다면?")
-                                .font(.custom("S-CoreDream-5Medium", size: 10))
-                                .foregroundColor(CustomColors.gray08)
-                                .padding(.trailing, -2)
-                                
-                            Button {
-                                print("business button tapped")
-                            } label: {
-                                Text("비즈니스 계정으로 로그인하기")
-                                    .font(.custom("S-CoreDream-5Medium", size: 10))
-                                    .foregroundColor(CustomColors.primary06)
-                            }
-                        }
-                        
-                       
-                    }
-                    .frame(width: UIScreen.main.bounds.size.width)
+                .frame(width: 500, height: 500, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .offset(y: -170)
+                .tabViewStyle(PageTabViewStyle())
+                .onAppear(){
+                    hasSeenOnboarding = true
+                }
+                
+                VStack{
+                    //MARK: Loginbuttons
+//                    Button(action:{
+//                        print("user login tapped")
+//
+//                    })
+//                    {
+//                        Text("유저로 로그인하기")
+//                    }.modifier(UserLoginButtonModifier())
+//                        .padding(.horizontal)
+                    NavigationLink(destination: LoginView()) {
+                           Text("유저로 로그인하기")
+                       }
+                       .modifier(UserLoginButtonModifier())
+                       .padding(.horizontal)
                     
+                    
+                    
+                    //                        NavigationLink(destination: LoginView()) {
+                    //                            Text("유저 로그인")
+                    //                        }.modifier(UserLoginButtonModifier())
+                    //                         .padding(.horizontal)
+                    //
+                    
+                    AppleLoginButtons()
+                        .padding(.bottom)
+                        .padding(.horizontal)
+                    
+                    HStack{
+                        Text("사장님으로 시작하신다면?")
+                            .font(.custom("S-CoreDream-5Medium", size: 10))
+                            .foregroundColor(CustomColors.gray08)
+                            .padding(.trailing, -2)
+                        
+                        Button {
+                            print("business button tapped")
+                        } label: {
+                            Text("비즈니스 계정으로 로그인하기")
+                                .font(.custom("S-CoreDream-5Medium", size: 10))
+                                .foregroundColor(CustomColors.primary06)
+                        }
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.size.width)
                 .offset(y: 100)
+                
+                
             }//zstack ends
-        }
-    } // body end
+            
+        }//네비게이션 엔드
+        
+        }// body end
+    }
 
 struct OnboardingPage {
     
@@ -155,14 +181,19 @@ struct LoginButton: View {
         // 로그인 버튼 UI 구현
         // 이전 로그인 수단에 따라 다른 내용 표시
         // 예: Button("유저 로그인") { /* 로그인 액션 구현 */ }
+        
         Button(action:{
             print("user login tapped")
-        }){
+        
+        })
+        {
             Text("유저로 로그인하기")
-                .modifier(UserLoginButtonModifier())
-        }
+                
+        }.modifier(UserLoginButtonModifier())
     }
 }
+
+
 struct AppleLoginButtons: View {
     var body: some View {
         // 로그인 버튼 UI 구현
