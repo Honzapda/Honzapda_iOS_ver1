@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>KAKAO_APP_KEY</key>
-	<string>4deb48c0df31d73ab6508bfd434d4b10</string>
-	<key>KAKAO_PHASE</key>
-	<string>alpha</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SCDream1.otf</string>

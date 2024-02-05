@@ -15,12 +15,12 @@ struct MainTapView: View{
     
     var body:some View{
         TabView{
-            HomeView(tempDataSetArr: tempDataSetArr)
+            HomeView()
                 .tabItem {
                         Image("tabview_home_unselected")
                             .renderingMode(.template)
                         Text("홈")
-                }.background(.white)
+                }
                 
             SearchView()
                 .tabItem {
@@ -44,7 +44,6 @@ struct MainTapView: View{
                 }
         }
         .tint(CustomColors.primary05)
-        
     }
 }
 
