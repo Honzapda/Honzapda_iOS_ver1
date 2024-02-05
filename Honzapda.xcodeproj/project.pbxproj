@@ -35,6 +35,10 @@
 		BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C77272B5BE3A100076880 /* OnboardingView.swift */; };
 		BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */; };
 		BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772E2B5BE6E500076880 /* SplashView.swift */; };
+		BBFE0C2A2B6F697000E46931 /* PyeongChangPeace-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */; };
+		BBFE0C2B2B6F697300E46931 /* PyeongChangPeace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */; };
+		BBFE0C2E2B6F6D2800E46931 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */; };
+		BBFE0C302B6F70D100E46931 /* LoginVIewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */; };
 		DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */; };
 		DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012E2B46C0DD00DFEE98 /* ContentView.swift */; };
 		DD6001312B46C0DE00DFEE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD6001302B46C0DE00DFEE98 /* Assets.xcassets */; };
@@ -73,6 +77,8 @@
 		BB9C772E2B5BE6E500076880 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Bold.otf"; sourceTree = "<group>"; };
 		BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Light.otf"; sourceTree = "<group>"; };
+		BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVIewModifier.swift; sourceTree = "<group>"; };
 		DD6001292B46C0DD00DFEE98 /* Honzapda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honzapda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonzapdaApp.swift; sourceTree = "<group>"; };
 		DD60012E2B46C0DD00DFEE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 		1971AD552B51C2FF000053F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BBFE0C2C2B6F6D1200E46931 /* LoginView */,
 				192005542B5C35B800CFB80D /* ShopDetail */,
 				BB9C772D2B5BE6D600076880 /* Splash */,
 				BB9C77262B5BE38200076880 /* Onboarding */,
@@ -168,6 +175,8 @@
 		BB9C77262B5BE38200076880 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */,
+				BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */,
 				BB9C77272B5BE3A100076880 /* OnboardingView.swift */,
 				BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */,
 			);
@@ -180,6 +189,13 @@
 				BB9C772E2B5BE6E500076880 /* SplashView.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		BBFE0C2C2B6F6D1200E46931 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		DD6001202B46C0DD00DFEE98 = {
@@ -281,7 +297,9 @@
 			files = (
 				190791D62B57AB3100F78D48 /* SCDream2.otf in Resources */,
 				190791D72B57AB3100F78D48 /* SCDream1.otf in Resources */,
+				BBFE0C2B2B6F697300E46931 /* PyeongChangPeace-Bold.otf in Resources */,
 				190791D52B57AB3100F78D48 /* SCDream4.otf in Resources */,
+				BBFE0C2A2B6F697000E46931 /* PyeongChangPeace-Light.otf in Resources */,
 				190791D92B57AB3100F78D48 /* SCDream6.otf in Resources */,
 				190791D32B57AB3100F78D48 /* SCDream9.otf in Resources */,
 				190791DB2B57AB3100F78D48 /* SCDream7.otf in Resources */,
@@ -308,6 +326,7 @@
 				DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */,
 				DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */,
 				BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */,
+				BBFE0C2E2B6F6D2800E46931 /* LoginView.swift in Sources */,
 				192005562B5C35D700CFB80D /* ShopDetailView.swift in Sources */,
 				BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */,
 				194222862B5D3C8A006B3C30 /* Review.swift in Sources */,
@@ -321,6 +340,7 @@
 				19249B732B5DA05000CF7DAD /* HelpInfoView.swift in Sources */,
 				190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */,
 				190791C42B579CF900F78D48 /* CurationView.swift in Sources */,
+				BBFE0C302B6F70D100E46931 /* LoginVIewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
