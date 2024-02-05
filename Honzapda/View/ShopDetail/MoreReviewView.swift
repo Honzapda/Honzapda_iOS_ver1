@@ -20,15 +20,20 @@ struct MoreReviewView: View {
                 ZStack(alignment:.top){
                     ScrollView{
                         VStack{
-                            Text("Helo WOrld")
-                            NavigationLink{
-                                ReviewWriteView()
-                            } label: {
-                                Text("Button")
-                            }
-                            .offset(y: minY)
+                            reviewImageView(img)
+                                .padding(.vertical, 40)
+                            
+                            Rectangle()
+                                .frame(minWidth: proxy.size.width)
+                                .foregroundStyle(CustomColors.gray01)
+                            
+                            reviewView()
+                                .padding(.vertical, 40)
                         }
+                        .offset(y: minY)
                     }
+                    .frame(width: proxy.size.width)
+                    
                     .navigationBarBackButtonHidden(true)
                     headerView()
                         .padding(.top, safeArea.top)
@@ -37,6 +42,8 @@ struct MoreReviewView: View {
             }
         }
     }
+
+    
     @ViewBuilder
     func headerView()->some View{
         VStack(alignment: .leading){
@@ -80,22 +87,95 @@ struct MoreReviewView: View {
     }
     
     @ViewBuilder
-    func reviewCell()->some View{
-        
-        let dummy = Review(profile:Image("logo"), name: "가나다", rating: 4, visitDate: "2024.02.05", reviewBody:
-                            "가나다라마바사아자\n차카타파하", reviewImage: [Image("logo"), Image("logo"), Image("logo"), Image("logo")])
-        
+    func reviewImageView(_ reviewImages: [ReviewImage])->some View{
+        VStack(alignment: .leading, spacing: 20){
+            HStack{
+                Text("사진 모아보기")
+                    .font(Font.custom("S-CoreDream-6Bold", size: 16))
+                    .foregroundStyle(CustomColors.gray09)
+                
+                Spacer()
+                
+                Button{
+                    
+                } label: {
+                    Text("모든 사진 보기")
+                        .font(Font.custom("S-Core Dream", size: 9))
+                        .foregroundStyle(CustomColors.primary05)
+                }
+            }
+            
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 4){
+                    ForEach(reviewImages) { reviewImage in
+                        reviewImage.reviewImage
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                            .clipped()
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 24)
+    }
+    
+    @ViewBuilder
+    func reviewView()->some View{
+        VStack(alignment: .leading, spacing: 12){
+            HStack{
+                HStack(spacing: 0){
+                    Text("리뷰 ")
+                        .foregroundStyle(CustomColors.gray09)
+                    Text(String(reviews.count))
+                        .foregroundStyle(CustomColors.primary05)
+                    Text("개")
+                        .foregroundStyle(CustomColors.gray09)
+                }
+                .font(Font.custom("S-CoreDream-6Bold", size: 16))
+                
+                Spacer()
+                
+                NavigationLink{
+                    ReviewWriteView()
+                } label: {
+                    Text("리뷰 작성하기")
+                        .font(Font.custom("S-Core Dream", size: 9))
+                        .foregroundStyle(CustomColors.primary05)
+                }
+            }
+            
+            Text("유저들이 제공한 리뷰를 살펴보세요.\n유저들이 선택한 정보 순으로 제공해드릴게요 :)")
+                .multilineTextAlignment(.leading)
+                .font(Font.custom("S-Core Dream", size: 9))
+                .foregroundStyle(CustomColors.gray06)
+                .padding(.bottom, 12)
+            
+            ForEach(reviews){cell in
+                reviewCell(cell)
+                    .padding(.bottom, 4)
+            }
+        }
+        .padding(.horizontal, 24)
+        .padding(.bottom, 40)
+    }
+    
+    @ViewBuilder
+    func reviewCell(_ review: Review)->some View{
+       
         VStack(spacing: 16){
             HStack(spacing: 170){
                 HStack(spacing: 12){
-                    dummy.profile
+                    review.profile
                         .resizable()
                         .frame(width: 40, height: 40)
+                        .clipped()
                         .clipShape(Circle())
                     VStack(alignment: .leading){
-                        Text(dummy.name)
+                        Text(review.name)
                             .font(Font.custom("S-CoreDream-6Bold", size: 12))
-                        Text("별점 \(dummy.rating)점")
+                            .foregroundStyle(CustomColors.gray09)
+                        Text("별점 \(review.rating)점")
                             .font(Font.custom("S-Core Dream", size: 8))
                             .foregroundStyle(CustomColors.primary04)
                     }
@@ -112,8 +192,8 @@ struct MoreReviewView: View {
             
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
-                    ForEach(0..<dummy.reviewImage.count){i in
-                        dummy.reviewImage[i]
+                    ForEach(0..<review.reviewImage.count){i in
+                        review.reviewImage[i]
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 90, height: 90)
@@ -124,12 +204,12 @@ struct MoreReviewView: View {
             .padding(.horizontal, 24)
             
             VStack(alignment: .leading, spacing: 16){
-                Text(dummy.reviewBody)
+                Text(review.reviewBody)
                     .multilineTextAlignment(.leading)
                     .font(Font.custom("S-Core Dream", size: 9))
                     .foregroundStyle(CustomColors.black)
                 
-                Text(dummy.visitDate + " 방문")
+                Text(review.visitDate + " 방문")
                     .font(Font.custom("S-Core Dream", size: 8))
                     .foregroundStyle(CustomColors.gray07)
             }
