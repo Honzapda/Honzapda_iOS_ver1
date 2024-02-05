@@ -40,78 +40,78 @@ struct HelpInfoView: View {
                 }
             }
             // MARK: Info Cells
-            userHelpInfoCell()
-            userHelpInfoCell()
+            ForEach(userHelpInfos) {helpInfo in
+                    userHelpInfoCell(helpInfo)
+            }
         }
     }
     
     @ViewBuilder
-    func userHelpInfoCell()->some View{
-        let dummy = UserHelpInfo(profile: Image("logo"), name: "체리", day: "목", hour: 17, densityPer: 90, desk: "넓은", socket: "넉넉한", socketLocation: "책상 밑", restroom: "1층 계단 옆", music: "잔잔한", light: "밝은", mood: "아늑한")
-        
-        let profile = dummy.profile
+    func userHelpInfoCell(_ helpInfo: UserHelpInfo)->some View{
+
+        let profile = helpInfo.profile
                         .resizable()
                         .frame(width: 40, height: 40)
                         .clipShape(Circle())
-        let name = Text(dummy.name)
+        let name = Text(helpInfo.name)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundStyle(CustomColors.gray09)
-        let day = Text(dummy.day)
+        let day = Text(helpInfo.day)
             .font(Font.custom("S-CoreDream-5Medium", size: 8))
             .foregroundStyle(CustomColors.primary05)
-        let hour = Text("\(dummy.hour)"+"시")
+        let hour = Text("\(helpInfo.hour)"+"시")
             .font(Font.custom("S-CoreDream-5Medium", size: 8))
             .foregroundStyle(CustomColors.primary05)
-        let densityPer = Text("\(dummy.densityPer)"+"%")
+        let densityPer = Text("\(helpInfo.densityPer)"+"%")
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .overlay{
                 VStack{Divider().offset(y:10).foregroundStyle(CustomColors.gray03)}
             }
             .foregroundColor(CustomColors.primary05)
-        let desk = Text(dummy.desk)
+        let desk = Text(helpInfo.desk)
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundColor(CustomColors.primary05)
             .overlay{
                 VStack{Divider().offset(y:10).foregroundStyle(CustomColors.gray03)}
             }
-        let socket = Text(dummy.socket)
+        let socket = Text(helpInfo.socket)
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundColor(CustomColors.primary05)
             .overlay{
                 VStack{Divider().offset(y:10).foregroundStyle(CustomColors.gray03)}
             }
-        let socketLocation = Text(dummy.socketLocation)
+        let socketLocation = Text(helpInfo.socketLocation)
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundColor(CustomColors.primary05)
             .overlay{
                 VStack{Divider().offset(y:10).foregroundStyle(CustomColors.gray03)}
             }
-        let restroom = Text(dummy.restroom)
+        let restroom = Text(helpInfo.restroom)
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundColor(CustomColors.primary05)
             .overlay{
                 VStack{Divider().offset(y:10).foregroundStyle(CustomColors.gray03)}
             }
-        let music = Text(dummy.music)
+        let music = Text(helpInfo.music)
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundColor(CustomColors.primary05)
             .overlay{
                 VStack{Divider().offset(y:10).foregroundStyle(CustomColors.gray03)}
             }
-        let light = Text(dummy.light)
+        let light = Text(helpInfo.light)
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundColor(CustomColors.primary05)
             .overlay{
                 VStack{Divider().offset(y:10).foregroundStyle(CustomColors.gray03)}
             }
-        let mood = Text(dummy.mood)
+        let mood = Text(helpInfo.mood)
             .padding(.horizontal, 10)
             .font(Font.custom("S-CoreDream-6Bold", size: 12))
             .foregroundColor(CustomColors.primary05)
