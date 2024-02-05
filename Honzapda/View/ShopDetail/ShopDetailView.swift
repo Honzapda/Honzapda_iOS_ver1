@@ -10,13 +10,14 @@ import SwiftUI
 
 struct ShopDetailView: View {
     var body: some View {
+        NavigationStack{
             GeometryReader{
                 let safeArea = $0.safeAreaInsets
                 let size = $0.size
                 ShopDetailMainView(safeArea: safeArea, size:size)
                     .ignoresSafeArea(.container, edges: .top)
             }
-        
+       }
     }
 }
 

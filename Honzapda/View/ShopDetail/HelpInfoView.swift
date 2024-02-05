@@ -13,7 +13,7 @@ struct HelpInfoView: View {
         VStack(alignment: .leading, spacing: 16){
             // MARK: 설명
             HStack(spacing: 70){
-                VStack(alignment: .leading, spacing: 8){
+                VStack(alignment: .leading, spacing: 12){
                     HStack{
                         Text("유저의 도움 정보")
                             .font(Font.custom("S-CoreDream-6Bold", size: 16))
@@ -141,7 +141,7 @@ struct HelpInfoView: View {
             }
             .padding(.leading, 24)
             
-            VStack(alignment: .leading, spacing: 8){
+            VStack(alignment: .leading, spacing: 12){
                 HStack(spacing: 0){
                     Text("혼잡도는")
                         .font(Font.custom("S-CoreDream-5Medium", size: 10))

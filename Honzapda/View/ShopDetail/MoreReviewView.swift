@@ -1,58 +1,82 @@
 //
-//  ReviewView.swift
+//  MoreReviewView.swift
 //  Honzapda
 //
-//  Created by 이희주 on 2024/01/22.
+//  Created by 이희주 on 2024/01/25.
 //
 
 import Foundation
 import SwiftUI
 
-struct ReviewView: View {
-    var body: some View {
-            VStack{
-                VStack(alignment: .leading){
-                    HStack(alignment:.center, spacing: 110){
-                        VStack(alignment: .leading, spacing: 8){
-                            HStack{
-                                Text("리뷰")
-                                    .font(Font.custom("S-CoreDream-6Bold", size: 16))
-                                    .foregroundStyle(CustomColors.gray09)
-                                NavigationLink{
-                                    ReviewWriteView()
-                                }label: {
-                                    Text("리뷰 작성하기")
-                                        .font(Font.custom("S-CoreDream-5Medium", size: 9))
-                                        .foregroundStyle(CustomColors.primary05)
-                                }
-                            }
-                            
-                            Text("다른 혼잡다 유저들이 남긴 리뷰를 살펴보세요.")
-                                .font(Font.custom("S-Core Dream", size: 9))
-                                .foregroundStyle(CustomColors.gray06)
-                            
-                        }
-                        //.padding(.bottom, 16)
-                        
-                        NavigationLink{
-                            MoreReviewView()
-                        }label: {
-                            Text("리뷰 더 보기")
-                                .font(Font.custom("S-CoreDream-5Medium", size: 9))
-                                .foregroundStyle(CustomColors.primary05)
-                        }
-                        .padding(.vertical, 16)
-                    }
-                }
-                .padding(.bottom, 16)
+struct MoreReviewView: View {
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View{
+        NavigationStack{
+            GeometryReader{proxy in
+                let safeArea=proxy.safeAreaInsets
+                let minY=proxy.frame(in: .global).minY
                 
-                VStack(spacing: 16){
-                    reviewCell()
-                    reviewCell()
-                    reviewCell()
+                ZStack(alignment:.top){
+                    ScrollView{
+                        VStack{
+                            Text("Helo WOrld")
+                            NavigationLink{
+                                ReviewWriteView()
+                            } label: {
+                                Text("Button")
+                            }
+                            .offset(y: minY)
+                        }
+                    }
+                    .navigationBarBackButtonHidden(true)
+                    headerView()
+                        .padding(.top, safeArea.top)
+                        .offset(y:-minY)
                 }
             }
-        
+        }
+    }
+    @ViewBuilder
+    func headerView()->some View{
+        VStack(alignment: .leading){
+            HStack(){
+                Button{
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.title3)
+                        .foregroundStyle(.black)
+                }
+                .padding(.trailing, 25)
+                .padding(.leading)
+                
+                Text(shops[0].shopName)
+                    .font(Font.custom("S-Core Dream", size: 14))
+                    .foregroundStyle(.black)
+                    .padding(.vertical, 12)
+                
+                Spacer(minLength: 0)
+                
+                Button{
+                    
+                } label: {
+                    Image("icon_heart")
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: 20, height: 18)
+                        .padding(.trailing,24)
+                        .foregroundStyle(CustomColors.primary05)
+                }
+            }
+            
+            Spacer()
+            
+            Divider()
+        }
+        .background(CustomColors.white)
+        .frame(height: 45)
+        //.padding(.top, safeArea.top)
     }
     
     @ViewBuilder
@@ -119,7 +143,6 @@ struct ReviewView: View {
     }
 }
 
-
 #Preview {
-   ShopDetailView()
+    MoreReviewView()
 }
