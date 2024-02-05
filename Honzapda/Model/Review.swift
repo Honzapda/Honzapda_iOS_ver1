@@ -14,7 +14,7 @@ struct Review: Identifiable{
     var profile: Image
     var name: String
     var rating: UInt
-    var visitDate: Date?
+    var visitDate: String
     
     var reviewBody: String
     var reviewImage: [Image]

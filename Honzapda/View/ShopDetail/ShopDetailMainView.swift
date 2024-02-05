@@ -9,28 +9,32 @@ import Foundation
 import SwiftUI
 
 struct ShopDetailMainView: View{
+    
     var safeArea: EdgeInsets
     var size: CGSize
     
     var body: some View{
-        ScrollView(.vertical, showsIndicators: false){
-            // MARK: Show Shop Image
-            VStack {
-                shopImage()
-                
-                
-                // MARK: detailView
-                detailView()
-                    .frame(width: size.width)
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .zIndex(0)
+
+            ScrollView(.vertical, showsIndicators: false){
+                // MARK: Show Shop Image
+                VStack {
+                    shopImage()
+                    
+                    // MARK: detailView
+                    
+                    detailView()
+                        .frame(width: size.width)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .zIndex(0)
+                     
+                }
+                .overlay(alignment: .top){
+                    headerView()
+                }
             }
-            .overlay(alignment: .top){
-                headerView()
-            }
-        }
-        .coordinateSpace(name: "SCROLL")
+            .coordinateSpace(name: "SCROLL")
+
     }
     
     @ViewBuilder
@@ -45,7 +49,7 @@ struct ShopDetailMainView: View{
             Image(shops[0].photoUrls[0])
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: size.width, height: size.height + (minY > 0 ? minY : 0))
+                .frame(width: size.width, height: size.height + 25 + (minY > 0 ? minY : 0))
                 .clipped()
                 .overlay(content: {
                     ZStack(alignment: .bottom){
@@ -130,6 +134,7 @@ struct ShopDetailMainView: View{
                 VStack(alignment: .leading, spacing: 25){
                     Text("카페 정보")
                         .font(Font.custom("S-CoreDream-6Bold", size: 16))
+                        .foregroundStyle(CustomColors.gray09)
                         .padding(.top, 40)
                 
                         HStack(){
@@ -141,7 +146,7 @@ struct ShopDetailMainView: View{
                             Spacer()
                             VStack{
                                 Image("icon_star")
-                                Text("평점\n\(shops[0].rating)")
+                                Text("평점\n"+String(format: "%.2f", shops[0].rating))
                             }
                             Spacer()
                             VStack{
@@ -160,6 +165,7 @@ struct ShopDetailMainView: View{
                     VStack(alignment: .leading, spacing: 25){
                         Text("카페 소개")
                             .font(Font.custom("S-CoreDream-6Bold", size: 16))
+                            .foregroundStyle(CustomColors.gray09)
                         Rectangle()
                             .foregroundStyle(.clear)
                             .frame(minWidth:330, minHeight: 70)
@@ -217,8 +223,9 @@ struct ShopDetailMainView: View{
                 Spacer(minLength: 0)
             }
             .padding(.vertical, 12)
+            .padding(.leading)
             .overlay(content: {
-                VStack(alignment: .leading, spacing: 12){
+                VStack(alignment: .leading){
                     HStack{
                         Button{
                             
@@ -228,11 +235,12 @@ struct ShopDetailMainView: View{
                                 .foregroundStyle(.black)
                         }
                         .padding(.trailing, 25)
-                        
+                        .padding(.leading)
                         
                         Text(shops[0].shopName)
                             .font(Font.custom("S-Core Dream", size: 14))
                             .foregroundStyle(.black)
+                            .padding(.vertical, 12)
                         
                         Spacer(minLength: 0)
                         
@@ -241,17 +249,23 @@ struct ShopDetailMainView: View{
                         } label: {
                             Image("icon_heart")
                                 .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 20, height: 18)
+                                .padding(.trailing,24)
                                 .foregroundStyle(CustomColors.primary05)
                         }
                     }
+                    
+                    Spacer()
+                    
                     Divider()
                 }
+                .frame(height: 45)
                 .offset(y: -titleProgress > 1 ? 00 : 35)
                 .clipped()
                 .animation(.easeInOut(duration: 0.05), value: -titleProgress > 1)
             })
             .padding(.top, safeArea.top)
-            .padding([.horizontal, .bottom], 15)
             .background(content: {
                 Color.white
                     .opacity(-titleProgress > 1 ? 1 : 0)
