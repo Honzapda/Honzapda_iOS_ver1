@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16472AA8DED336080741E7DA /* Pods_Honzapda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398F985E6FB5E63C499BBFB8 /* Pods_Honzapda.framework */; };
 		190791C22B579CEC00F78D48 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C12B579CEC00F78D48 /* SearchView.swift */; };
 		190791C42B579CF900F78D48 /* CurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C32B579CF900F78D48 /* CurationView.swift */; };
 		190791C62B579D0300F78D48 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C52B579D0300F78D48 /* MyPageView.swift */; };
@@ -21,29 +22,22 @@
 		190791DB2B57AB3100F78D48 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791D22B57AB3100F78D48 /* SCDream7.otf */; };
 		190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791DD2B57AC2300F78D48 /* CustomFonts.swift */; };
 		1919357D2B56F38600396056 /* ColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1919357C2B56F38600396056 /* ColorCollection.swift */; };
-		192005562B5C35D700CFB80D /* ShopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192005552B5C35D700CFB80D /* ShopDetailView.swift */; };
-		192005582B5C377B00CFB80D /* ShopDetailMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192005572B5C377B00CFB80D /* ShopDetailMainView.swift */; };
-		19249B6F2B5D9FA400CF7DAD /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19249B6E2B5D9FA400CF7DAD /* ReviewView.swift */; };
-		19249B712B5D9FB400CF7DAD /* DensityInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19249B702B5D9FB400CF7DAD /* DensityInfoView.swift */; };
-		19249B732B5DA05000CF7DAD /* HelpInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19249B722B5DA05000CF7DAD /* HelpInfoView.swift */; };
-		194222842B5D3A56006B3C30 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194222832B5D3A56006B3C30 /* Shop.swift */; };
-		194222862B5D3C8A006B3C30 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194222852B5D3C8A006B3C30 /* Review.swift */; };
 		19517F3F2B57956600FDA71E /* MainTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19517F3E2B57956600FDA71E /* MainTapView.swift */; };
 		19517F412B57996E00FDA71E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19517F402B57996E00FDA71E /* HomeView.swift */; };
-		19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19995B6A2B604F7B00A73023 /* UserHelpInfo.swift */; };
-		19995B6D2B604F9A00A73023 /* DensityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19995B6C2B604F9A00A73023 /* DensityInfo.swift */; };
-		19C48FF52B711221005FC902 /* MoreReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FF42B711221005FC902 /* MoreReviewView.swift */; };
-		19C48FF92B7113C9005FC902 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FF82B7113C9005FC902 /* ImagePicker.swift */; };
-		19C48FFB2B7113CC005FC902 /* PHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FFA2B7113CC005FC902 /* PHPicker.swift */; };
-		19C48FFD2B7113D3005FC902 /* ReviewTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FFC2B7113D3005FC902 /* ReviewTextFieldStyle.swift */; };
-		19C48FFF2B7113D6005FC902 /* ReviewWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FFE2B7113D6005FC902 /* ReviewWriteView.swift */; };
 		BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C77272B5BE3A100076880 /* OnboardingView.swift */; };
 		BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */; };
 		BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772E2B5BE6E500076880 /* SplashView.swift */; };
-		BBFE0C2A2B6F697000E46931 /* PyeongChangPeace-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */; };
-		BBFE0C2B2B6F697300E46931 /* PyeongChangPeace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */; };
-		BBFE0C2E2B6F6D2800E46931 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */; };
-		BBFE0C302B6F70D100E46931 /* LoginVIewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */; };
+		BBFC57502B709C0500C5B095 /* GetCafeFromKakaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC574F2B709C0500C5B095 /* GetCafeFromKakaoMap.swift */; };
+		BBFE0BED2B5D690800E46931 /* GetPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0BEC2B5D690800E46931 /* GetPosition.swift */; };
+		BBFE0C142B602E4400E46931 /* KMSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C132B602E4400E46931 /* KMSetup.swift */; };
+		BBFE0C162B60B81A00E46931 /* GetCafeFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C152B60B81A00E46931 /* GetCafeFromServer.swift */; };
+		BBFE0C1B2B61E9DC00E46931 /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C1A2B61E9DC00E46931 /* POI.swift */; };
+		BBFE0C1D2B65511B00E46931 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C1C2B65511B00E46931 /* DummyData.swift */; };
+		BBFE0C1F2B68A34700E46931 /* CafeCardViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C1E2B68A34700E46931 /* CafeCardViewSetup.swift */; };
+		BBFE0C222B69D1AC00E46931 /* CurationTestFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C212B69D1AC00E46931 /* CurationTestFirst.swift */; };
+		BBFE0C242B69D34A00E46931 /* curationFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C232B69D34A00E46931 /* curationFont.swift */; };
+		BBFE0C252B6E2ABA00E46931 /* PyeongChangPeace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */; };
+		BBFE0C262B6E2ABD00E46931 /* PyeongChangPeace-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */; };
 		DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */; };
 		DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012E2B46C0DD00DFEE98 /* ContentView.swift */; };
 		DD6001312B46C0DE00DFEE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD6001302B46C0DE00DFEE98 /* Assets.xcassets */; };
@@ -51,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160A23E9287BF2F736910C82 /* Pods-Honzapda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honzapda.release.xcconfig"; path = "Target Support Files/Pods-Honzapda/Pods-Honzapda.release.xcconfig"; sourceTree = "<group>"; };
 		190791C12B579CEC00F78D48 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		190791C32B579CF900F78D48 /* CurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationView.swift; sourceTree = "<group>"; };
 		190791C52B579D0300F78D48 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
@@ -66,29 +61,24 @@
 		190791DC2B57ABA900F78D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		190791DD2B57AC2300F78D48 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		1919357C2B56F38600396056 /* ColorCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
-		192005552B5C35D700CFB80D /* ShopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailView.swift; sourceTree = "<group>"; };
-		192005572B5C377B00CFB80D /* ShopDetailMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailMainView.swift; sourceTree = "<group>"; };
-		19249B6E2B5D9FA400CF7DAD /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
-		19249B702B5D9FB400CF7DAD /* DensityInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DensityInfoView.swift; sourceTree = "<group>"; };
-		19249B722B5DA05000CF7DAD /* HelpInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpInfoView.swift; sourceTree = "<group>"; };
-		194222832B5D3A56006B3C30 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
-		194222852B5D3C8A006B3C30 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		19517F3E2B57956600FDA71E /* MainTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapView.swift; sourceTree = "<group>"; };
 		19517F402B57996E00FDA71E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		19995B6A2B604F7B00A73023 /* UserHelpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelpInfo.swift; sourceTree = "<group>"; };
-		19995B6C2B604F9A00A73023 /* DensityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DensityInfo.swift; sourceTree = "<group>"; };
-		19C48FF42B711221005FC902 /* MoreReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreReviewView.swift; sourceTree = "<group>"; };
-		19C48FF82B7113C9005FC902 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		19C48FFA2B7113CC005FC902 /* PHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPicker.swift; sourceTree = "<group>"; };
-		19C48FFC2B7113D3005FC902 /* ReviewTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextFieldStyle.swift; sourceTree = "<group>"; };
-		19C48FFE2B7113D6005FC902 /* ReviewWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteView.swift; sourceTree = "<group>"; };
+		398F985E6FB5E63C499BBFB8 /* Pods_Honzapda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Honzapda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E7E25154BDB6F66B5B973F2 /* Pods-Honzapda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honzapda.debug.xcconfig"; path = "Target Support Files/Pods-Honzapda/Pods-Honzapda.debug.xcconfig"; sourceTree = "<group>"; };
 		BB9C77272B5BE3A100076880 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFont.swift; sourceTree = "<group>"; };
 		BB9C772E2B5BE6E500076880 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Bold.otf"; sourceTree = "<group>"; };
 		BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Light.otf"; sourceTree = "<group>"; };
-		BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVIewModifier.swift; sourceTree = "<group>"; };
+		BBFC574F2B709C0500C5B095 /* GetCafeFromKakaoMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCafeFromKakaoMap.swift; sourceTree = "<group>"; };
+		BBFE0BEC2B5D690800E46931 /* GetPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPosition.swift; sourceTree = "<group>"; };
+		BBFE0C132B602E4400E46931 /* KMSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMSetup.swift; sourceTree = "<group>"; };
+		BBFE0C152B60B81A00E46931 /* GetCafeFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCafeFromServer.swift; sourceTree = "<group>"; };
+		BBFE0C1A2B61E9DC00E46931 /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
+		BBFE0C1C2B65511B00E46931 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		BBFE0C1E2B68A34700E46931 /* CafeCardViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeCardViewSetup.swift; sourceTree = "<group>"; };
+		BBFE0C212B69D1AC00E46931 /* CurationTestFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationTestFirst.swift; sourceTree = "<group>"; };
+		BBFE0C232B69D34A00E46931 /* curationFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = curationFont.swift; sourceTree = "<group>"; };
 		DD6001292B46C0DD00DFEE98 /* Honzapda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honzapda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonzapdaApp.swift; sourceTree = "<group>"; };
 		DD60012E2B46C0DD00DFEE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16472AA8DED336080741E7DA /* Pods_Honzapda.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,61 +126,36 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		192005512B5C353600CFB80D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				194222832B5D3A56006B3C30 /* Shop.swift */,
-				194222852B5D3C8A006B3C30 /* Review.swift */,
-				19995B6A2B604F7B00A73023 /* UserHelpInfo.swift */,
-				19995B6C2B604F9A00A73023 /* DensityInfo.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		192005542B5C35B800CFB80D /* ShopDetail */ = {
-			isa = PBXGroup;
-			children = (
-				192005552B5C35D700CFB80D /* ShopDetailView.swift */,
-				192005572B5C377B00CFB80D /* ShopDetailMainView.swift */,
-				19249B6E2B5D9FA400CF7DAD /* ReviewView.swift */,
-				19249B702B5D9FB400CF7DAD /* DensityInfoView.swift */,
-				19C48FF42B711221005FC902 /* MoreReviewView.swift */,
-				19249B722B5DA05000CF7DAD /* HelpInfoView.swift */,
-			);
-			path = ShopDetail;
-			sourceTree = "<group>";
-		};
 		1971AD552B51C2FF000053F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				19C48FF72B7113B7005FC902 /* ReviewWrite */,
-				192005542B5C35B800CFB80D /* ShopDetail */,
+				BBFE0C202B69D18A00E46931 /* CurationView */,
 				BB9C772D2B5BE6D600076880 /* Splash */,
 				BB9C77262B5BE38200076880 /* Onboarding */,
 				BB9C77252B5A9A1200076880 /* Home */,
 				19517F3E2B57956600FDA71E /* MainTapView.swift */,
 				190791C12B579CEC00F78D48 /* SearchView.swift */,
-				190791C32B579CF900F78D48 /* CurationView.swift */,
 				190791C52B579D0300F78D48 /* MyPageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		19C48FF72B7113B7005FC902 /* ReviewWrite */ = {
+		864A963378F34D87D55542CD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				19C48FFE2B7113D6005FC902 /* ReviewWriteView.swift */,
-				19C48FFC2B7113D3005FC902 /* ReviewTextFieldStyle.swift */,
-				19C48FFA2B7113CC005FC902 /* PHPicker.swift */,
-				19C48FF82B7113C9005FC902 /* ImagePicker.swift */,
+				4E7E25154BDB6F66B5B973F2 /* Pods-Honzapda.debug.xcconfig */,
+				160A23E9287BF2F736910C82 /* Pods-Honzapda.release.xcconfig */,
 			);
-			path = ReviewWrite;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		BB9C77252B5A9A1200076880 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BBFE0C272B6E33E100E46931 /* HomeSeting */,
 				19517F402B57996E00FDA71E /* HomeView.swift */,
+				BBFE0C1C2B65511B00E46931 /* DummyData.swift */,
+				BBFE0C1E2B68A34700E46931 /* CafeCardViewSetup.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -197,8 +163,6 @@
 		BB9C77262B5BE38200076880 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */,
-				BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */,
 				BB9C77272B5BE3A100076880 /* OnboardingView.swift */,
 				BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */,
 			);
@@ -213,11 +177,43 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		BBFE0C202B69D18A00E46931 /* CurationView */ = {
+			isa = PBXGroup;
+			children = (
+				190791C32B579CF900F78D48 /* CurationView.swift */,
+				BBFE0C212B69D1AC00E46931 /* CurationTestFirst.swift */,
+				BBFE0C232B69D34A00E46931 /* curationFont.swift */,
+			);
+			path = CurationView;
+			sourceTree = "<group>";
+		};
+		BBFE0C272B6E33E100E46931 /* HomeSeting */ = {
+			isa = PBXGroup;
+			children = (
+				BBFE0BEC2B5D690800E46931 /* GetPosition.swift */,
+				BBFE0C132B602E4400E46931 /* KMSetup.swift */,
+				BBFE0C1A2B61E9DC00E46931 /* POI.swift */,
+				BBFE0C152B60B81A00E46931 /* GetCafeFromServer.swift */,
+				BBFC574F2B709C0500C5B095 /* GetCafeFromKakaoMap.swift */,
+			);
+			path = HomeSeting;
+			sourceTree = "<group>";
+		};
+		D93533BED7D30056CA6F2E66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				398F985E6FB5E63C499BBFB8 /* Pods_Honzapda.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DD6001202B46C0DD00DFEE98 = {
 			isa = PBXGroup;
 			children = (
 				DD60012B2B46C0DD00DFEE98 /* Honzapda */,
 				DD60012A2B46C0DD00DFEE98 /* Products */,
+				864A963378F34D87D55542CD /* Pods */,
+				D93533BED7D30056CA6F2E66 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,7 +228,6 @@
 		DD60012B2B46C0DD00DFEE98 /* Honzapda */ = {
 			isa = PBXGroup;
 			children = (
-				192005512B5C353600CFB80D /* Model */,
 				190791DC2B57ABA900F78D48 /* Info.plist */,
 				190791C82B57AAC500F78D48 /* Resource */,
 				1971AD552B51C2FF000053F1 /* View */,
@@ -259,9 +254,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD6001372B46C0DE00DFEE98 /* Build configuration list for PBXNativeTarget "Honzapda" */;
 			buildPhases = (
+				CD50E407A2DBBA9E7BF48035 /* [CP] Check Pods Manifest.lock */,
 				DD6001252B46C0DD00DFEE98 /* Sources */,
 				DD6001262B46C0DD00DFEE98 /* Frameworks */,
 				DD6001272B46C0DD00DFEE98 /* Resources */,
+				CBB9B8BD72BF0CBCD28D9B56 /* [CP] Embed Pods Frameworks */,
+				7017BCD2B2D3FC8F668D9D47 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -312,13 +310,13 @@
 			files = (
 				190791D62B57AB3100F78D48 /* SCDream2.otf in Resources */,
 				190791D72B57AB3100F78D48 /* SCDream1.otf in Resources */,
-				BBFE0C2B2B6F697300E46931 /* PyeongChangPeace-Bold.otf in Resources */,
 				190791D52B57AB3100F78D48 /* SCDream4.otf in Resources */,
-				BBFE0C2A2B6F697000E46931 /* PyeongChangPeace-Light.otf in Resources */,
 				190791D92B57AB3100F78D48 /* SCDream6.otf in Resources */,
 				190791D32B57AB3100F78D48 /* SCDream9.otf in Resources */,
 				190791DB2B57AB3100F78D48 /* SCDream7.otf in Resources */,
 				190791DA2B57AB3100F78D48 /* SCDream3.otf in Resources */,
+				BBFE0C262B6E2ABD00E46931 /* PyeongChangPeace-Light.otf in Resources */,
+				BBFE0C252B6E2ABA00E46931 /* PyeongChangPeace-Bold.otf in Resources */,
 				DD6001342B46C0DE00DFEE98 /* Preview Assets.xcassets in Resources */,
 				190791D42B57AB3100F78D48 /* SCDream8.otf in Resources */,
 				DD6001312B46C0DE00DFEE98 /* Assets.xcassets in Resources */,
@@ -328,39 +326,91 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7017BCD2B2D3FC8F668D9D47 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Honzapda/Pods-Honzapda-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Honzapda/Pods-Honzapda-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Honzapda/Pods-Honzapda-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBB9B8BD72BF0CBCD28D9B56 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Honzapda/Pods-Honzapda-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Honzapda/Pods-Honzapda-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Honzapda/Pods-Honzapda-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD50E407A2DBBA9E7BF48035 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Honzapda-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DD6001252B46C0DD00DFEE98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				192005582B5C377B00CFB80D /* ShopDetailMainView.swift in Sources */,
-				19249B712B5D9FB400CF7DAD /* DensityInfoView.swift in Sources */,
-				19C48FF92B7113C9005FC902 /* ImagePicker.swift in Sources */,
 				BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */,
+				BBFE0C242B69D34A00E46931 /* curationFont.swift in Sources */,
 				190791C22B579CEC00F78D48 /* SearchView.swift in Sources */,
-				194222842B5D3A56006B3C30 /* Shop.swift in Sources */,
 				DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */,
 				DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */,
+				BBFE0C222B69D1AC00E46931 /* CurationTestFirst.swift in Sources */,
+				BBFE0C1B2B61E9DC00E46931 /* POI.swift in Sources */,
 				BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */,
-				BBFE0C2E2B6F6D2800E46931 /* LoginView.swift in Sources */,
-				192005562B5C35D700CFB80D /* ShopDetailView.swift in Sources */,
+				BBFE0C1F2B68A34700E46931 /* CafeCardViewSetup.swift in Sources */,
 				BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */,
-				194222862B5D3C8A006B3C30 /* Review.swift in Sources */,
-				19995B6D2B604F9A00A73023 /* DensityInfo.swift in Sources */,
+				BBFE0C142B602E4400E46931 /* KMSetup.swift in Sources */,
 				1919357D2B56F38600396056 /* ColorCollection.swift in Sources */,
-				19C48FFD2B7113D3005FC902 /* ReviewTextFieldStyle.swift in Sources */,
 				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
-				19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */,
 				19517F412B57996E00FDA71E /* HomeView.swift in Sources */,
 				19517F3F2B57956600FDA71E /* MainTapView.swift in Sources */,
-				19C48FFF2B7113D6005FC902 /* ReviewWriteView.swift in Sources */,
-				19249B6F2B5D9FA400CF7DAD /* ReviewView.swift in Sources */,
-				19249B732B5DA05000CF7DAD /* HelpInfoView.swift in Sources */,
-				19C48FFB2B7113CC005FC902 /* PHPicker.swift in Sources */,
 				190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */,
+				BBFC57502B709C0500C5B095 /* GetCafeFromKakaoMap.swift in Sources */,
+				BBFE0C162B60B81A00E46931 /* GetCafeFromServer.swift in Sources */,
 				190791C42B579CF900F78D48 /* CurationView.swift in Sources */,
-				BBFE0C302B6F70D100E46931 /* LoginVIewModifier.swift in Sources */,
-				19C48FF52B711221005FC902 /* MoreReviewView.swift in Sources */,
+				BBFE0BED2B5D690800E46931 /* GetPosition.swift in Sources */,
+				BBFE0C1D2B65511B00E46931 /* DummyData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +454,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -419,7 +469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -467,7 +517,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -476,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -488,6 +538,7 @@
 		};
 		DD6001382B46C0DE00DFEE98 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E7E25154BDB6F66B5B973F2 /* Pods-Honzapda.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -498,9 +549,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Honzapda/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "항상 사용해줘 너네 트래킹좀 하게~";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱 사용 중에만 허용해줘 제발~";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -518,6 +572,7 @@
 		};
 		DD6001392B46C0DE00DFEE98 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 160A23E9287BF2F736910C82 /* Pods-Honzapda.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -528,9 +583,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Honzapda/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "항상 사용해줘 너네 트래킹좀 하게~";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱 사용 중에만 허용해줘 제발~";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

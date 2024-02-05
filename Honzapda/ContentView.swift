@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
    
     
     var body: some View {
         VStack {
-            OnboardingView()
+            HomeView(tempDataSetArr: tempDataSetArr)
         }
+        .padding()
     }
 }
