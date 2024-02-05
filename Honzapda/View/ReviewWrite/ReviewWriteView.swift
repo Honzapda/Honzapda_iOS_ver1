@@ -26,7 +26,7 @@ struct ReviewWriteView: View {
     @State private var reviewSaved = false
     
     var body: some View{
-        NavigationStack{
+        NavigationView{
             GeometryReader{proxy in
                 
                 let size = proxy.size
@@ -95,7 +95,7 @@ struct ReviewWriteView: View {
                         }
                         .padding(.horizontal)
                         .padding(.bottom, 40)
-                        .onChange(of: reviewSaved){
+                        .onChange(of: reviewSaved){ _ in
                             if reviewSaved == true {
                                 dismiss()
                             }
@@ -215,7 +215,7 @@ struct ReviewWriteView: View {
             Divider()
             Button("취소", role: .cancel) {}
         }
-        .onChange(of: inputImage) { _, _ in loadImage() }
+        .onChange(of: inputImage) { _ in loadImage() }
         
         .sheet(isPresented: $phPickerIsPresented, content: {
             PHPicker(image: $inputImage)
@@ -351,7 +351,7 @@ struct ReviewWriteView: View {
                 .padding(.leading, 24)
             TextEditor(text: $reviewBody)
                 .frame(width: 345, height: 240)
-                .scrollContentBackground(.hidden)
+                //.scrollContentBackground(.hidden)
                 .background(CustomColors.gray02)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .padding(.horizontal, 24)
