@@ -12,8 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            ShopDetailView()
+            OnboardingView()
         }
-        .padding()
     }
 }
