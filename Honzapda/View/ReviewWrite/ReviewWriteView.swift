@@ -13,7 +13,7 @@ struct ReviewWriteView: View {
     
     @State private var selectedPhotos: [Image] = []
     @State private var selectedDate: Date = Date()
-    @State private var rating: Int = 0
+    @State private var selectedRating: Int = 0
     @State private var reviewBody = ""
     
     @State private var image: Image?
@@ -23,15 +23,16 @@ struct ReviewWriteView: View {
     @State private var phPickerIsPresented = false
     @State private var cameraIsPresented = false
     
+    @State private var reviewSaved = false
+    
     var body: some View{
-        NavigationStack{
+        NavigationView{
             GeometryReader{proxy in
-
+                
                 let size = proxy.size
                 
                 ScrollView{
                     VStack(alignment: .leading, spacing: 40){
-                        
                         imagePickerView()
                         
                         Rectangle()
@@ -51,6 +52,54 @@ struct ReviewWriteView: View {
                             .foregroundStyle(CustomColors.gray02)
                         
                         reviewBodyView()
+                        
+                        Button{
+                            if(selectedRating > 0) && (reviewBody.count > 0){
+                                var date : String {
+                                    let myDateFormatter = DateFormatter()
+                                    myDateFormatter.dateFormat = "yyyy.MM.dd"
+                                    myDateFormatter.locale = Locale(identifier: "ko_KR")
+                                    
+                                    return myDateFormatter.string(from: selectedDate)
+                                }
+                                
+                                let newReview = Review(profile: Image("로고"), name: "사용자", rating: selectedRating, visitDate: date, reviewBody: reviewBody, reviewImage: selectedPhotos)
+                                
+                                reviews.append(newReview)
+                                print(reviews.count)
+                                reviewSaved = true
+                            }
+                        } label: {
+                            if(selectedRating > 0) && (reviewBody.count > 0) {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundStyle(CustomColors.primary05)
+                                    .frame(width: 361, height: 45)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .overlay{
+                                    Text("리뷰 게시하기")
+                                        .font(Font.custom("S-CoreDream-6Bold", size: 14))
+                                        .foregroundStyle(CustomColors.white)
+                                }
+                            }
+                            else{
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundStyle(CustomColors.gray04)
+                                    .frame(width: 361, height: 45)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .overlay{
+                                    Text("리뷰 게시하기")
+                                        .font(Font.custom("S-CoreDream-6Bold", size: 14))
+                                        .foregroundStyle(CustomColors.white)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 40)
+                        .onChange(of: reviewSaved){ _ in
+                            if reviewSaved == true {
+                                dismiss()
+                            }
+                        }
                     }
                 }
                 .frame(width: size.width)
@@ -59,7 +108,7 @@ struct ReviewWriteView: View {
                 .offset(y: 45 + 32)
                 .overlay(alignment:.top){
                     headerView()
-               }
+                }
             }
         }
     }
@@ -97,13 +146,12 @@ struct ReviewWriteView: View {
     
     @ViewBuilder
     func imagePickerView()->some View{
-        @State var photoMax = false
-        
-        VStack(alignment: .leading, spacing: 24){
+        VStack(alignment: .leading, spacing: 28){
             Text("리뷰 사진 등록하기 (최대 5장)")
                 .font(Font.custom("S-CoreDream-6Bold", size: 16))
+                .foregroundStyle(CustomColors.gray09)
                 .padding(.leading, 24)
-          
+            
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
                     if selectedPhotos.count != 0 {
@@ -166,16 +214,15 @@ struct ReviewWriteView: View {
             }
             Divider()
             Button("취소", role: .cancel) {}
-            
         }
-        .onChange(of: inputImage) { _, _ in loadImage() }
+        .onChange(of: inputImage) { _ in loadImage() }
         
         .sheet(isPresented: $phPickerIsPresented, content: {
-                PHPicker(image: $inputImage)
-            })
+            PHPicker(image: $inputImage)
+        })
         .fullScreenCover(isPresented: $cameraIsPresented, content: {
             ImagePicker(image: $inputImage)
-                })
+        })
     }
     
     func loadImage() {
@@ -185,8 +232,7 @@ struct ReviewWriteView: View {
     
     @ViewBuilder
     func datePickerView()->some View{
-        
-        @State var showDatePicker: Bool = false
+        // MARK: date picker button 수정
         
         var date : String {
             let myDateFormatter = DateFormatter()
@@ -196,7 +242,7 @@ struct ReviewWriteView: View {
             return myDateFormatter.string(from: selectedDate)
         }
         
-        VStack(alignment: .leading, spacing: 24){
+        VStack(alignment: .leading, spacing: 28){
             Text("방문 날짜 등록하기")
                 .font(Font.custom("S-CoreDream-6Bold", size: 16))
                 .foregroundStyle(CustomColors.gray09)
@@ -211,9 +257,9 @@ struct ReviewWriteView: View {
                         .font(Font.custom("S-Core Dream", size: 12))
                         .foregroundStyle(CustomColors.gray06)
                         .overlay{
-                                DatePicker("", selection: $selectedDate, displayedComponents: [.date])
-                                    .blendMode(.destinationOver)
-                                    .tint(CustomColors.primary05)
+                            DatePicker("", selection: $selectedDate, displayedComponents: [.date])
+                                .blendMode(.destinationOver)
+                                .tint(CustomColors.primary05)
                         }
                 }
         }
@@ -221,50 +267,104 @@ struct ReviewWriteView: View {
     
     @ViewBuilder
     func ratingView()->some View{
-        var unselectedImage = Image("icon_diamond")
+        let unselectedImage = Image("icon_diamond")
             .renderingMode(.template)
             .resizable()
             .frame(width: 40, height: 40)
             .foregroundStyle(CustomColors.primary01)
-        var selectedImage = Image("icon_diamond")
+        let selectedImage = Image("icon_diamond")
             .renderingMode(.template)
             .resizable()
             .frame(width: 40, height: 40)
             .foregroundStyle(CustomColors.primary05)
-
-        VStack(alignment: .leading, spacing: 24){
+        
+        VStack(alignment: .leading, spacing: 28){
             Text("별점 등록하기")
                 .font(Font.custom("S-CoreDream-6Bold", size: 16))
+                .foregroundStyle(CustomColors.gray09)
                 .padding(.leading, 24)
             
             HStack(spacing: 16){
                 ForEach(1...5, id: \.self){i in
-                    Button{
-                        rating = i
-                    } label:{
-                        if i>rating {
-                            unselectedImage
+                    if i == 1 {
+                        VStack(alignment: .leading, spacing: 8){
+                            Button{
+                                selectedRating = i
+                            } label:{
+                                if i>selectedRating {
+                                    unselectedImage
+                                }
+                                else {
+                                    selectedImage
+                                }
+                            }
+                            Text("0점")
+                                .font(Font.custom("S-Core Dream", size: 8))
+                                .foregroundStyle(CustomColors.gray06)
                         }
-                        else {
-                            selectedImage
+                    }
+                    else if i == 5 {
+                        VStack(alignment: .trailing, spacing: 8){
+                            Button{
+                                selectedRating = i
+                            } label:{
+                                if i>selectedRating {
+                                    unselectedImage
+                                }
+                                else {
+                                    selectedImage
+                                }
+                            }
+                            Text("5점")
+                                .font(Font.custom("S-Core Dream", size: 8))
+                                .foregroundStyle(CustomColors.gray06)
+                        }
+                    }
+                    else {
+                        VStack(spacing: 8){
+                            Button{
+                                selectedRating = i
+                            } label:{
+                                if i>selectedRating {
+                                    unselectedImage
+                                }
+                                else {
+                                    selectedImage
+                                }
+                            }
+                            Text("점")
+                                .font(Font.custom("S-Core Dream", size: 8))
+                                .foregroundStyle(.clear)
                         }
                     }
                 }
             }
+            .padding(.horizontal, 65)
         }
-        .padding(.horizontal, 65)
     }
     
     @ViewBuilder
     func reviewBodyView()->some View{
-        VStack(alignment: .leading){
+        VStack(alignment: .leading, spacing: 20){
             Text("리뷰 내용 작성하기")
                 .font(Font.custom("S-CoreDream-6Bold", size: 16))
                 .padding(.leading, 24)
-            TextField("", text: $reviewBody)
-                .textFieldStyle(ReviewTextFieldStyle())
+            TextEditor(text: $reviewBody)
+                .frame(width: 345, height: 240)
+                //.scrollContentBackground(.hidden)
+                .background(CustomColors.gray02)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
                 .padding(.horizontal, 24)
                 .padding(.bottom, 40)
+                .overlay{
+                    if reviewBody.count == 0 {
+                        Text("리뷰는 최소 40자 이상으로 작성해주세요!\n정확한 리뷰는 다른 유저에게 큰 도움이 돼요 :)")
+                            .font(Font.custom("S-Core Dream", size: 10))
+                            .foregroundStyle(CustomColors.gray06)
+                            .padding(.bottom, 190)
+                            .padding(.trailing, 80)
+                    }
+                }
         }
     }
 }

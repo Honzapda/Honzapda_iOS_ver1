@@ -31,7 +31,7 @@ struct ContentView_Previews: PreviewProvider {
 class DataViewModel: ObservableObject {
     
     let locationManager = LocationManager()
-    @Published var data: [Document] = [] // 데이터 모델에 맞게 수정하세요
+    @Published var data: [Document] = [] 
     var latitude: Double {
         return locationManager.lat ?? 127.2
         }

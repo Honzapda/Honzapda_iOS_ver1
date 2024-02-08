@@ -15,7 +15,8 @@ struct MainTapView: View{
     
     var body:some View{
         TabView{
-            HomeView(tempDataSetArr: tempDataSetArr)
+            //HomeView(tempDataSetArr: tempDataSetArr, homeViewModel: HomeViewModel())
+            HomeViewSuper()
                 .tabItem {
                         Image("tabview_home_unselected")
                             .renderingMode(.template)

@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct LoginView : View {
     @State private var id : String = ""
     @State private var password : String = ""
@@ -25,7 +26,7 @@ struct LoginView : View {
         
         NavigationView{
             ZStack{
-                NavigationLink(destination: HomeView(),isActive: $isActive){
+                NavigationLink(destination: MainTapView(),isActive: $isActive){
                     EmptyView()
                 } // HomeView()를 tasteView로 변경해서 쓰시면 됩니다.
                 Image("LoginBackground")
@@ -94,7 +95,8 @@ struct LoginView : View {
                             print("autologin_on")
                         } label: {
                             Image(systemName: "circle")
-                                .foregroundColor(Color(CustomColors.gray05))
+                                .foregroundColor(CustomColors.gray05
+                                )
                         }
                         
                         Text ("자동 로그인")
@@ -185,6 +187,7 @@ struct LoginView : View {
     
 } //로그인뷰 끝
 
+@available(iOS 17.0, *)
 struct LoginView_Preview : PreviewProvider {
     static var previews: some View {
         LoginView()

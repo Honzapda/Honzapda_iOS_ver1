@@ -8,8 +8,6 @@
 import SwiftUI
 
 
-
-
 struct OnboardingView: View {
     @State private var currentPage = 0
     @AppStorage("hasSeenOnboarding", store: UserDefaults.standard) var hasSeenOnboarding = false
@@ -214,6 +212,7 @@ struct AppleLoginButtons: View {
         
     }
 }
+
 
 
 struct OnboardingView_Previews: PreviewProvider {

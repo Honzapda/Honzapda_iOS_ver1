@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		16472AA8DED336080741E7DA /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		190791C22B579CEC00F78D48 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C12B579CEC00F78D48 /* SearchView.swift */; };
-		190791C42B579CF900F78D48 /* CurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C32B579CF900F78D48 /* CurationView.swift */; };
 		190791C62B579D0300F78D48 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190791C52B579D0300F78D48 /* MyPageView.swift */; };
 		190791D32B57AB3100F78D48 /* SCDream9.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CA2B57AB3100F78D48 /* SCDream9.otf */; };
 		190791D42B57AB3100F78D48 /* SCDream8.otf in Resources */ = {isa = PBXBuildFile; fileRef = 190791CB2B57AB3100F78D48 /* SCDream8.otf */; };
@@ -38,6 +37,13 @@
 		19C48FFB2B7113CC005FC902 /* PHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FFA2B7113CC005FC902 /* PHPicker.swift */; };
 		19C48FFD2B7113D3005FC902 /* ReviewTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FFC2B7113D3005FC902 /* ReviewTextFieldStyle.swift */; };
 		19C48FFF2B7113D6005FC902 /* ReviewWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FFE2B7113D6005FC902 /* ReviewWriteView.swift */; };
+		BB1805332B71916600B27333 /* CurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805322B71916600B27333 /* CurationView.swift */; };
+		BB1805362B71936000B27333 /* CafeTasteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805352B71936000B27333 /* CafeTasteView.swift */; };
+		BB1805412B719DE600B27333 /* ReviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805402B719DE600B27333 /* ReviewImage.swift */; };
+		BB1805442B73634300B27333 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805432B73634300B27333 /* HomeViewModel.swift */; };
+		BB1805462B7364B000B27333 /* HomeViewSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805452B7364B000B27333 /* HomeViewSuper.swift */; };
+		BB1805492B7493A800B27333 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805482B7493A800B27333 /* CardView.swift */; };
+		BB18054B2B74945F00B27333 /* HomeBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18054A2B74945F00B27333 /* HomeBottomSheet.swift */; };
 		BB1927D72B7183BF00A07824 /* CafeCardViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */; };
 		BB1927D82B7183BF00A07824 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D62B7183BF00A07824 /* DummyData.swift */; };
 		BB1927DE2B7183D700A07824 /* GetCafeFromKakaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */; };
@@ -51,7 +57,6 @@
 		BBFE0C2A2B6F697000E46931 /* PyeongChangPeace-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */; };
 		BBFE0C2B2B6F697300E46931 /* PyeongChangPeace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */; };
 		BBFE0C2E2B6F6D2800E46931 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */; };
-		BBFE0C302B6F70D100E46931 /* LoginVIewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */; };
 		DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */; };
 		DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60012E2B46C0DD00DFEE98 /* ContentView.swift */; };
 		DD6001312B46C0DE00DFEE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD6001302B46C0DE00DFEE98 /* Assets.xcassets */; };
@@ -62,7 +67,6 @@
 /* Begin PBXFileReference section */
 		1397630C6448EE408F849471 /* Pods-Honzapda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honzapda.release.xcconfig"; path = "Target Support Files/Pods-Honzapda/Pods-Honzapda.release.xcconfig"; sourceTree = "<group>"; };
 		190791C12B579CEC00F78D48 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		190791C32B579CF900F78D48 /* CurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationView.swift; sourceTree = "<group>"; };
 		190791C52B579D0300F78D48 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		190791CA2B57AB3100F78D48 /* SCDream9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream9.otf; sourceTree = "<group>"; };
 		190791CB2B57AB3100F78D48 /* SCDream8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream8.otf; sourceTree = "<group>"; };
@@ -92,20 +96,26 @@
 		19C48FFA2B7113CC005FC902 /* PHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPicker.swift; sourceTree = "<group>"; };
 		19C48FFC2B7113D3005FC902 /* ReviewTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextFieldStyle.swift; sourceTree = "<group>"; };
 		19C48FFE2B7113D6005FC902 /* ReviewWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteView.swift; sourceTree = "<group>"; };
+		BB1805322B71916600B27333 /* CurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationView.swift; sourceTree = "<group>"; };
+		BB1805352B71936000B27333 /* CafeTasteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeTasteView.swift; sourceTree = "<group>"; };
+		BB1805402B719DE600B27333 /* ReviewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImage.swift; sourceTree = "<group>"; };
+		BB1805432B73634300B27333 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BB1805452B7364B000B27333 /* HomeViewSuper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSuper.swift; sourceTree = "<group>"; };
+		BB1805482B7493A800B27333 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BB18054A2B74945F00B27333 /* HomeBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheet.swift; sourceTree = "<group>"; };
 		BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeCardViewSetup.swift; sourceTree = "<group>"; };
 		BB1927D62B7183BF00A07824 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
-		BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetCafeFromKakaoMap.swift; path = HomeSeting/GetCafeFromKakaoMap.swift; sourceTree = "<group>"; };
-		BB1927DA2B7183D700A07824 /* KMSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KMSetup.swift; path = HomeSeting/KMSetup.swift; sourceTree = "<group>"; };
-		BB1927DB2B7183D700A07824 /* GetCafeFromServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetCafeFromServer.swift; path = HomeSeting/GetCafeFromServer.swift; sourceTree = "<group>"; };
-		BB1927DC2B7183D700A07824 /* GetPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetPosition.swift; path = HomeSeting/GetPosition.swift; sourceTree = "<group>"; };
-		BB1927DD2B7183D700A07824 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = POI.swift; path = HomeSeting/POI.swift; sourceTree = "<group>"; };
+		BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCafeFromKakaoMap.swift; sourceTree = "<group>"; };
+		BB1927DA2B7183D700A07824 /* KMSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMSetup.swift; sourceTree = "<group>"; };
+		BB1927DB2B7183D700A07824 /* GetCafeFromServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCafeFromServer.swift; sourceTree = "<group>"; };
+		BB1927DC2B7183D700A07824 /* GetPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPosition.swift; sourceTree = "<group>"; };
+		BB1927DD2B7183D700A07824 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		BB9C77272B5BE3A100076880 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFont.swift; sourceTree = "<group>"; };
 		BB9C772E2B5BE6E500076880 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		BBD0B0D92B5BFC0C00B0C3E0 /* PyeongChangPeace-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Bold.otf"; sourceTree = "<group>"; };
 		BBD0B0DA2B5BFC0C00B0C3E0 /* PyeongChangPeace-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PyeongChangPeace-Light.otf"; sourceTree = "<group>"; };
 		BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVIewModifier.swift; sourceTree = "<group>"; };
 		DD6001292B46C0DD00DFEE98 /* Honzapda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honzapda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonzapdaApp.swift; sourceTree = "<group>"; };
 		DD60012E2B46C0DD00DFEE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +173,7 @@
 				194222852B5D3C8A006B3C30 /* Review.swift */,
 				19995B6A2B604F7B00A73023 /* UserHelpInfo.swift */,
 				19995B6C2B604F9A00A73023 /* DensityInfo.swift */,
+				BB1805402B719DE600B27333 /* ReviewImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +202,7 @@
 				19517F3E2B57956600FDA71E /* MainTapView.swift */,
 				190791C12B579CEC00F78D48 /* SearchView.swift */,
 				190791C52B579D0300F78D48 /* MyPageView.swift */,
+				BB1805322B71916600B27333 /* CurationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,15 +227,7 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		BB1927D22B717E9700A07824 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				190791C32B579CF900F78D48 /* CurationView.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		BB9C77252B5A9A1200076880 /* Home */ = {
+		BB1805422B73632200B27333 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
 				BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */,
@@ -234,6 +238,25 @@
 				BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */,
 				BB1927D62B7183BF00A07824 /* DummyData.swift */,
 				19517F402B57996E00FDA71E /* HomeView.swift */,
+				BB1805482B7493A800B27333 /* CardView.swift */,
+				BB18054A2B74945F00B27333 /* HomeBottomSheet.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		BB1927D22B717E9700A07824 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		BB9C77252B5A9A1200076880 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BB1805432B73634300B27333 /* HomeViewModel.swift */,
+				BB1805452B7364B000B27333 /* HomeViewSuper.swift */,
+				BB1805422B73632200B27333 /* HomeView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -242,8 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				BBFE0C2D2B6F6D2800E46931 /* LoginView.swift */,
-				BBFE0C2F2B6F70D100E46931 /* LoginVIewModifier.swift */,
 				BB9C77272B5BE3A100076880 /* OnboardingView.swift */,
+				BB1805352B71936000B27333 /* CafeTasteView.swift */,
 				BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */,
 			);
 			path = Onboarding;
@@ -457,6 +480,7 @@
 				BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */,
 				BB1927DE2B7183D700A07824 /* GetCafeFromKakaoMap.swift in Sources */,
 				190791C22B579CEC00F78D48 /* SearchView.swift in Sources */,
+				BB1805492B7493A800B27333 /* CardView.swift in Sources */,
 				194222842B5D3A56006B3C30 /* Shop.swift in Sources */,
 				DD60012F2B46C0DD00DFEE98 /* ContentView.swift in Sources */,
 				DD60012D2B46C0DD00DFEE98 /* HonzapdaApp.swift in Sources */,
@@ -464,17 +488,21 @@
 				BBFE0C2E2B6F6D2800E46931 /* LoginView.swift in Sources */,
 				192005562B5C35D700CFB80D /* ShopDetailView.swift in Sources */,
 				BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */,
+				BB18054B2B74945F00B27333 /* HomeBottomSheet.swift in Sources */,
 				194222862B5D3C8A006B3C30 /* Review.swift in Sources */,
 				BB1927E12B7183D700A07824 /* GetPosition.swift in Sources */,
 				19995B6D2B604F9A00A73023 /* DensityInfo.swift in Sources */,
 				BB1927E02B7183D700A07824 /* GetCafeFromServer.swift in Sources */,
 				1919357D2B56F38600396056 /* ColorCollection.swift in Sources */,
 				BB1927DF2B7183D700A07824 /* KMSetup.swift in Sources */,
+				BB1805412B719DE600B27333 /* ReviewImage.swift in Sources */,
 				19C48FFD2B7113D3005FC902 /* ReviewTextFieldStyle.swift in Sources */,
 				BB1927E22B7183D700A07824 /* POI.swift in Sources */,
 				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
 				BB1927D82B7183BF00A07824 /* DummyData.swift in Sources */,
 				19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */,
+				BB1805362B71936000B27333 /* CafeTasteView.swift in Sources */,
+				BB1805442B73634300B27333 /* HomeViewModel.swift in Sources */,
 				19517F412B57996E00FDA71E /* HomeView.swift in Sources */,
 				19517F3F2B57956600FDA71E /* MainTapView.swift in Sources */,
 				19C48FFF2B7113D6005FC902 /* ReviewWriteView.swift in Sources */,
@@ -482,9 +510,9 @@
 				19249B732B5DA05000CF7DAD /* HelpInfoView.swift in Sources */,
 				19C48FFB2B7113CC005FC902 /* PHPicker.swift in Sources */,
 				190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */,
-				190791C42B579CF900F78D48 /* CurationView.swift in Sources */,
-				BBFE0C302B6F70D100E46931 /* LoginVIewModifier.swift in Sources */,
+				BB1805462B7364B000B27333 /* HomeViewSuper.swift in Sources */,
 				19C48FF52B711221005FC902 /* MoreReviewView.swift in Sources */,
+				BB1805332B71916600B27333 /* CurationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
