@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/*
 struct ReviewWriteView: View {
     @Environment(\.dismiss) private var dismiss
     
@@ -372,3 +373,4 @@ struct ReviewWriteView: View {
 #Preview {
     ReviewWriteView()
 }
+*/

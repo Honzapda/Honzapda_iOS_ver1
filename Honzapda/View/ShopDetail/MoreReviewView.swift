@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/*
 struct MoreReviewView: View {
     @Environment(\.dismiss) private var dismiss
     
@@ -155,6 +156,7 @@ struct MoreReviewView: View {
                 reviewCell(cell)
                     .padding(.bottom, 4)
             }
+             
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 40)
@@ -226,3 +228,4 @@ struct MoreReviewView: View {
 #Preview {
     MoreReviewView()
 }
+*/

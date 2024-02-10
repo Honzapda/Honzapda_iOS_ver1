@@ -39,4 +39,4 @@ let userHelpInfo2 = UserHelpInfo(profile: Image("profile_5"), name: "이제", da
 
 let userHelpInfos: [UserHelpInfo] = [userHelpInfo1, userHelpInfo2]
 
-var reviews: [Review] = [review1, review2, review3]
+//var reviews: [Review] = [review1, review2, review3]
