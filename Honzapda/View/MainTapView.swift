@@ -45,7 +45,7 @@ struct MainTapView: View{
                 }
         }
         .tint(CustomColors.primary05)
-        
+        .navigationBarBackButtonHidden()
     }
 }
 
