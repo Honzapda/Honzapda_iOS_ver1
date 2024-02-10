@@ -100,7 +100,6 @@ struct HomeView: View {
             locationManager.requestLocationAuthorization()
             // 데이터 로딩 및 기타 초기화 작업...
         }
-        
     }
 }
 

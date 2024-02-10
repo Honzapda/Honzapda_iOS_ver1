@@ -26,7 +26,7 @@ struct LoginView : View {
         
         NavigationView{
             ZStack{
-                NavigationLink(destination: MainTapView(),isActive: $isActive){
+                NavigationLink(destination: CafeTasteView(),isActive: $isActive){
                     EmptyView()
                 } // HomeView()를 tasteView로 변경해서 쓰시면 됩니다.
                 Image("LoginBackground")
@@ -187,7 +187,6 @@ struct LoginView : View {
     
 } //로그인뷰 끝
 
-@available(iOS 17.0, *)
 struct LoginView_Preview : PreviewProvider {
     static var previews: some View {
         LoginView()
