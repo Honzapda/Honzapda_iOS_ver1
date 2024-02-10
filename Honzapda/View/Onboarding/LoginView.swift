@@ -10,19 +10,19 @@ import SwiftUI
 
 
 struct LoginView : View {
-    @State private var id : String = ""
+    @State private var id: String = ""
     @State private var password : String = ""
     @State private var idpwEntered : Bool = false
     @State private var loginButtonEnable : Bool = false
     @State private var isActive: Bool = false
-
+    
+    @EnvironmentObject var userStateViewModel: UserStateViewModel
     
     func updateLoginButtonEnable() {
         loginButtonEnable = !id.isEmpty && !password.isEmpty
-        
     }
+    
     var body : some View {
-        
         
         NavigationView{
             ZStack{
@@ -129,7 +129,12 @@ struct LoginView : View {
                     
                     Button {
                         print("login button")
-                        isActive = true
+                        Task{
+                            await userStateViewModel.signIn(email: id, password: password)
+                            if(userStateViewModel.isLoggedIn == true){
+                                isActive = true
+                            }
+                        }
                     } label: {
                         if loginButtonEnable {
                             Text("로그인")
@@ -149,8 +154,6 @@ struct LoginView : View {
                         updateLoginButtonEnable()
                     }
 
-
-                    
                     Spacer()
                     HStack{
                         Spacer()
@@ -158,7 +161,6 @@ struct LoginView : View {
                             .font(Font.custom("S-Core Dream", size: 10))
                             .multilineTextAlignment(.center)
                             .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
-                        
                         Button {
                             print("회원가입 버튼")
                         } label: {
@@ -171,27 +173,18 @@ struct LoginView : View {
                     } //hstack end
                     .padding(.bottom, 50)
                     Spacer()
-                    
                 }//vstack end
                 .frame(width:393, height: 532)
                 .background(.white)
                 .cornerRadius(24)
                 .offset(y:150)
-                
-                
             }
-            
         }//navi end
         .navigationBarBackButtonHidden(true)
     }//body end
     
 } //로그인뷰 끝
 
-struct LoginView_Preview : PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
 struct LoginButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -218,3 +211,6 @@ struct LoginButtonModifier2: ViewModifier {
 }
 
 
+#Preview {
+    LoginView()
+}

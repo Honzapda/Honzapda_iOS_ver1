@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "img_onboarding_mood.png",
+      "filename" : "img_onboarding_plug.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "img_onboarding_mood 2.png",
+      "filename" : "img_onboarding_plug 2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
