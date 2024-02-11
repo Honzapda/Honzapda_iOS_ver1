@@ -187,7 +187,6 @@ struct LoginView : View {
     
 } //로그인뷰 끝
 
-@available(iOS 17.0, *)
 struct LoginView_Preview : PreviewProvider {
     static var previews: some View {
         LoginView()

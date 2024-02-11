@@ -44,6 +44,7 @@
 		BB1805462B7364B000B27333 /* HomeViewSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805452B7364B000B27333 /* HomeViewSuper.swift */; };
 		BB1805492B7493A800B27333 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805482B7493A800B27333 /* CardView.swift */; };
 		BB18054B2B74945F00B27333 /* HomeBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18054A2B74945F00B27333 /* HomeBottomSheet.swift */; };
+		BB1805512B77EB3900B27333 /* PostAndDeleteCafeSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805502B77EB3900B27333 /* PostAndDeleteCafeSave.swift */; };
 		BB1927D72B7183BF00A07824 /* CafeCardViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */; };
 		BB1927D82B7183BF00A07824 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D62B7183BF00A07824 /* DummyData.swift */; };
 		BB1927DE2B7183D700A07824 /* GetCafeFromKakaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */; };
@@ -103,6 +104,7 @@
 		BB1805452B7364B000B27333 /* HomeViewSuper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSuper.swift; sourceTree = "<group>"; };
 		BB1805482B7493A800B27333 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BB18054A2B74945F00B27333 /* HomeBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheet.swift; sourceTree = "<group>"; };
+		BB1805502B77EB3900B27333 /* PostAndDeleteCafeSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAndDeleteCafeSave.swift; sourceTree = "<group>"; };
 		BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeCardViewSetup.swift; sourceTree = "<group>"; };
 		BB1927D62B7183BF00A07824 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCafeFromKakaoMap.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		1971AD552B51C2FF000053F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BB18054F2B778E3600B27333 /* Curation */,
 				19C48FF72B7113B7005FC902 /* ReviewWrite */,
 				192005542B5C35B800CFB80D /* ShopDetail */,
 				BB9C772D2B5BE6D600076880 /* Splash */,
@@ -202,7 +205,6 @@
 				19517F3E2B57956600FDA71E /* MainTapView.swift */,
 				190791C12B579CEC00F78D48 /* SearchView.swift */,
 				190791C52B579D0300F78D48 /* MyPageView.swift */,
-				BB1805322B71916600B27333 /* CurationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,10 +232,6 @@
 		BB1805422B73632200B27333 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */,
-				BB1927DB2B7183D700A07824 /* GetCafeFromServer.swift */,
-				BB1927DC2B7183D700A07824 /* GetPosition.swift */,
-				BB1927DA2B7183D700A07824 /* KMSetup.swift */,
 				BB1927DD2B7183D700A07824 /* POI.swift */,
 				BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */,
 				BB1927D62B7183BF00A07824 /* DummyData.swift */,
@@ -242,6 +240,14 @@
 				BB18054A2B74945F00B27333 /* HomeBottomSheet.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		BB18054F2B778E3600B27333 /* Curation */ = {
+			isa = PBXGroup;
+			children = (
+				BB1805322B71916600B27333 /* CurationView.swift */,
+			);
+			path = Curation;
 			sourceTree = "<group>";
 		};
 		BB1927D22B717E9700A07824 /* Recovered References */ = {
@@ -255,7 +261,12 @@
 			isa = PBXGroup;
 			children = (
 				BB1805432B73634300B27333 /* HomeViewModel.swift */,
+				BB1927DC2B7183D700A07824 /* GetPosition.swift */,
+				BB1927DB2B7183D700A07824 /* GetCafeFromServer.swift */,
+				BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */,
 				BB1805452B7364B000B27333 /* HomeViewSuper.swift */,
+				BB1927DA2B7183D700A07824 /* KMSetup.swift */,
+				BB1805502B77EB3900B27333 /* PostAndDeleteCafeSave.swift */,
 				BB1805422B73632200B27333 /* HomeView */,
 			);
 			path = Home;
@@ -500,6 +511,7 @@
 				BB1927E22B7183D700A07824 /* POI.swift in Sources */,
 				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
 				BB1927D82B7183BF00A07824 /* DummyData.swift in Sources */,
+				BB1805512B77EB3900B27333 /* PostAndDeleteCafeSave.swift in Sources */,
 				19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */,
 				BB1805362B71936000B27333 /* CafeTasteView.swift in Sources */,
 				BB1805442B73634300B27333 /* HomeViewModel.swift in Sources */,

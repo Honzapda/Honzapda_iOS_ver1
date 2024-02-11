@@ -113,14 +113,6 @@ struct OnboardingView: View {
                 
                 VStack{
                     //MARK: Loginbuttons
-//                    Button(action:{
-//                        print("user login tapped")
-//
-//                    })
-//                    {
-//                        Text("유저로 로그인하기")
-//                    }.modifier(UserLoginButtonModifier())
-//                        .padding(.horizontal)
                     NavigationLink(destination: LoginView()) {
                            Text("유저로 로그인하기")
                        }

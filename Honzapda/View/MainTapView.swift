@@ -49,6 +49,3 @@ struct MainTapView: View{
     }
 }
 
-#Preview {
-    MainTapView()
-}

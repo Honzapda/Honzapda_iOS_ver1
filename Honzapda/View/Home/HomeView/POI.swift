@@ -18,6 +18,8 @@ func createMapPoints(from document : Document){
     if let long = Double(document.x), let lati = Double(document.y) {
             let newMapPoint = MapPoint(longitude: long, latitude: lati)
             mapPoints.append(newMapPoint)
+        
+        print ( "poi 생성됨")
         }
     else {
         print("poi 생성실패")

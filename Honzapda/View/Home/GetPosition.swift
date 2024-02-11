@@ -7,6 +7,9 @@
 import SwiftUI
 import CoreLocation
 
+let lat : String = "37.5204279064529"
+let lon : String = "126.887847771379"
+
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
     
@@ -37,7 +40,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             DispatchQueue.main.async {
                 self.lon = location.coordinate.longitude
                 self.lat = location.coordinate.latitude
-                sendCoordinatesToServer(latitude: self.lat!, longitude: self.lon!)
+         //       sendCoordinatesToServer(latitude: self.lat!, longitude: self.lon!)
             }
         }
     }
