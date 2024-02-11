@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+/*
 struct ShopDetailView: View {
     var body: some View {
         NavigationView{
@@ -24,3 +24,4 @@ struct ShopDetailView: View {
 #Preview {
     ShopDetailView()
 }
+*/

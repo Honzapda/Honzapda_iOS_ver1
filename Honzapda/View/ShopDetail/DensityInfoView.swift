@@ -224,7 +224,3 @@ struct DensityInfoView: View {
             }
     }
 }
-
-#Preview {
-   ShopDetailView()
-}

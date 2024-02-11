@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+/*
 struct ShopDetailMainView: View{
     
     var safeArea: EdgeInsets
@@ -281,4 +281,4 @@ struct ShopDetailView_Previews: PreviewProvider{
         ShopDetailView()
     }
 }
-
+*/

@@ -50,8 +50,6 @@ struct OnboardingView: View {
     
     var body: some View {
         NavigationView{
-            
-            
             ZStack {
                 // 배경 이미지
                 Image("Background_Onboarding")
