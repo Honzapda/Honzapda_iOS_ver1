@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/*
 struct HelpInfoView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16){
@@ -217,3 +218,4 @@ struct HelpInfoView: View {
 #Preview {
     HelpInfoView()
 }
+*/

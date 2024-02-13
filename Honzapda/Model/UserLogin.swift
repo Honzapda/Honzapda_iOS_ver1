@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct UserLogin: Codable, Identifiable {
-    let id = UUID()
+    var id = UUID()
     
     let isSuccess: Bool
     let code: String

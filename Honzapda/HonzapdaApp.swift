@@ -14,11 +14,14 @@ struct HonzapdaApp: App {
     
     var body: some Scene {
         WindowGroup{
+            
+            
             NavigationView{
                 ApplicationSwitcher()
             }
             .navigationViewStyle(.stack)
             .environmentObject(userStateViewModel)
+             
         }
     }
 }
@@ -28,7 +31,12 @@ struct ApplicationSwitcher: View {
     
     var body: some View {
         if vm.isLoggedIn {
-            MainTapView()
+            if vm.selectedTaste == false{
+                CafeTasteView()
+            }
+            else {
+                MoreReviewView()
+            }
         }
         else {
             OnboardingView()

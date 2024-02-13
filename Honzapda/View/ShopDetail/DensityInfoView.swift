@@ -91,7 +91,7 @@ struct DensityInfoView: View {
                                 HStack(spacing: 32){
                                     VStack(alignment:.trailing, spacing: 5){
                                         HStack(spacing:0){
-                                            Text(shops[0].shopName)
+                                            Text("shops[0].shopName")
                                                 .font(Font.custom("S-CoreDream-6Bold", size: 14))
                                                 .foregroundStyle(CustomColors.primary05)
                                             Text("의")
