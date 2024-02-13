@@ -12,11 +12,11 @@ import UIKit
 struct MainTapView: View{
     
     @State private var selected: Int = 0
-    
+    @StateObject private var homeViewModel = HomeViewModel()
     var body:some View{
         TabView{
             //HomeView(tempDataSetArr: tempDataSetArr, homeViewModel: HomeViewModel())
-            HomeViewSuper()
+            HomeView(homeViewModel: homeViewModel)
                 .tabItem {
                         Image("tabview_home_unselected")
                             .renderingMode(.template)

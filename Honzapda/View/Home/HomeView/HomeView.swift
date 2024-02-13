@@ -11,7 +11,6 @@
  */
 import CoreLocation
 import SwiftUI
-
 import KakaoMapsSDK
 
 
@@ -20,20 +19,16 @@ struct HomeView: View {
     @State var draw: Bool = false
     @State private var showModal = false
     @State private var currentPage = 0
-    @StateObject private var dataViewModel = DataViewModel() // DataViewModel 객체 생성
     @State private var isCardTapped = false
     @State private var currentTripIndex = 0
     @GestureState private var dragOffset: CGFloat = 0
     @State public var isSheetVisible = false // 뷰의 표시 여부를 결정하는 상태 변수
     @ObservedObject var homeViewModel : HomeViewModel
     
-    var tempDataSetArr: [TabViewDataset] //임시 데이터용
+  //  var tempDataSetArr: [IntegratedCafe] //임시 데이터용
     
-    init(tempDataSetArr: [TabViewDataset], homeViewModel: HomeViewModel) { // 임시 데이터용
-        
-        self.tempDataSetArr = tempDataSetArr
+    init( homeViewModel: HomeViewModel) {
         self.homeViewModel = homeViewModel
-        
     }
     
     var body: some View {
@@ -41,15 +36,12 @@ struct HomeView: View {
             GeometryReader { geometry in
                 KakaoMapView(draw: $draw, locationManager: locationManager, homeViewModel: homeViewModel)
                     .zIndex(1)
-                
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
                     .ignoresSafeArea()
                     .onAppear {
-                        dataViewModel.fetchData { documents in
-                            for document in documents {
-                                createMapPoints(from: document)
-                            }
-                        }
+                        homeViewModel.honzapdaCafeViewModel.loadCafes()
+                        homeViewModel.kakaoCafeViewModel.fetchData()
+                        
                         self.draw = true
                     }
                     .onDisappear {
@@ -59,16 +51,15 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
-                            ForEach(0..<tempDataSetArr.count, id: \.self) { index in
+                            ForEach(0..<homeViewModel.integratedCafeArr.count, id: \.self) { index in
                                 GeometryReader { itemGeometry in
-                                    CardView(dataset: tempDataSetArr[index])
+                                    CardView(dataset: homeViewModel.integratedCafeArr[index])
+                                        
                                         .scaleEffect(scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
                                         .animation(.easeInOut(duration: 0.1), value: scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
                                         .transition(.opacity)
-                                    
-                                    
                                 }
-                                .frame(width: 300)
+                                .frame(width: UIScreen.main.bounds.width * 8 / 10, height: UIScreen.main.bounds.height * 5 / 10)
                                 .padding(.horizontal, 20)
                                 //   .border(Color.blue)
                             }
@@ -78,14 +69,17 @@ struct HomeView: View {
                     }
                     .zIndex(2)
                     .offset(y : 200)
-                    .frame(height: 500) // 카드 뷰 높이 설정
+                    .frame(height: UIScreen.main.bounds.height * 5 / 10)
+                    .onAppear(){
+                        
+                    }
                     
                     
                 }
                 
                 //방법2
                 if isSheetVisible{
-                    HomeBottomSheetView()
+                    HomeBottomSheetView(homeViewModel: homeViewModel)
                         .zIndex(3)
                         .transition(.move(edge: .bottom))
                         .offset(y : UIScreen.main.bounds.height/2)
@@ -96,6 +90,8 @@ struct HomeView: View {
             VStack{
                 Button {
                     print("centerIcon tapp")
+                    print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
+
                 } label: {
                     Image("CenterIcon")
                 }
@@ -163,9 +159,10 @@ private func scaleValue(globalMinX: CGFloat, geometrySize: CGSize) -> CGFloat {
 
 
 struct HomeViewPreviews : PreviewProvider {
+    
     static var previews: some View{
         // CardView(dataset: tempDataSetArr[0])
-        HomeView(tempDataSetArr: tempDataSetArr, homeViewModel: HomeViewModel())
+        HomeView(homeViewModel: HomeViewModel())
     }
 }
 

@@ -19,7 +19,7 @@ struct KakaoMapView: UIViewRepresentable {
     @Binding var draw: Bool
     @ObservedObject var locationManager : LocationManager
     @ObservedObject  var homeViewModel: HomeViewModel // HomeViewModel 참조 추가
-    @StateObject private var viewModel = DataViewModel() // DataViewModel 객체 생성
+    @StateObject private var viewModel = KakaoCafeViewModel() // DataViewModel 객체 생성
     
     
     func makeUIView(context: Self.Context) -> KMViewContainer {
@@ -93,12 +93,12 @@ struct KakaoMapView: UIViewRepresentable {
             
             let icon1 = PoiIconStyle(symbol: UIImage(named: "MarkerUnselected.png"), anchorPoint: CGPoint(x: 0.5, y: 0.7))
             let perLevelStyle1 = PerLevelPoiStyle(iconStyle: icon1, level: 0)
-            let poiStyle1 = PoiStyle(styleID: "nonAdded", styles: [perLevelStyle1])
+            let poiStyle1 = PoiStyle(styleID: "Unselected", styles: [perLevelStyle1])
             manager.addPoiStyle(poiStyle1)
             
             let icon2 = PoiIconStyle(symbol: UIImage(named: "MarkerSelected.png"), anchorPoint: CGPoint(x: 0.5, y: 0.7))
             let perLevelStyle2 = PerLevelPoiStyle(iconStyle: icon2, level: 0)
-            let poiStyle2 = PoiStyle(styleID: "Added", styles: [perLevelStyle2])
+            let poiStyle2 = PoiStyle(styleID: "Selected", styles: [perLevelStyle2])
             manager.addPoiStyle(poiStyle2)
             
             let icon3 = PoiIconStyle(symbol: UIImage(named: "MarkerMyPos.png"), anchorPoint: CGPoint(x: 0.5, y: 0.8))
@@ -111,6 +111,7 @@ struct KakaoMapView: UIViewRepresentable {
         
         func poiTappedHandlerAdded(_ param: PoiInteractionEventParam) {
             homeViewModel.CardViewIsShowing.toggle()
+          //  print(homeViewModel.CardViewIsShowing)
             
             print( "poi tapped \(homeViewModel.CardViewIsShowing)")
             print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
@@ -129,10 +130,10 @@ struct KakaoMapView: UIViewRepresentable {
             let layer = manager.getLabelLayer(layerID: "PoiLayer")
             layer?.visible = true
             
-            let poiOption1 = PoiOptions(styleID: "nonAdded", poiID: "poi1")
+            let poiOption1 = PoiOptions(styleID: "Unselected", poiID: "poi1")
             poiOption1.rank = 0
             poiOption1.clickable = true
-            let poiOption2 = PoiOptions(styleID: "Added", poiID: "poi2")
+            let poiOption2 = PoiOptions(styleID: "Selected", poiID: "poi2")
             poiOption2.rank = 0
             poiOption2.clickable = true
             let poiOptionMyPos = PoiOptions(styleID: "userPosition", poiID: "poiMyPos")

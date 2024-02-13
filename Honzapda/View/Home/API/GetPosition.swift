@@ -7,8 +7,7 @@
 import SwiftUI
 import CoreLocation
 
-let lat : String = "37.5204279064529"
-let lon : String = "126.887847771379"
+
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()

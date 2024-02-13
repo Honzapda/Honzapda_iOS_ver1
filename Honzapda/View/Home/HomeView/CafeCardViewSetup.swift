@@ -8,42 +8,19 @@
 import SwiftUI
 
 
-func createTabView(for index : Int) -> some View {
-    Text("View \(index)")
-        .frame(width : 100, height : 100)
-        .background(Color .gray)
-        .cornerRadius(10)
-}
-
-
-
-struct TabViewDataset : Identifiable { // 필요할 시 이니셜라이저 사용
-    let id  = UUID()
-    var storeName: String = ""
-    var address: String = ""
-    var cafeImage: String = ""
-    var callNumber: String = ""
-    var summery: String = ""
-    var posFromStation: String = ""
-    var starPoint: String = ""
-    var reviewNum: String = ""
-    var densityOfDays: [Int] = [] //1 : 여유 2: 중간 3: 혼잡
-}
-
-func createTabViewDataset(storeName: String, address: String, cafeImage: String, callNumber: String, summery: String, posFromStation: String, starPoint: String, reviewNum: String, densityOfDays: [Int]) -> TabViewDataset {
-    var dataset = TabViewDataset()
-    
-    dataset.storeName = storeName
-    dataset.address = address
-    dataset.cafeImage = cafeImage
-    dataset.callNumber = callNumber
-    dataset.summery = summery
-    dataset.posFromStation = posFromStation
-    dataset.starPoint = starPoint
-    dataset.reviewNum = reviewNum
-    dataset.densityOfDays = densityOfDays
-    return dataset
-}
+//func createTabViewDataset(storeName: String, address: String, cafeImage: String, callNumber: String, summery: String, posFromStation: String, starPoint: String, reviewNum: String, densityOfDays: [Int]) -> TabViewDataset {
+//    var dataset = TabViewDataset()
+//    dataset.storeName = storeName
+//    dataset.address = address
+//    dataset.cafeImage = cafeImage
+//    dataset.callNumber = callNumber
+//    dataset.summery = summery
+//    dataset.posFromStation = posFromStation
+//    dataset.starPoint = starPoint
+//    dataset.reviewNum = reviewNum
+//    dataset.densityOfDays = densityOfDays
+//    return dataset
+//}
 
 struct SnappingHStackModifier: ViewModifier {
     let itemsCount: Int
@@ -71,12 +48,12 @@ struct SnappingHStackModifier: ViewModifier {
     }
 }
 
-//struct HomeViewPreviews : PreviewProvider {
+//struct CardViewPreviews : PreviewProvider {
 //    static var previews: some View{
-//        MainTapView()
+//        CardView()
 //    }
 //}
-    
+//    
 func dayOfWeek(index: Int) -> String {
         switch index {
         case 0: return "월"

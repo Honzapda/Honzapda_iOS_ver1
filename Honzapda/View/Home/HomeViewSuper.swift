@@ -1,23 +1,23 @@
+////
+////  HomeViewSuper.swift
+////  Honzapda
+////
+////  Created by 이재용 on 2/7/24.
+////
 //
-//  HomeViewSuper.swift
-//  Honzapda
+//import Foundation
+//import SwiftUI
 //
-//  Created by 이재용 on 2/7/24.
+//struct HomeViewSuper: View {
+//    @StateObject var homeViewModel = HomeViewModel()
 //
-
-import Foundation
-import SwiftUI
-
-struct HomeViewSuper: View {
-    @StateObject var viewModel = HomeViewModel()
-
-    var body: some View {
-        VStack {
-            HomeView(tempDataSetArr: tempDataSetArr, homeViewModel: viewModel)
-          //  KakaoMapView(draw: false, locationManager: LocationManager)
-            
-            
-        }
-    }
-}
-
+//    var body: some View {
+//        VStack {
+//            HomeView(tempDataSetArr: homeViewModel.integratedCafeArr, homeViewModel: homeViewModel)
+//          //  KakaoMapView(draw: false, locationManager: LocationManager)
+//            
+//            
+//        }
+//    }
+//}
+//

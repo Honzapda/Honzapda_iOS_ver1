@@ -45,6 +45,7 @@ class UserStateViewModel: ObservableObject{
             if httpResponse.statusCode == 200 {
                 isLoggedIn = true
                 isBusy = false
+                print("로그인 성공")
             } else {
                 print("Invalid usrname or password")
             }

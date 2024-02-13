@@ -9,8 +9,9 @@ import SwiftUI
 
 struct HomeBottomSheetView: View {
   let columns = [GridItem(.flexible()), GridItem(.flexible())]
-  let DataSetArr = tempDataSetArr
-  
+    @ObservedObject var homeViewModel : HomeViewModel
+ // let DataSetArr = tempDataSetArr
+    
   var body: some View {
       ZStack{
           Image("Background_Onboarding")
@@ -31,9 +32,9 @@ struct HomeBottomSheetView: View {
               
              ScrollView{
                   LazyVGrid(columns: columns) {
-                    ForEach(DataSetArr) { data in
+                      ForEach(homeViewModel.integratedCafeArr) { data in
                         ZStack{
-                            Image(data.cafeImage)
+                            Image(data.cafeImage ?? "CafeSampleIMG")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 165, height: 150)
@@ -41,7 +42,7 @@ struct HomeBottomSheetView: View {
                                 
                             VStack{
                                 HStack{
-                                    Text(data.storeName)
+                                    Text(data.placeName!)
                                         .font(Font.custom("S-Core Dream", size: 12))
                                         .foregroundColor(.white)
                                         
@@ -49,7 +50,7 @@ struct HomeBottomSheetView: View {
                                 }
                                 
                                 HStack{
-                                    Text(data.address)
+                                    Text(data.address!)
                                         .font(Font.custom("S-Core Dream", size: 6))
                                         .foregroundColor(Color(red: 0.96, green: 0.96, blue: 0.96))
                                     Spacer()
@@ -74,6 +75,6 @@ struct HomeBottomSheetView: View {
 struct HomeBottomSheetPreview : PreviewProvider {
     static var previews: some View{
         //BottomSheetView()
-        HomeBottomSheetView()
+        HomeBottomSheetView(homeViewModel: HomeViewModel())
     }
 }

@@ -1,76 +1,57 @@
 import SwiftUI
 import Combine
 
-struct TestView: View {
-    
-    @ObservedObject var viewModel = DataViewModel()
-    
-    var body: some View {
-        NavigationView {
-            List(viewModel.data, id: \.id) { item in
-                Text(item.place_name)
-            }
-            .navigationBarTitle("Data List")
-            .onAppear {
-                viewModel.fetchData { documents in
-                    for document in documents {
-                        createMapPoints(from: document)
-                    }
-                }
-            }
-        }
-    }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestView()
-    }
-}
 
-class DataViewModel: ObservableObject {
+class KakaoCafeViewModel: ObservableObject {
     
     let locationManager = LocationManager()
-    @Published var data: [Document] = []
-    var latitude: Double {
-        return locationManager.lat ?? 127.2
-    }
-    
-    var longitude: Double {
-        return locationManager.lon ?? 35.2
-    }
+    @Published var kakaoCafeArr: [KakaoCafe] = []
+    //    var latitude: Double {//내 위치 사용시
+    //        return locationManager.lat ?? 127.2
+    //    }
+    //
+    //    var longitude: Double {// 내 위치 사용시
+    //        return locationManager.lon ?? 35.2
+    //    }
     
     let apiKey = "bdd5624451aa7ea698c7e6735644ea91"
     private var cancellables: Set<AnyCancellable> = []
     
     
     
-    func fetchData(completion: @escaping ([Document]) -> Void) {
-        guard let url = URL(string: "https://dapi.kakao.com/v2/local/search/keyword.json?query=카페&x=\(longitude)&y=\(latitude)") else {
+    func fetchData() {//completion: @escaping ([KakaoCafe]) -> Void 이걸 괄호 안에 넣어도 됨
+        guard let url = URL(string: "https://dapi.kakao.com/v2/local/search/keyword.json?query=카페&x=\(lon)&y=\(lat)") else {
             return
         }
         var request = URLRequest(url: url)
         request.addValue("KakaoAK \(apiKey)", forHTTPHeaderField: "Authorization")
-        
+       
         
         URLSession.shared.dataTaskPublisher(for: request)  // URL 대신 request를 사용하고
             .map(\.data)
             .decode(type: GetCafeFromKM.self, decoder: JSONDecoder())  // GetCafeFromKM으로 디코딩
-            .map(\.documents)  // documents 배열에 접근
+            .map(\.documents)  // 카카오카페 배열에 접근
             .replaceError(with: [])  // 에러 시 빈 배열로 처리
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
                     // 성공적으로 완료된 경우, 원하는 작업을 수행할 수 있습니다.
-                    print("Data fetching completed successfully")
+                    print("[KM] Data fetching completed successfully")
                     
+                   
                 case .failure(let error):
                     // 실패한 경우 에러를 출력합니다.
                     print("Data fetching failed with error: \(error)")
                 }
-            }, receiveValue: { newData in
-                completion(newData)
+            }, receiveValue: { [weak self] newData in
+                // 기존 데이터에 새로운 데이터 추가
+                
+                self?.kakaoCafeArr.append(contentsOf: newData)
+                newData.forEach { document in
+                            createMapPointsKakao(from: document)
+                        }
             })
             .store(in: &cancellables)
     }
@@ -84,42 +65,12 @@ class DataViewModel: ObservableObject {
 
 // MARK: - GetCafeFromKM
 struct GetCafeFromKM: Codable {
-    let documents: [Document]
+    let documents: [KakaoCafe]
     let meta: Meta
 }
 
 // MARK: - Document
-struct Document: Codable, Identifiable {
-    // let id = UUID()
-    let address_name: String
-    let category_group_code: String
-    let category_group_name: String
-    let category_name: String
-    let distance: String
-    let id: String
-    let phone: String?
-    let place_name: String
-    let place_url: String
-    let road_address_name: String
-    let x: String
-    let y: String
-    
-    enum CodingKeys: String, CodingKey {
-        case address_name
-        case category_group_code
-        case category_group_name
-        case category_name
-        case distance
-        case id
-        case phone
-        case place_name
-        case place_url
-        case road_address_name
-        case x
-        case y
-    }
-    
-}
+
 
 
 enum CategoryGroupCode: String, Codable {
