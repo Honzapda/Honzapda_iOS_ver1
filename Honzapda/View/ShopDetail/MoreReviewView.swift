@@ -175,7 +175,7 @@ struct MoreReviewView: View {
         VStack(spacing: 16){
             HStack(spacing: 170){
                 HStack(spacing: 12){
-                    AsyncImage(url: getUrl(from: review.user.profileImage)) { image in
+                    AsyncImage(url: getUrl(from: review.user.profileImage!)) { image in
                         image
                             .resizable()
                             .frame(width: 40, height: 40)

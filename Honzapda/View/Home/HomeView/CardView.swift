@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct CardView: View {
+    @ObservedObject var homeViewModel : HomeViewModel
+    @State var savedChecker : Bool = false
     var dataset: IntegratedCafe
     var body: some View {
         
@@ -58,19 +60,39 @@ struct CardView: View {
                         
                         HStack{
                             Image("MegaPhone")
-                                .onAppear(){
-                                    //print(dataset.discription!)
-                                }
+                                
                             Text(dataset.discription!)
                                 .font(Font.custom("S-CoreDream-5Medium", size: 8))
                                 .foregroundColor(Color(red: 0.96, green: 0.96, blue: 0.96))
+                                .onAppear(){
+                                    print(dataset.discription!)
+                                }
                             Spacer()
                             
                             Button {
                                 print("cafe save button tapped")
+                                //MARK: here need change
+                                if savedChecker{
+                                    deleteCafe(shopId: dataset.dataFromId)
+                                    homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
+                                }
+                                else {
+                                    
+                                    saveCafe(shopId: dataset.dataFromId)
+                                    homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
+                                    savedChecker = true
+                                }
+                                
                             } label: {
                                 VStack{
-                                    Image("Flag")
+                                    if savedChecker{
+                                        Image("Flag")
+                                            .foregroundColor(.black)
+                                    }
+                                    else{
+                                        Image("Flag")
+                                    }
+                                    
                                     Text("카페 저장하기")
                                         .font(Font.custom("S-CoreDream-5Medium", size: 4))
                                         .multilineTextAlignment(.center)
@@ -104,6 +126,9 @@ struct CardView: View {
                     (Text(dataset.placeName!) + Text("의 정보 >"))
                         .font(Font.custom("S-Core Dream", size: 10))
                         .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                        .onAppear(){
+                            print(dataset.placeName!)
+                        }
                     Spacer()
                 }
                 .padding(.leading)
@@ -137,6 +162,9 @@ struct CardView: View {
                             .font(Font.custom("S-Core Dream", size: 7))
                             .multilineTextAlignment(.center)
                             .foregroundColor(Color(red: 0.21, green: 0.23, blue: 0.64))
+                            .onAppear(){
+                                print(dataset.rating!)
+                            }
                         
                     }
                     .padding()
@@ -153,6 +181,9 @@ struct CardView: View {
                             .font(Font.custom("S-Core Dream", size: 7))
                             .multilineTextAlignment(.center)
                             .foregroundColor(Color(red: 0.21, green: 0.23, blue: 0.64))
+                            .onAppear(){
+                                print(dataset.reviewCount!)
+                            }
                     }
                     .padding()
                 }
@@ -207,27 +238,27 @@ struct CardView: View {
 
 
 // CardView의 프리뷰를 위한 구조체
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        // 예시 데이터를 사용하여 IntegratedCafe 인스턴스 생성
-        let sampleCafe = IntegratedCafe(
-            dataFrom: "kakao/honzapda",
-            dataFromId: "99999",
-            placeName: "가게이름",
-            address: "00시 00구 000길 00-0",
-            cafeImage: "https://storage.googleapis.com/honzapda-bucket/58256d81-91ae-495d-8a45-5d49878f275e", // 예시 이미지 URL
-            phoneCall: "010-1111-2222",
-            discription: "카페에 대한 설명을 부탁드려요!",
-            posFromStation: "역에서부터 거리 정보가 없어요",
-            rating: "4.5",
-            reviewCount: "15",
-            x: "127.0",
-            y: "37.0",
-            densityOfDays: [1, 2, 3, 1, 2, 3, 1] // 1: 여유, 2: 중간, 3: 혼잡
-        )
-        
-        // CardView에 sampleCafe 인스턴스를 전달하여 프리뷰 생성
-        CardView(dataset: sampleCafe)
-            .previewLayout(.sizeThatFits) // 프리뷰의 레이아웃을 조정
-    }
-}
+//struct CardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        // 예시 데이터를 사용하여 IntegratedCafe 인스턴스 생성
+//        let sampleCafe = IntegratedCafe(
+//            dataFrom: "kakao/honzapda",
+//            dataFromId: 99,
+//            placeName: "가게이름",
+//            address: "00시 00구 000길 00-0",
+//            cafeImage: "https://storage.googleapis.com/honzapda-bucket/58256d81-91ae-495d-8a45-5d49878f275e", // 예시 이미지 URL
+//            phoneCall: "010-1111-2222",
+//            discription: "카페에 대한 설명을 부탁드려요!",
+//            posFromStation: "역에서부터 거리 정보가 없어요",
+//            rating: "4.5",
+//            reviewCount: "15",
+//            x: "127.0",
+//            y: "37.0",
+//            densityOfDays: [1, 2, 3, 1, 2, 3, 1] // 1: 여유, 2: 중간, 3: 혼잡
+//        )
+//        
+//        // CardView에 sampleCafe 인스턴스를 전달하여 프리뷰 생성
+//        CardView(dataset: sampleCafe)
+//            .previewLayout(.sizeThatFits) // 프리뷰의 레이아웃을 조정
+//    }
+//}

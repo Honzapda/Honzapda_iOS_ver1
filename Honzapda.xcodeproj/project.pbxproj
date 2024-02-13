@@ -59,6 +59,7 @@
 		BB1805602B789EAF00B27333 /* UserFeedbackCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18055F2B789EAE00B27333 /* UserFeedbackCellView.swift */; };
 		BB1805622B78A7A900B27333 /* UserFeedbackLikeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805612B78A7A900B27333 /* UserFeedbackLikeAPI.swift */; };
 		BB1805642B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805632B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift */; };
+		BB1805662B7B819600B27333 /* GetSavedCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805652B7B819600B27333 /* GetSavedCafe.swift */; };
 		BB1927D72B7183BF00A07824 /* CafeCardViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */; };
 		BB1927D82B7183BF00A07824 /* DummyDataAndModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D62B7183BF00A07824 /* DummyDataAndModel.swift */; };
 		BB1927DE2B7183D700A07824 /* GetCafeFromKakaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */; };
@@ -133,6 +134,7 @@
 		BB18055F2B789EAE00B27333 /* UserFeedbackCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackCellView.swift; sourceTree = "<group>"; };
 		BB1805612B78A7A900B27333 /* UserFeedbackLikeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackLikeAPI.swift; sourceTree = "<group>"; };
 		BB1805632B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackUnlikeAPI.swift; sourceTree = "<group>"; };
+		BB1805652B7B819600B27333 /* GetSavedCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSavedCafe.swift; sourceTree = "<group>"; };
 		BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeCardViewSetup.swift; sourceTree = "<group>"; };
 		BB1927D62B7183BF00A07824 /* DummyDataAndModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataAndModel.swift; sourceTree = "<group>"; };
 		BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCafeFromKakaoMap.swift; sourceTree = "<group>"; };
@@ -291,8 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				BB1927DD2B7183D700A07824 /* POI.swift */,
-				BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */,
 				19517F402B57996E00FDA71E /* HomeView.swift */,
+				BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */,
 				BB1805482B7493A800B27333 /* CardView.swift */,
 				BB18054A2B74945F00B27333 /* HomeBottomSheet.swift */,
 			);
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				BB1927DB2B7183D700A07824 /* GetCafeFromServer.swift */,
+				BB1805652B7B819600B27333 /* GetSavedCafe.swift */,
 				BB1805502B77EB3900B27333 /* PostAndDeleteCafeSave.swift */,
 				BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */,
 				BB1927DA2B7183D700A07824 /* KMSetup.swift */,
@@ -597,6 +600,7 @@
 				BB1805412B719DE600B27333 /* ReviewImage.swift in Sources */,
 				19C48FFD2B7113D3005FC902 /* ReviewTextFieldStyle.swift in Sources */,
 				1980CD2E2B74C97800ACF7FD /* HelpInfoWriteView.swift in Sources */,
+				BB1805662B7B819600B27333 /* GetSavedCafe.swift in Sources */,
 				BB1927E22B7183D700A07824 /* POI.swift in Sources */,
 				BB1805532B78895700B27333 /* CurationView.swift in Sources */,
 				1980CD2C2B74C8C200ACF7FD /* MoreHelpInfoView.swift in Sources */,
@@ -621,7 +625,6 @@
 				19C48FF52B711221005FC902 /* MoreReviewView.swift in Sources */,
 				19F56C182B74F0C500BC5BB6 /* UserLogin.swift in Sources */,
 				19B3BF762B77EF2B0063EB35 /* ShopDetail.swift in Sources */,
-				BB1805332B71916600B27333 /* CurationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

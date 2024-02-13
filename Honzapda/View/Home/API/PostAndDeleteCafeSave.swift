@@ -7,34 +7,34 @@
 
 import Foundation
 import SwiftUI
-
-struct padcTestView : View {
-    var body : some View{
-        
-        HStack{
-            Text("swift")
-        }.onAppear(){
-            saveCafe(shopId: 1) { response in
-                if let response = response {
-                    print("카페 저장 성공: \(response.message)")
-                } else {
-                    // Log the failure
-                    print("카페 저장 실패")
-                }
-            }
-            deleteCafe(shopId: 1) { response in
-                if let response = response {
-                    print("카페 삭제 성공: \(response.message)")
-                } else {
-                    // Log the failure
-                    print("카페 삭제 실패")
-                }
-            }
-            
-        }
-        
-    }
-}
+//
+//struct padcTestView : View {
+//    var body : some View{
+//        
+//        HStack{
+//            Text("swift")
+//        }.onAppear(){
+//            saveCafe(shopId: 1) { response in
+//                if let response = response {
+//                    print("카페 저장 성공: \(response.message)")
+//                } else {
+//                    // Log the failure
+//                    print("카페 저장 실패")
+//                }
+//            }
+//            deleteCafe(shopId: 1) { response in
+//                if let response = response {
+//                    print("카페 삭제 성공: \(response.message)")
+//                } else {
+//                    // Log the failure
+//                    print("카페 삭제 실패")
+//                }
+//            }
+//            
+//        }
+//        
+//    }
+//}
 
 
 // API 응답을 처리하기 위한 공통 구조체
@@ -51,9 +51,11 @@ struct ApiResult: Codable {
 }
 
 
-func saveCafe(shopId: Int, completion: @escaping (ApiResponse?) -> Void) {
+func saveCafe(shopId: Int) {
+    
+    print("saveCafe \(shopId)")
     guard let url = URL(string: "https://honzapda-bbbx74bapq-uc.a.run.app/map/shop/\(shopId)") else {
-        completion(nil)
+      //  completion(nil)
         return
     }
     
@@ -68,7 +70,7 @@ func saveCafe(shopId: Int, completion: @escaping (ApiResponse?) -> Void) {
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         guard let httpResponse = response as? HTTPURLResponse else {
             print("호출 실패: 유효하지 않은 응답")
-            completion(nil)
+          //  completion(nil)
             return
         }
         
@@ -79,20 +81,21 @@ func saveCafe(shopId: Int, completion: @escaping (ApiResponse?) -> Void) {
         }
         
         guard let data = data, error == nil else {
-            completion(nil)
+         //   completion(nil)
             return
         }
         
         let apiResponse = try? JSONDecoder().decode(ApiResponse.self, from: data)
-        completion(apiResponse)
+     //   completion(apiResponse)
     }
     
     task.resume()
 }
 
-func deleteCafe(shopId: Int, completion: @escaping (ApiResponse?) -> Void) {
+func deleteCafe(shopId: Int) {
+    print("deleteCafe \(shopId)")
     guard let url = URL(string: "https://honzapda-bbbx74bapq-uc.a.run.app/map/shop/\(shopId)") else {
-        completion(nil)
+      //  completion(nil)
         return
     }
     
@@ -102,7 +105,7 @@ func deleteCafe(shopId: Int, completion: @escaping (ApiResponse?) -> Void) {
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         guard let httpResponse = response as? HTTPURLResponse else {
             print("호출 실패: 유효하지 않은 응답")
-            completion(nil)
+     //       completion(nil)
             return
         }
         
@@ -113,12 +116,12 @@ func deleteCafe(shopId: Int, completion: @escaping (ApiResponse?) -> Void) {
         }
         
         guard let data = data, error == nil else {
-            completion(nil)
+    //        completion(nil)
             return
         }
         
         let apiResponse = try? JSONDecoder().decode(ApiResponse.self, from: data)
-        completion(apiResponse)
+    //    completion(apiResponse)
     }
     
     task.resume()

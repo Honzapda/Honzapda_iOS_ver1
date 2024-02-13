@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SplashView: View {
+  
     var body: some View {
         
         ZStack {
@@ -40,12 +41,6 @@ struct SplashView: View {
               .offset(x:0, y: 150)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) // ZStack을 화면 크기에 맞게 조정
-    }
-}
-
-struct SplashView_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashView()
     }
 }
 

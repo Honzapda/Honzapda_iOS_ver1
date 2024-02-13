@@ -85,14 +85,15 @@ struct Review: Codable{
      
      var id: Int {return reviewId}
  }
+// 중복이라 userfeedbackapi의 유저로 대체합니다
 
- struct User: Codable {
-     let id: Int
-     let name: String
-     let profileImage: String
-     let email: String
-     let signUpType: String
- }
+// struct User: Codable {
+//     let id: Int
+//     let name: String
+//     let profileImage: String
+//     let email: String
+//     let signUpType: String
+// }
 
  struct Image_: Codable {
      let imageId: Int

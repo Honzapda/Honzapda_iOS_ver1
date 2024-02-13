@@ -6,7 +6,7 @@ let lon : String = "126.887847771379"
 struct IntegratedCafe : Identifiable { // 필요할 시 이니셜라이저 사용
     let id  = UUID() //기본세팅
     var dataFrom : String? = "kakao/honzapda" //필수
-    var dataFromId : String? = "99999"//필수
+    var dataFromId : Int = 999999//필수
     var placeName: String? = "가게이름"  // hon - placeName  km - place_name
     var address: String? = "00시 00구 000길 00-0"    //
     var cafeImage: String? = ""  // photoURL
@@ -92,40 +92,7 @@ struct KakaoCafe: Codable, Identifiable {
     }
 }
 
-func createIntegratedCafe(fromHonzapda honzapdaCafe: HonzapdaCafe) -> IntegratedCafe {
-    return IntegratedCafe(
-        dataFrom: "Honzapda",
-        dataFromId: String(honzapdaCafe.id!),
-        placeName: honzapdaCafe.placeName,
-        address: honzapdaCafe.address! + honzapdaCafe.addressSpec!,
-        cafeImage: honzapdaCafe.photoUrl,
-        phoneCall: honzapdaCafe.shopPhoneNumber,
-        discription: honzapdaCafe.description,
-        rating: String(honzapdaCafe.rating!),
-        reviewCount: String(honzapdaCafe.reviewCount!),
-        x: String(honzapdaCafe.x!),
-        y: String(honzapdaCafe.y!)
-    )
-}
 
-func createIntegratedCafe(fromKakao kakaoCafe: KakaoCafe) -> IntegratedCafe {
-    return IntegratedCafe(
-        dataFrom: "Kakao",
-        dataFromId: kakaoCafe.id,
-        placeName: kakaoCafe.place_name,
-        address: kakaoCafe.road_address_name,
-        phoneCall: kakaoCafe.phone ?? "",
-        x: kakaoCafe.x,
-        y: kakaoCafe.y
-      //  cafeImage: "CafeSampleIMG", // KakaoCafe 구조체에는 직접적인 카페 이미지 URL 프로퍼티가 없음
-        
-      //  discription: "카페에 대한 설명을 부탁드려요!", // KakaoCafe 구조체에는 설명 프로퍼티가 없음
-      //  posFromStation: "정보가 없어요",
-    //    rating: "0", // KakaoCafe 구조체에는 평점 프로퍼티가 없음
-    //    reviewCount: "0",
-       
-    )
-}
 
 
 

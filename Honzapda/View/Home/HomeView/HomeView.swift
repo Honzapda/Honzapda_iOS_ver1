@@ -12,11 +12,10 @@
 import CoreLocation
 import SwiftUI
 import KakaoMapsSDK
-
+import Combine
 
 struct HomeView: View {
     @StateObject private var locationManager = LocationManager()
-    @State var draw: Bool = false
     @State private var showModal = false
     @State private var currentPage = 0
     @State private var isCardTapped = false
@@ -29,23 +28,27 @@ struct HomeView: View {
     
     init( homeViewModel: HomeViewModel) {
         self.homeViewModel = homeViewModel
+        
     }
+    @MainActor
     
+    
+
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                KakaoMapView(draw: $draw, locationManager: locationManager, homeViewModel: homeViewModel)
+                KakaoMapView(draw: $homeViewModel.draw, locationManager: locationManager, homeViewModel: homeViewModel)
                     .zIndex(1)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
                     .ignoresSafeArea()
                     .onAppear {
-                        homeViewModel.honzapdaCafeViewModel.loadCafes()
-                        homeViewModel.kakaoCafeViewModel.fetchData()
-                        
-                        self.draw = true
+                        homeViewModel.loadCafesAndDraw()
+                   //     homeViewModel.kakaoCafeViewModel.fetchData()
+                        homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
+                        homeViewModel.draw = true
                     }
                     .onDisappear {
-                        self.draw = false
+                        homeViewModel.draw = false
                     }
                 if homeViewModel.CardViewIsShowing{
                     
@@ -53,13 +56,14 @@ struct HomeView: View {
                         HStack{
                             ForEach(0..<homeViewModel.integratedCafeArr.count, id: \.self) { index in
                                 GeometryReader { itemGeometry in
-                                    CardView(dataset: homeViewModel.integratedCafeArr[index])
+                                    CardView(homeViewModel: homeViewModel, dataset: homeViewModel.integratedCafeArr[index])
                                         
                                         .scaleEffect(scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
                                         .animation(.easeInOut(duration: 0.1), value: scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
                                         .transition(.opacity)
                                 }
                                 .frame(width: UIScreen.main.bounds.width * 8 / 10, height: UIScreen.main.bounds.height * 5 / 10)
+                                .shadow(radius: 15)
                                 .padding(.horizontal, 20)
                                 //   .border(Color.blue)
                             }
@@ -97,6 +101,7 @@ struct HomeView: View {
                 }
                 .padding(.bottom, -10)
                 Button {
+                    homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
                     print("Saved icon tapped")
                     withAnimation(.easeInOut(duration: 0.1)) {
                         isSheetVisible.toggle()
@@ -134,6 +139,7 @@ struct HomeView: View {
             // 데이터 로딩 및 기타 초기화 작업...
         }
     }
+    
 }
 
 

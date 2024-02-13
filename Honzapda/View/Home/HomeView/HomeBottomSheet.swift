@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeBottomSheetView: View {
   let columns = [GridItem(.flexible()), GridItem(.flexible())]
     @ObservedObject var homeViewModel : HomeViewModel
+    
  // let DataSetArr = tempDataSetArr
     
   var body: some View {
@@ -32,17 +33,20 @@ struct HomeBottomSheetView: View {
               
              ScrollView{
                   LazyVGrid(columns: columns) {
-                      ForEach(homeViewModel.integratedCafeArr) { data in
+                      ForEach(homeViewModel.savedCafeModel.savedCafeList) { data in
                         ZStack{
-                            Image(data.cafeImage ?? "CafeSampleIMG")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 165, height: 150)
-                                .clipped()
+                            AsyncImage(url: URL(string: data.photoUrl)) { image in
+                                       image.resizable()
+                                   } placeholder: {
+                                       Image("CafeSampleIMG") // 이미지가 로드되는 동안 표시될 뷰
+                                   }
+                                   .scaledToFill()
+                                   .frame(width: 165, height: 150)
+                                   .clipped()
                                 
                             VStack{
                                 HStack{
-                                    Text(data.placeName!)
+                                    Text(data.place_name)
                                         .font(Font.custom("S-Core Dream", size: 12))
                                         .foregroundColor(.white)
                                         
@@ -50,7 +54,7 @@ struct HomeBottomSheetView: View {
                                 }
                                 
                                 HStack{
-                                    Text(data.address!)
+                                    Text(data.address + data.address_spec)
                                         .font(Font.custom("S-Core Dream", size: 6))
                                         .foregroundColor(Color(red: 0.96, green: 0.96, blue: 0.96))
                                     Spacer()
@@ -72,9 +76,3 @@ struct HomeBottomSheetView: View {
   }
 }
 
-struct HomeBottomSheetPreview : PreviewProvider {
-    static var previews: some View{
-        //BottomSheetView()
-        HomeBottomSheetView(homeViewModel: HomeViewModel())
-    }
-}
