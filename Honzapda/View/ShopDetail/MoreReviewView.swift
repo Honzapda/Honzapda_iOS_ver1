@@ -8,9 +8,11 @@
 import Foundation
 import SwiftUI
 
-/*
+
 struct MoreReviewView: View {
     @Environment(\.dismiss) private var dismiss
+    
+    @ObservedObject var vm: ReviewViewModel = ReviewViewModel()
     
     var body: some View{
         NavigationView{
@@ -42,8 +44,10 @@ struct MoreReviewView: View {
                 }
             }
         }
+        .onAppear {
+            vm.getReivewOnServer(shopId: 1)
+        }
     }
-
     
     @ViewBuilder
     func headerView()->some View{
@@ -58,8 +62,9 @@ struct MoreReviewView: View {
                 }
                 .padding(.trailing, 25)
                 .padding(.leading)
-                
-                Text(shops[0].shopName)
+                 
+                // MARK: 가게 이름
+                Text("스테이 어도러블")
                     .font(Font.custom("S-Core Dream", size: 14))
                     .foregroundStyle(.black)
                     .padding(.vertical, 12)
@@ -128,7 +133,7 @@ struct MoreReviewView: View {
                 HStack(spacing: 0){
                     Text("리뷰 ")
                         .foregroundStyle(CustomColors.gray09)
-                    Text(String(reviews.count))
+                    Text(String(vm.review?.result.totalElements ?? 0))
                         .foregroundStyle(CustomColors.primary05)
                     Text("개")
                         .foregroundStyle(CustomColors.gray09)
@@ -138,7 +143,7 @@ struct MoreReviewView: View {
                 Spacer()
                 
                 NavigationLink{
-                    ReviewWriteView()
+                    //ReviewWriteView()
                 } label: {
                     Text("리뷰 작성하기")
                         .font(Font.custom("S-Core Dream", size: 9))
@@ -152,10 +157,12 @@ struct MoreReviewView: View {
                 .foregroundStyle(CustomColors.gray06)
                 .padding(.bottom, 12)
             
-            ForEach(reviews){cell in
-                reviewCell(cell)
-                    .padding(.bottom, 4)
-            }
+            if let review = vm.review?.result.reviews {
+                ForEach(review){cell in
+                    reviewCell(cell)
+                        .padding(.bottom, 4)
+                }
+            } else {}
              
         }
         .padding(.horizontal, 24)
@@ -163,21 +170,25 @@ struct MoreReviewView: View {
     }
     
     @ViewBuilder
-    func reviewCell(_ review: Review)->some View{
+    func reviewCell(_ review: ReviewBody)->some View{
        
         VStack(spacing: 16){
             HStack(spacing: 170){
                 HStack(spacing: 12){
-                    review.profile
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .clipped()
-                        .clipShape(Circle())
+                    AsyncImage(url: getUrl(from: review.user.profileImage)) { image in
+                        image
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .clipped()
+                            .clipShape(Circle())
+                                } placeholder: {
+                                    ProgressView()
+                                }
                     VStack(alignment: .leading){
-                        Text(review.name)
+                        Text(review.user.name)
                             .font(Font.custom("S-CoreDream-6Bold", size: 12))
                             .foregroundStyle(CustomColors.gray09)
-                        Text("별점 \(review.rating)점")
+                        Text("별점 \(review.score)점")
                             .font(Font.custom("S-Core Dream", size: 8))
                             .foregroundStyle(CustomColors.primary04)
                     }
@@ -194,26 +205,33 @@ struct MoreReviewView: View {
             
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
-                    ForEach(0..<review.reviewImage.count){i in
-                        review.reviewImage[i]
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 90, height: 90)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    ForEach(0..<(review.images?.count ?? 0) ){i in
+                        if let img = review.images?[i].url{
+                            AsyncImage(url: getUrl(from: img)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 90, height: 90)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            } placeholder: {
+                                ProgressView()
+                            }
+                        } else {}
                     }
                 }
             }
             .padding(.horizontal, 24)
             
             VStack(alignment: .leading, spacing: 16){
-                Text(review.reviewBody)
+                Text(review.body)
                     .multilineTextAlignment(.leading)
                     .font(Font.custom("S-Core Dream", size: 9))
                     .foregroundStyle(CustomColors.black)
-                
-                Text(review.visitDate + " 방문")
+                /*
+                Text(review.visitedAt + " 방문")
                     .font(Font.custom("S-Core Dream", size: 8))
                     .foregroundStyle(CustomColors.gray07)
+                 */
             }
             .frame(width: 297, alignment: .leading)
             .padding(.horizontal, 24)
@@ -223,9 +241,16 @@ struct MoreReviewView: View {
         .background(CustomColors.gray02)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
-}
+    
+    func getUrl(from urlString: String) -> URL? {
+        
+            guard let url = URL(string: urlString) else {
+              return nil
+            }
+        
+        return url
 
-#Preview {
-    MoreReviewView()
+    }
+
+    
 }
-*/

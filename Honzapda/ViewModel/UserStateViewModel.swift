@@ -15,6 +15,8 @@ enum UserStateError: Error{
 class UserStateViewModel: ObservableObject{
     @Published var isLoggedIn = false
     @Published var isBusy = false
+    // MARK: 취향 선택 완료했는지
+    @Published var selectedTaste = false
     
     func signIn(email: String, password: String) async {
         isBusy = true

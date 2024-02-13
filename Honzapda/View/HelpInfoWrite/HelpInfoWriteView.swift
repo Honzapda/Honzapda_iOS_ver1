@@ -49,7 +49,8 @@ struct HelpInfoWriteView: View {
                 .padding(.leading)
                 //.padding(.vertical, 0)
                 
-                Text(shops[0].shopName)
+                //MARK: 가게 이름
+                Text("shops[0].shopName")
                     .font(Font.custom("S-Core Dream", size: 14))
                     .foregroundStyle(.black)
                     .padding(.vertical, 12)

@@ -16,6 +16,8 @@ struct CafeTasteView: View {
     @State var isCompleteButtonEnabled: Bool
     @State var isNavigationActive: Bool
     
+    @EnvironmentObject var userStateViewModel: UserStateViewModel
+    
     init() {
         _isSelected = State(initialValue: Array(repeating: false, count: 42))
         _isCompleteButtonEnabled = State(initialValue: false)
@@ -209,6 +211,7 @@ struct CafeTasteView: View {
                         NavigationLink(destination: MainTapView(), isActive: $isNavigationActive) {
                             Button (action: {
                                 print("취향 생성 완료하기")
+                                userStateViewModel.selectedTaste = true
                                 isNavigationActive.toggle()
                             }){
                                 Text("취향 생성 완료하기")

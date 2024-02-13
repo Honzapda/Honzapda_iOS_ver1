@@ -40,6 +40,7 @@
 //
 //let userHelpInfo2 = UserHelpInfo(profile: Image("profile_5"), name: "이제", day: "월", hour: 12, densityPer: 80, desk: "넓은", socket: "적당한", socketLocation: "책상 밑", restroom: "2층 계단 옆", music: "재즈", light: "적당한", mood: "잔잔한")
 //
+//  Created by 이희주 on 2024/01/24.
 //let userHelpInfos: [UserHelpInfo] = [userHelpInfo1, userHelpInfo2]
 //
 ////var reviews: [Review] = [review1, review2, review3]
