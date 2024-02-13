@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-//
-//struct ContentView: View {
-//    // MARK: Login
-//    
-//    var body: some View {
-//        if !userAuth.isLoggedIn {
-//            return AnyView(OnboardingView())
-//        }
-//        else {
-//            return AnyView(MainTapView())
-//        }
-//    }
-//}
+
+struct ContentView: View {
+    // MARK: Login
+    
+    var body: some View {
+        if !userAuth.isLoggedIn {
+            return AnyView(OnboardingView())
+        }
+        else {
+            return AnyView(MainTapView())
+        }
+    }
+}
