@@ -8,10 +8,8 @@
 import Foundation
 import SwiftUI
 
-// MARK: temporary density inf/
-let temp:[String: Int] = ["월":1, "화":3, "수":1, "목": 2, "금": 1, "토":3, "일":3 ]
-
 struct DensityInfoView: View {
+    
     let days:[String] = ["월", "화", "수", "목", "금", "토", "일"]
     
     var body: some View {
@@ -222,5 +220,9 @@ struct DensityInfoView: View {
                     .padding(.bottom, 16)
                 }
             }
+    }
+    
+    enum DaysEngToKor{
+        case 
     }
 }

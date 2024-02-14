@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-/*
+
 struct ReviewView: View {
     var body: some View {
             VStack{
@@ -124,4 +124,4 @@ struct ReviewView: View {
 #Preview {
    ShopDetailView()
 }
-*/
+
