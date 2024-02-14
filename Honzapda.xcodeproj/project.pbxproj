@@ -34,10 +34,11 @@
 		1980CD2C2B74C8C200ACF7FD /* MoreHelpInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980CD2B2B74C8C200ACF7FD /* MoreHelpInfoView.swift */; };
 		1980CD2E2B74C97800ACF7FD /* HelpInfoWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980CD2D2B74C97800ACF7FD /* HelpInfoWriteView.swift */; };
 		1980CD302B74C9B500ACF7FD /* DatePickerWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980CD2F2B74C9B500ACF7FD /* DatePickerWithButton.swift */; };
-		19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19995B6A2B604F7B00A73023 /* UserHelpInfo.swift */; };
-		19995B6D2B604F9A00A73023 /* DensityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19995B6C2B604F9A00A73023 /* DensityInfo.swift */; };
 		19B3BF712B77BF810063EB35 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B3BF702B77BF810063EB35 /* UserStateViewModel.swift */; };
 		19B3BF762B77EF2B0063EB35 /* ShopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B3BF752B77EF2B0063EB35 /* ShopDetail.swift */; };
+		19BEC3B02B7C9EF7001B5649 /* AverageCongestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BEC3AF2B7C9EF7001B5649 /* AverageCongestion.swift */; };
+		19BEC3B22B7C9F1D001B5649 /* DayCongestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BEC3B12B7C9F1D001B5649 /* DayCongestion.swift */; };
+		19BEC3B42B7C9F64001B5649 /* ShopDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BEC3B32B7C9F64001B5649 /* ShopDetailViewModel.swift */; };
 		19C48FF52B711221005FC902 /* MoreReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FF42B711221005FC902 /* MoreReviewView.swift */; };
 		19C48FF92B7113C9005FC902 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FF82B7113C9005FC902 /* ImagePicker.swift */; };
 		19C48FFB2B7113CC005FC902 /* PHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C48FFA2B7113CC005FC902 /* PHPicker.swift */; };
@@ -110,10 +111,11 @@
 		1980CD2B2B74C8C200ACF7FD /* MoreHelpInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreHelpInfoView.swift; sourceTree = "<group>"; };
 		1980CD2D2B74C97800ACF7FD /* HelpInfoWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpInfoWriteView.swift; sourceTree = "<group>"; };
 		1980CD2F2B74C9B500ACF7FD /* DatePickerWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerWithButton.swift; sourceTree = "<group>"; };
-		19995B6A2B604F7B00A73023 /* UserHelpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelpInfo.swift; sourceTree = "<group>"; };
-		19995B6C2B604F9A00A73023 /* DensityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DensityInfo.swift; sourceTree = "<group>"; };
 		19B3BF702B77BF810063EB35 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		19B3BF752B77EF2B0063EB35 /* ShopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetail.swift; sourceTree = "<group>"; };
+		19BEC3AF2B7C9EF7001B5649 /* AverageCongestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageCongestion.swift; sourceTree = "<group>"; };
+		19BEC3B12B7C9F1D001B5649 /* DayCongestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCongestion.swift; sourceTree = "<group>"; };
+		19BEC3B32B7C9F64001B5649 /* ShopDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewModel.swift; sourceTree = "<group>"; };
 		19C48FF42B711221005FC902 /* MoreReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreReviewView.swift; sourceTree = "<group>"; };
 		19C48FF82B7113C9005FC902 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		19C48FFA2B7113CC005FC902 /* PHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPicker.swift; sourceTree = "<group>"; };
@@ -210,6 +212,8 @@
 				BB1805402B719DE600B27333 /* ReviewImage.swift */,
 				19F56C172B74F0C500BC5BB6 /* UserLogin.swift */,
 				19B3BF752B77EF2B0063EB35 /* ShopDetail.swift */,
+				19BEC3AF2B7C9EF7001B5649 /* AverageCongestion.swift */,
+				19BEC3B12B7C9F1D001B5649 /* DayCongestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,6 +255,7 @@
 			children = (
 				1980CD252B74C0A400ACF7FD /* ReviewViewModel.swift */,
 				19B3BF702B77BF810063EB35 /* UserStateViewModel.swift */,
+				19BEC3B32B7C9F64001B5649 /* ShopDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -596,6 +601,7 @@
 				1980CD302B74C9B500ACF7FD /* DatePickerWithButton.swift in Sources */,
 				BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */,
 				BBFE0C2E2B6F6D2800E46931 /* LoginView.swift in Sources */,
+				19BEC3B02B7C9EF7001B5649 /* AverageCongestion.swift in Sources */,
 				19B3BF712B77BF810063EB35 /* UserStateViewModel.swift in Sources */,
 				BB18055E2B788FF700B27333 /* UserFeedbackGetAPI.swift in Sources */,
 				1980CD262B74C0A400ACF7FD /* ReviewViewModel.swift in Sources */,
@@ -605,7 +611,6 @@
 				BB18054B2B74945F00B27333 /* HomeBottomSheet.swift in Sources */,
 				194222862B5D3C8A006B3C30 /* Review.swift in Sources */,
 				BB1927E12B7183D700A07824 /* GetPosition.swift in Sources */,
-				19995B6D2B604F9A00A73023 /* DensityInfo.swift in Sources */,
 				BB1927E02B7183D700A07824 /* GetCafeFromServer.swift in Sources */,
 				1919357D2B56F38600396056 /* ColorCollection.swift in Sources */,
 				BB1927DF2B7183D700A07824 /* KMSetup.swift in Sources */,
@@ -617,10 +622,10 @@
 				BB1805532B78895700B27333 /* CurationView.swift in Sources */,
 				1980CD2C2B74C8C200ACF7FD /* MoreHelpInfoView.swift in Sources */,
 				BB18055C2B788FDB00B27333 /* UserFeedbakDeleteAPI.swift in Sources */,
+				19BEC3B42B7C9F64001B5649 /* ShopDetailViewModel.swift in Sources */,
 				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
 				BB1927D82B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift in Sources */,
 				BB1805512B77EB3900B27333 /* PostAndDeleteCafeSave.swift in Sources */,
-				19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */,
 				BB1805602B789EAF00B27333 /* UserFeedbackCellView.swift in Sources */,
 				BB1805362B71936000B27333 /* CafeTasteView.swift in Sources */,
 				1980CD292B74C43D00ACF7FD /* WebService.swift in Sources */,

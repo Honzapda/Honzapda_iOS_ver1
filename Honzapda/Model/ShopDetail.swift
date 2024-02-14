@@ -9,11 +9,77 @@ import Foundation
 
 
 struct ShopDetail: Codable{
-        
+    let isSuccess: Bool
+    let code: String
+    let message: String
+    
+    let result: ShopDetailBody
 }
 
 struct ShopDetailBody: Codable{
+    let shopId: Int
+    let shopName: String
+    let description: String
+    let shopPhoneNumber: String
+    let mainImage: String
+    let reviewCount: Int
+    let rating: Double
+    let adress: String
+    let adressSpec: String
+    let stationDistance: String
+    let openNow: Bool
+    let userLike: Bool
+    let inactiveDate: String
     
+    let userHelpInfoDtoList: [UserHelpInfo]?
+    let reviewList: [ReviewBody]?
+    let businessHours: [BusinessHour]
+    
+    let latitude: Double
+    let longitude: Double
+    
+    let averageCongestions: [AverageCongestion]
+    let dayCongestions: [DayCongestion]
+   
+    let totalSeatCount: Int
+    let cameraCount: Int?
+    let wifiCount: Int?
+    
+    enum CodingKeys: String, CodingKey{
+        case shopId
+        case shopName
+        case description
+        case shopPhoneNumber
+        case mainImage
+        case reviewCount
+        case rating
+        case adress
+        case adressSpec = "adress_spec"
+        case stationDistance
+        case openNow
+        case userLike
+        case inactiveDate
+        case userHelpInfoDtoList
+        case reviewList
+        case businessHours
+        
+        case latitude
+        case longitude
+        
+        case averageCongestions
+        case dayCongestions
+       
+        case totalSeatCount
+        case cameraCount
+        case wifiCount
+    }
+}
+
+struct BusinessHour: Codable{
+    let dayOfWeek: String
+    let openHours: String
+    let closeHours: String
+    let isOpen: Bool
 }
 
 
