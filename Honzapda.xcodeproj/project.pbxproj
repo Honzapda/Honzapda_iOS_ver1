@@ -60,8 +60,9 @@
 		BB1805622B78A7A900B27333 /* UserFeedbackLikeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805612B78A7A900B27333 /* UserFeedbackLikeAPI.swift */; };
 		BB1805642B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805632B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift */; };
 		BB1805662B7B819600B27333 /* GetSavedCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805652B7B819600B27333 /* GetSavedCafe.swift */; };
+		BB1805682B7BD25100B27333 /* UserFeedBackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1805672B7BD25100B27333 /* UserFeedBackModel.swift */; };
 		BB1927D72B7183BF00A07824 /* CafeCardViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */; };
-		BB1927D82B7183BF00A07824 /* DummyDataAndModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D62B7183BF00A07824 /* DummyDataAndModel.swift */; };
+		BB1927D82B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D62B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift */; };
 		BB1927DE2B7183D700A07824 /* GetCafeFromKakaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */; };
 		BB1927DF2B7183D700A07824 /* KMSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927DA2B7183D700A07824 /* KMSetup.swift */; };
 		BB1927E02B7183D700A07824 /* GetCafeFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1927DB2B7183D700A07824 /* GetCafeFromServer.swift */; };
@@ -135,8 +136,9 @@
 		BB1805612B78A7A900B27333 /* UserFeedbackLikeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackLikeAPI.swift; sourceTree = "<group>"; };
 		BB1805632B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackUnlikeAPI.swift; sourceTree = "<group>"; };
 		BB1805652B7B819600B27333 /* GetSavedCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSavedCafe.swift; sourceTree = "<group>"; };
+		BB1805672B7BD25100B27333 /* UserFeedBackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedBackModel.swift; sourceTree = "<group>"; };
 		BB1927D52B7183BF00A07824 /* CafeCardViewSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeCardViewSetup.swift; sourceTree = "<group>"; };
-		BB1927D62B7183BF00A07824 /* DummyDataAndModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataAndModel.swift; sourceTree = "<group>"; };
+		BB1927D62B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoHonzapInteCafeModel.swift; sourceTree = "<group>"; };
 		BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCafeFromKakaoMap.swift; sourceTree = "<group>"; };
 		BB1927DA2B7183D700A07824 /* KMSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMSetup.swift; sourceTree = "<group>"; };
 		BB1927DB2B7183D700A07824 /* GetCafeFromServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCafeFromServer.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				194222852B5D3C8A006B3C30 /* Review.swift */,
+				BB1927D62B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift */,
 				19995B6A2B604F7B00A73023 /* UserHelpInfo.swift */,
 				19995B6C2B604F9A00A73023 /* DensityInfo.swift */,
 				BB1805402B719DE600B27333 /* ReviewImage.swift */,
@@ -310,7 +313,6 @@
 				BB1927D92B7183D700A07824 /* GetCafeFromKakaoMap.swift */,
 				BB1927DA2B7183D700A07824 /* KMSetup.swift */,
 				BB1927DC2B7183D700A07824 /* GetPosition.swift */,
-				BB1927D62B7183BF00A07824 /* DummyDataAndModel.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -318,6 +320,7 @@
 		BB1805552B788DEF00B27333 /* UserFeedback */ = {
 			isa = PBXGroup;
 			children = (
+				BB1805692B7BD25B00B27333 /* UFAPI */,
 				BB1805582B788E9100B27333 /* UFViewModel */,
 				BB1805562B788E6C00B27333 /* UserFeedbackView.swift */,
 				BB18055F2B789EAE00B27333 /* UserFeedbackCellView.swift */,
@@ -328,13 +331,21 @@
 		BB1805582B788E9100B27333 /* UFViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BB1805672B7BD25100B27333 /* UserFeedBackModel.swift */,
+			);
+			path = UFViewModel;
+			sourceTree = "<group>";
+		};
+		BB1805692B7BD25B00B27333 /* UFAPI */ = {
+			isa = PBXGroup;
+			children = (
 				BB1805592B788F7B00B27333 /* UserFeedbackWriteAPI.swift */,
 				BB18055B2B788FDB00B27333 /* UserFeedbakDeleteAPI.swift */,
 				BB18055D2B788FF700B27333 /* UserFeedbackGetAPI.swift */,
 				BB1805612B78A7A900B27333 /* UserFeedbackLikeAPI.swift */,
 				BB1805632B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift */,
 			);
-			path = UFViewModel;
+			path = UFAPI;
 			sourceTree = "<group>";
 		};
 		BB1927D22B717E9700A07824 /* Recovered References */ = {
@@ -589,6 +600,7 @@
 				BB18055E2B788FF700B27333 /* UserFeedbackGetAPI.swift in Sources */,
 				1980CD262B74C0A400ACF7FD /* ReviewViewModel.swift in Sources */,
 				192005562B5C35D700CFB80D /* ShopDetailView.swift in Sources */,
+				BB1805682B7BD25100B27333 /* UserFeedBackModel.swift in Sources */,
 				BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */,
 				BB18054B2B74945F00B27333 /* HomeBottomSheet.swift in Sources */,
 				194222862B5D3C8A006B3C30 /* Review.swift in Sources */,
@@ -606,7 +618,7 @@
 				1980CD2C2B74C8C200ACF7FD /* MoreHelpInfoView.swift in Sources */,
 				BB18055C2B788FDB00B27333 /* UserFeedbakDeleteAPI.swift in Sources */,
 				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
-				BB1927D82B7183BF00A07824 /* DummyDataAndModel.swift in Sources */,
+				BB1927D82B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift in Sources */,
 				BB1805512B77EB3900B27333 /* PostAndDeleteCafeSave.swift in Sources */,
 				19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */,
 				BB1805602B789EAF00B27333 /* UserFeedbackCellView.swift in Sources */,
