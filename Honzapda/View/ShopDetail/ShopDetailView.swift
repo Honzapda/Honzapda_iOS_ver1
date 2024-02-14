@@ -7,10 +7,8 @@
 
 import Foundation
 import SwiftUI
-
+/*
 struct ShopDetailView: View {
-    @ObservedObject var vm = ShopDetailViewModel()
-    
     var body: some View {
         NavigationView{
             GeometryReader{
@@ -20,13 +18,10 @@ struct ShopDetailView: View {
                     .ignoresSafeArea(.container, edges: .top)
             }
        }
-        .onAppear{
-            vm.getShopDetailOnServer(shopId: 1)
-        }
     }
 }
 
 #Preview {
     ShopDetailView()
 }
-
+*/
