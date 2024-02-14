@@ -112,11 +112,15 @@ struct KakaoMapView: UIViewRepresentable {
         func poiTappedHandlerAdded(_ param: PoiInteractionEventParam) {
             homeViewModel.CardViewIsShowing.toggle()
           //  print(homeViewModel.CardViewIsShowing)
+          
             param.poiItem.changeStyle(styleID: "Selected", enableTransition: true)
-            print( "poi tapped \(param.poiItem.itemID)")
+            
+            print( "poi item \(param.poiItem.itemID) // type is \(type(of: param.poiItem.itemID))")
+           
             print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
+            
         
-            // param.poiItem.hide()
+       
         }
       
         //포이 생성
@@ -131,28 +135,37 @@ struct KakaoMapView: UIViewRepresentable {
             layer?.visible = true
             
             let poiOption1 = PoiOptions(styleID: "Unselected", poiID: "poi1")
-            poiOption1.rank = 0
+            poiOption1.rank = 1
             poiOption1.clickable = true
             let poiOption2 = PoiOptions(styleID: "Selected", poiID: "poi2")
-            poiOption2.rank = 0
+            poiOption2.rank = 2
             poiOption2.clickable = true
             let poiOptionMyPos = PoiOptions(styleID: "userPosition", poiID: "poiMyPos")
-            poiOption2.rank = 0
+            poiOption2.rank = 3
             poiOption2.clickable = false
             
 //            var poiMyPos = layer?.addPoi(option:poiOptionMyPos, at: MapPoint(longitude: locationManager.lon ?? 126.978365,latitude: locationManager.lat ?? 37.566691))
             var poiMyPos = layer?.addPoi(option:poiOptionMyPos, at: MapPoint(longitude: Double(lon)!,
                                                                              latitude: Double(lat)!))
             //Here!
-          //  var poiOptions : [PoiOptions] = [poiOption1, poiOption2]
+         
           //  var poisWithMultiOpt = layer?.addPois(options: poiOptions, at: mapPoints) //
             var pois = layer?.addPois(option: poiOption1, at: mapPoints)
+//
+//            poiArr.forEach { poiData in
+//                let poiId = poiData.id
+//                let poiMapPoint = poiData.mapPoint
+//                let newPoiOption = PoiOptions(styleID: "Unselected", poiID: String(poiId))
+//                var newPoi = layer?.addPoi(option: poiOption1, at: poiData.mapPoint)
+//                let _ = newPoi?.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
+//                
+//            }
             layer?.showAllPois()
-            
-            
             guard let pois = pois else { return }
             for poi in pois {
                 // 여기에서 poi 사용
+                print(poi.itemID)
+                
                 let _ = poi.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
             }
             

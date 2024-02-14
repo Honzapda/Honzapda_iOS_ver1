@@ -42,6 +42,7 @@ struct HomeView: View {
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
                     .ignoresSafeArea()
                     .onAppear {
+                        print("KM on appear")
                         homeViewModel.loadCafesAndDraw()
                    //     homeViewModel.kakaoCafeViewModel.fetchData()
                         homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)

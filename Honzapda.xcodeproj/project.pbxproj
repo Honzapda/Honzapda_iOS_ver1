@@ -122,7 +122,7 @@
 		190791D02B57AB3100F78D48 /* SCDream6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream6.otf; sourceTree = "<group>"; };
 		190791D12B57AB3100F78D48 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		190791D22B57AB3100F78D48 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
-		190791DC2B57ABA900F78D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		190791DC2B57ABA900F78D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190791DD2B57AC2300F78D48 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		1919357C2B56F38600396056 /* ColorCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
 		192005552B5C35D700CFB80D /* ShopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailView.swift; sourceTree = "<group>"; };
@@ -474,10 +474,10 @@
 		DD60012B2B46C0DD00DFEE98 /* Honzapda */ = {
 			isa = PBXGroup;
 			children = (
+				190791DC2B57ABA900F78D48 /* Info.plist */,
 				1980CD272B74C42F00ACF7FD /* Service */,
 				1980CD242B74B98200ACF7FD /* ViewModel */,
 				192005512B5C353600CFB80D /* Model */,
-				190791DC2B57ABA900F78D48 /* Info.plist */,
 				190791C82B57AAC500F78D48 /* Resource */,
 				1971AD552B51C2FF000053F1 /* View */,
 				DD60012C2B46C0DD00DFEE98 /* HonzapdaApp.swift */,
