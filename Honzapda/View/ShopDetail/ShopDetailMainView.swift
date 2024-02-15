@@ -7,34 +7,34 @@
 
 import Foundation
 import SwiftUI
-/*
+
 struct ShopDetailMainView: View{
     
+    @ObservedObject var vm: ShopDetailViewModel
+    
+    let shopId: Int
     var safeArea: EdgeInsets
     var size: CGSize
     
     var body: some View{
-
             ScrollView(.vertical, showsIndicators: false){
                 // MARK: Show Shop Image
                 VStack {
                     shopImage()
                     
                     // MARK: detailView
-                    
                     detailView()
                         .frame(width: size.width)
                         .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .zIndex(0)
-                     
                 }
                 .overlay(alignment: .top){
                     headerView()
                 }
             }
+            .navigationBarBackButtonHidden()
             .coordinateSpace(name: "SCROLL")
-
     }
     
     @ViewBuilder
@@ -46,7 +46,8 @@ struct ShopDetailMainView: View{
             let minY = proxy.frame(in: .named("SCROLL")).minY
             let progress = minY / (height * (minY > 0 ? 0.5 : 0.8 ))
             
-            Image(shops[0].photoUrls[0])
+            AsyncImage(url: getUrl(from: vm.shopDetail?.result.mainImage)) { image in
+                image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: size.width, height: size.height + 25 + (minY > 0 ? minY : 0))
@@ -55,53 +56,52 @@ struct ShopDetailMainView: View{
                     ZStack(alignment: .bottom){
                         // MARK: Gradient Overlay
                         Rectangle()
-                            .fill(
-                                .background.opacity(0)
-                            )
+                            .fill( .background.opacity(0))
                         HStack{
                             VStack(alignment:.leading){
                                 HStack(spacing: 16){
-                                    Text(shops[0].shopName)
+                                    Text(vm.shopDetail?.result.shopName ?? "")
                                         .font(Font.custom("S-CoreDream-6Bold", size: 22))
                                         .fontWeight(.bold)
                                         .foregroundStyle(.white)
                                     
-                                    if(shops[0].openNow){
-                                        Text("영업중")
-                                            .font(Font.custom("S-Core Dream", size: 8))
-                                            .foregroundColor(.white)
-                                            .padding([.top,.bottom], 8)
-                                            .padding(.horizontal)
-                                            .overlay(RoundedRectangle(cornerRadius: 15)
-                                                .stroke(.white, lineWidth: 1)
-                                            )
+                                    if let isOpen = vm.shopDetail?.result.openNow {
+                                        if isOpen == true {
+                                            Text("영업중")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .foregroundColor(.white)
+                                                .padding([.top,.bottom], 8)
+                                                .padding(.horizontal)
+                                                .overlay(RoundedRectangle(cornerRadius: 15)
+                                                    .stroke(.white, lineWidth: 1)
+                                                )
+                                        }
+                                        else{
+                                            Text("영업종료")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .foregroundColor(.white)
+                                                .padding([.top,.bottom], 8)
+                                                .padding(.horizontal)
+                                                .overlay(RoundedRectangle(cornerRadius: 15)
+                                                    .stroke(.white, lineWidth: 1)
+                                                )
+                                        }
                                     }
-                                    else{
-                                        Text("영업종료")
-                                            .font(Font.custom("S-Core Dream", size: 8))
-                                            .foregroundColor(.white)
-                                            .padding([.top,.bottom], 8)
-                                            .padding(.horizontal)
-                                            .overlay(RoundedRectangle(cornerRadius: 15)
-                                                .stroke(.white, lineWidth: 1)
-                                            )
-                                    }
+                                }
                                     
-                                }
-                                Text(shops[0].adress+" "+shops[0].adressSpec)
-                                    .font(Font.custom("S-Core Dream", size: 10))
-                                    .foregroundColor(CustomColors.white)
-                                
-                                HStack(spacing: 8){
-                                    Image("icon_phone")
-                                        .renderingMode(.template)
-                                        .frame(height: 12)
-                                    Text(shops[0].shopPhoneNumber)
+                                Text((vm.shopDetail?.result.address ?? "") + " " + (vm.shopDetail?.result.addressSpec ?? ""))
                                         .font(Font.custom("S-Core Dream", size: 10))
-                                }
+                                        .foregroundColor(CustomColors.white)
+                                    
+                                    HStack(spacing: 8){
+                                        Image("icon_phone")
+                                            .renderingMode(.template)
+                                            .frame(height: 12)
+                                        Text(vm.shopDetail?.result.shopPhoneNumber ?? "")
+                                            .font(Font.custom("S-Core Dream", size: 10))
+                                    }
+                                
                                 .foregroundStyle(CustomColors.white)
-                                
-                                
                             }
                             Spacer()
                             VStack(spacing: 8){
@@ -124,6 +124,9 @@ struct ShopDetailMainView: View{
                     }
                 })
                 .offset(y: -minY)
+            } placeholder: {
+                //ProgressView()
+            }
         }
         .frame(height: height + safeArea.top)
     }
@@ -141,18 +144,18 @@ struct ShopDetailMainView: View{
             
                             VStack{
                                 Image("icon_marker")
-                                Text("죽전역에서\n걸어서 8분")
+                                Text(vm.shopDetail?.result.stationDistance ?? "")
                             }
                             Spacer()
                             VStack{
                                 Image("icon_star")
-                                Text("평점\n"+String(format: "%.2f", shops[0].rating))
+                                Text("평점\n"+String(format: "%.2f", vm.shopDetail?.result.rating ?? 0))
                             }
                             Spacer()
                             VStack{
                                 Image("icon_paper")
                                 // MARK: review list 수정 필요
-                                Text("리뷰\n393")
+                                Text(String(vm.shopDetail?.result.reviewCount ?? 0))
                             }
                         }
                         .multilineTextAlignment(.center)
@@ -172,7 +175,8 @@ struct ShopDetailMainView: View{
                             .background(CustomColors.gray02)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay{
-                            Text(shops[0].description)
+                                Text(vm.shopDetail?.result.description ?? "")
+                                .multilineTextAlignment(.center)
                                 .font(Font.custom("S-CoreDream-5Medium", size: 10))
                                 .padding()
                         }
@@ -190,14 +194,14 @@ struct ShopDetailMainView: View{
                     .frame(minWidth: size.width)
                     .foregroundStyle(CustomColors.gray01)
                 
-                HelpInfoView()
-                    .padding(.vertical, 40)
+                //HelpInfoView()
+                //    .padding(.vertical, 40)
                 
                 Rectangle()
                     .frame(minWidth: size.width)
                     .foregroundStyle(CustomColors.gray01)
                 
-                ReviewView()
+                ReviewView(vm: self.vm)
                     .padding(.vertical, 40)
         }
         .padding(25)
@@ -237,7 +241,7 @@ struct ShopDetailMainView: View{
                         .padding(.trailing, 25)
                         .padding(.leading)
                         
-                        Text(shops[0].shopName)
+                        Text(vm.shopDetail?.result.shopName ?? "")
                             .font(Font.custom("S-Core Dream", size: 14))
                             .foregroundStyle(.black)
                             .padding(.vertical, 12)
@@ -273,12 +277,13 @@ struct ShopDetailMainView: View{
             .offset(y: -minY)
         }
     }
-}
-
     
-struct ShopDetailView_Previews: PreviewProvider{
-    static var previews: some View{
-        ShopDetailView()
+    func getUrl(from urlString: String?) -> URL? {
+        guard let urlString_ = urlString else { return nil}
+        
+            guard let url = URL(string: urlString_) else {
+              return nil
+            }
+        return url
     }
 }
-*/

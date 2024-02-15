@@ -1,3 +1,6 @@
+
+//가게 아이디 입력
+
 import SwiftUI
 import Combine
 
@@ -86,26 +89,8 @@ struct ResultData: Codable {
     let isLast: Bool
 }
 
-struct UserHelpInfo: Codable, Identifiable {
-    let user: User
-    let visitDateTime: String
-    let like: Like
-    let congestion: String
-    let deskSize, outletCount, light, outletLocation: String?
-    let restroomLocation, musicGenre, atmosphere: String?
-    let userHelpInfId: Int
-    let createdAt: String
-    
-    var id: Int { return userHelpInfId }
-}
 
-struct User: Codable {
-    let id: Int
-    let name: String
-    let profileImage: String?
-    let email: String?
-    let signUpType: String?
-}
+
 
 struct Like: Codable {
     let likeCount: Int

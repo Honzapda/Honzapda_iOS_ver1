@@ -7,21 +7,22 @@
 
 import Foundation
 import SwiftUI
-/*
+
 struct ShopDetailView: View {
+    @ObservedObject var vm: ShopDetailViewModel = ShopDetailViewModel()
+    let shopId: Int
+    
     var body: some View {
         NavigationView{
             GeometryReader{
                 let safeArea = $0.safeAreaInsets
                 let size = $0.size
-                ShopDetailMainView(safeArea: safeArea, size:size)
+                ShopDetailMainView(vm: vm, shopId: shopId, safeArea: safeArea, size:size)
                     .ignoresSafeArea(.container, edges: .top)
             }
        }
+        .onAppear{
+            vm.getShopDetailOnSrever(shopId: shopId)
+        }
     }
 }
-
-#Preview {
-    ShopDetailView()
-}
-*/

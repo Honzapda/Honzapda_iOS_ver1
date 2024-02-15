@@ -112,8 +112,8 @@ struct KakaoMapView: UIViewRepresentable {
         func poiTappedHandlerAdded(_ param: PoiInteractionEventParam) {
             homeViewModel.CardViewIsShowing.toggle()
           //  print(homeViewModel.CardViewIsShowing)
-            
-            print( "poi tapped \(homeViewModel.CardViewIsShowing)")
+            param.poiItem.changeStyle(styleID: "Selected", enableTransition: true)
+            print( "poi tapped \(param.poiItem.itemID)")
             print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
         
             // param.poiItem.hide()
@@ -144,7 +144,8 @@ struct KakaoMapView: UIViewRepresentable {
             var poiMyPos = layer?.addPoi(option:poiOptionMyPos, at: MapPoint(longitude: Double(lon)!,
                                                                              latitude: Double(lat)!))
             //Here!
-            
+          //  var poiOptions : [PoiOptions] = [poiOption1, poiOption2]
+          //  var poisWithMultiOpt = layer?.addPois(options: poiOptions, at: mapPoints) //
             var pois = layer?.addPois(option: poiOption1, at: mapPoints)
             layer?.showAllPois()
             

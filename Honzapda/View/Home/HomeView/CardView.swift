@@ -64,9 +64,7 @@ struct CardView: View {
                             Text(dataset.discription!)
                                 .font(Font.custom("S-CoreDream-5Medium", size: 8))
                                 .foregroundColor(Color(red: 0.96, green: 0.96, blue: 0.96))
-                                .onAppear(){
-                                    print(dataset.discription!)
-                                }
+                              
                             Spacer()
                             
                             Button {
@@ -126,9 +124,7 @@ struct CardView: View {
                     (Text(dataset.placeName!) + Text("의 정보 >"))
                         .font(Font.custom("S-Core Dream", size: 10))
                         .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                        .onAppear(){
-                            print(dataset.placeName!)
-                        }
+                        
                     Spacer()
                 }
                 .padding(.leading)
@@ -162,9 +158,7 @@ struct CardView: View {
                             .font(Font.custom("S-Core Dream", size: 7))
                             .multilineTextAlignment(.center)
                             .foregroundColor(Color(red: 0.21, green: 0.23, blue: 0.64))
-                            .onAppear(){
-                                print(dataset.rating!)
-                            }
+                            
                         
                     }
                     .padding()
@@ -181,9 +175,7 @@ struct CardView: View {
                             .font(Font.custom("S-Core Dream", size: 7))
                             .multilineTextAlignment(.center)
                             .foregroundColor(Color(red: 0.21, green: 0.23, blue: 0.64))
-                            .onAppear(){
-                                print(dataset.reviewCount!)
-                            }
+                            
                     }
                     .padding()
                 }
