@@ -35,7 +35,7 @@ struct ApplicationSwitcher: View {
                 CafeTasteView()
             }
             else {
-                MainTapView()
+                ShopDetailView(shopId: 1)
             }
         }
         else {
