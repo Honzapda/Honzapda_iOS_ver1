@@ -211,7 +211,7 @@ struct CafeTasteView: View {
                         NavigationLink(destination: MainTapView(), isActive: $isNavigationActive) {
                             Button (action: {
                                 print("취향 생성 완료하기")
-                                userStateViewModel.selectedTaste = true
+//                                userStateViewModel.selectedTaste = true
                                 isNavigationActive.toggle()
                             }){
                                 Text("취향 생성 완료하기")
@@ -237,7 +237,6 @@ struct CafeTasteView: View {
                     }
                 }
             }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-100)
-               
         }
         .navigationBarBackButtonHidden()
     }
