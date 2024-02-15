@@ -20,9 +20,8 @@
 import Foundation
 import SwiftUI
 
-struct HelpInfoWriteView: View {
+struct HelpInfoWriteView: View  {
     @Environment(\.dismiss) private var dismiss
-    
     @State private var datePickerIsTapped = false
     @State private var selectedDate = Date()
     @State  var ans_congestion : String = ""
@@ -33,6 +32,18 @@ struct HelpInfoWriteView: View {
     @State  var ans_restroomLocation : String = ""
     @State  var ans_musicGenre : String = ""
     @State  var ans_atmosphere : String = ""
+    private var shopId : Int
+    private var formatter : DateFormatter
+   
+    let buttonAns1 : [String] = ["large", "medium", "small", "none"]
+    let buttonAns2 : [String] = ["enough", "adequate", "lack","none"]
+    let buttonAns3 : [String] = ["bright", "adequate", "dark","none"]
+    let congestionPercent : [String] = ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]
+    init (ShopId : Int){
+        shopId = ShopId
+        formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+    }
     var ansAllInput: Bool {
         // 모든 필드가 채워져 있어야 true를 반환합니다.
         !ans_congestion.isEmpty &&
@@ -43,9 +54,8 @@ struct HelpInfoWriteView: View {
         !ans_restroomLocation.isEmpty &&
         !ans_musicGenre.isEmpty &&
         !ans_atmosphere.isEmpty &&
-        !datePickerIsTapped
+        datePickerIsTapped
     }
-    
     
     //  var answerContainer : UserHelpInfo
     
@@ -69,7 +79,81 @@ struct HelpInfoWriteView: View {
                                 Text ("등록해주시는 정보는 다른 유저들에게 큰 힘이 돼요! \n최대한 정확하게 작성해주세요 :)")
                                     .font(Font.custom("S-Core Dream", size: 9))
                                     .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
-                                ZStack{
+                                
+                                //con
+                                ZStack{//congestion
+                                    Rectangle()
+                                        .foregroundColor(.clear)
+                                        .frame(width: 345, height: 119)
+                                        .background(Color(red: 0.96, green: 0.96, blue: 0.95))
+                                        .cornerRadius(12)
+                                    
+                                    VStack(alignment: .leading, spacing: 25){
+                                        Text ("Q. 카페가 얼마나 혼잡한가요?")
+                                            .font(Font.custom("S-Core Dream", size: 12))
+                                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                                        HStack{
+                                        
+                                            ForEach(congestionPercent, id: \.self){ percent in
+                                                
+                                                Button {
+                                                    ans_congestion = percent
+                                                } label: {
+                                                    if ans_congestion == percent{
+                                                        Image(systemName: "circle.inset.filled")
+                                                            .frame(width: 5, height: 5)
+                                                            .foregroundColor(CustomColors.primary05)
+                                                            .padding(.trailing, -3)
+                                                        
+                                                    }
+                                                    else{
+                                                        Image(systemName: "circle")
+                                                            .frame(width: 5, height: 5)
+                                                            .foregroundColor(CustomColors.primary05)
+                                                            .padding(.trailing, -3)
+
+                                                    }
+                                                }
+                                                if(percent != "100"){
+                                                    Rectangle().frame(width: 12, height: 1)
+                                                        .foregroundStyle(CustomColors.primary05)
+                                                        .padding(.trailing, -3)
+
+                                                    
+                                                }
+
+                                            }
+                                        }
+                                        HStack{
+                                            Button {
+                                                ans_deskSize = "none"
+                                            } label: {
+                                                if ans_deskSize == "none"{
+                                                    Image(systemName: "circle.inset.filled")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
+                                            }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                        }
+                                        
+                                    }
+                                }
+                                
+                                
+                                
+                                
+                                
+                                
+                                ZStack{//desksize
                                     Rectangle()
                                         .foregroundColor(.clear)
                                         .frame(width: 345, height: 119)
@@ -83,43 +167,58 @@ struct HelpInfoWriteView: View {
                                             .padding(.bottom, 10)
                                         HStack{
                                             Button {
-                                                
+                                                ans_deskSize = buttonAns1[0]
                                             }label: {
-                                                
-                                                ButtonLabelCreater(title: "넓었어요")
-                                                
+                                                if(ans_deskSize == buttonAns1[0]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns1[0])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns1[0])
+                                                }
+                                            }
+                                            
+                                            Button {
+                                                ans_deskSize = buttonAns1[1]
+                                            }label: {
+                                                if(ans_deskSize == buttonAns1[1]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns1[1])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns1[1])
+                                                }
                                             }
                                             Button {
-                                                
+                                                ans_deskSize = buttonAns1[2]
                                             }label: {
-                                                ButtonLabelCreater(title: "적당했어요")
-                                            }
-                                            Button {
-                                                
-                                            }label: {
-                                                ButtonLabelCreater(title: "부족했어요")
+                                                if(ans_deskSize == buttonAns1[2]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns1[2])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns1[2])
+                                                }
                                             }
                                             
                                         }
                                         .padding(.bottom, 16)
-                                        Button {
-                                            
-                                        } label: {
-                                            HStack{
-                                                Button {
-                                                    
-                                                } label: {
-                                                    Image(systemName: "circle")
+                                        HStack{
+                                            Button {
+                                                ans_deskSize = "기억나지 않아요"
+                                            } label: {
+                                                if ans_deskSize == "기억나지 않아요"{
+                                                    Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
-                                                    
                                                 }
-                                                
-                                                Text("기억나지 않아요")
-                                                    .font(Font.custom("S-Core Dream", size: 8))
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
                                             }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
                                         }
                                         
                                     }
@@ -128,7 +227,7 @@ struct HelpInfoWriteView: View {
                                 }//zstackend
                                 
                                 
-                                ZStack{
+                                ZStack{ // outletcount
                                     Rectangle()
                                         .foregroundColor(.clear)
                                         .frame(width: 345, height: 119)
@@ -142,43 +241,57 @@ struct HelpInfoWriteView: View {
                                             .padding(.bottom, 10)
                                         HStack{
                                             Button {
-                                                
+                                                ans_outletCount = buttonAns2[0]
                                             }label: {
-                                                // if(ans_outletCount == "넉넉했어요")
-                                                ButtonLabelCreater(title: "넉넉했어요")
-                                                
+                                                if(ans_outletCount == buttonAns2[0]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns2[0])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns2[0])
+                                                }
                                             }
                                             Button {
-                                                
+                                                ans_outletCount = buttonAns2[1]
                                             }label: {
-                                                ButtonLabelCreater(title: "적당했어요")
+                                                if(ans_outletCount == buttonAns2[1]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns2[1])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns2[1])
+                                                }
                                             }
                                             Button {
-                                                
+                                                ans_outletCount = buttonAns2[2]
                                             }label: {
-                                                ButtonLabelCreater(title: "부족했어요")
+                                                if(ans_outletCount == buttonAns2[2]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns2[2])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns2[2])
+                                                }
                                             }
                                             
                                         }
                                         .padding(.bottom, 16)
-                                        Button {
-                                            
-                                        } label: {
-                                            HStack{
-                                                Button {
-                                                    
-                                                } label: {
-                                                    Image(systemName: "circle")
+                                        HStack{
+                                            Button {
+                                                ans_outletCount = "기억나지 않아요"
+                                            } label: {
+                                                if ans_outletCount == "기억나지 않아요"{
+                                                    Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
-                                                    
                                                 }
-                                                
-                                                Text("기억나지 않아요")
-                                                    .font(Font.custom("S-Core Dream", size: 8))
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
                                             }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
                                         }
                                         
                                     }
@@ -219,27 +332,28 @@ struct HelpInfoWriteView: View {
                                                 .font(Font.custom("S-Core Dream", size: 10))
                                                 .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
                                             
-                                            
                                         }
                                         .padding(.bottom, 16)
-                                        Button {
-                                            
-                                        } label: {
-                                            HStack{
-                                                Button {
-                                                    
-                                                } label: {
-                                                    Image(systemName: "circle")
+                                        
+                                        HStack{
+                                            Button {
+                                                ans_outletLocation = "기억나지 않아요"
+                                            } label: {
+                                                if ans_outletLocation == "기억나지 않아요"{
+                                                    Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
-                                                    
                                                 }
-                                                
-                                                Text("기억나지 않아요")
-                                                    .font(Font.custom("S-Core Dream", size: 8))
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
                                             }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
                                         }
                                         
                                     }
@@ -282,24 +396,25 @@ struct HelpInfoWriteView: View {
                                             
                                         }
                                         .padding(.bottom, 16)
-                                        Button {
-                                            
-                                        } label: {
-                                            HStack{
-                                                Button {
-                                                    
-                                                } label: {
-                                                    Image(systemName: "circle")
+                                        HStack{
+                                            Button {
+                                                ans_restroomLocation = "기억나지 않아요"
+                                            } label: {
+                                                if ans_restroomLocation == "기억나지 않아요"{
+                                                    Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
-                                                    
                                                 }
-                                                
-                                                Text("기억나지 않아요")
-                                                    .font(Font.custom("S-Core Dream", size: 8))
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
                                             }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
                                         }
                                         
                                     }
@@ -323,7 +438,7 @@ struct HelpInfoWriteView: View {
                                                 .font(Font.custom("S-Core Dream", size: 10))
                                                 .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
                                             VStack{
-                                                TextField ("ex) 케이팝, 재즈", text : $ans_restroomLocation)
+                                                TextField ("ex) 케이팝, 재즈", text : $ans_musicGenre)
                                                     .font(Font.custom("S-Core Dream", size: 10))
                                                     .multilineTextAlignment(.center)
                                                     .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
@@ -341,24 +456,25 @@ struct HelpInfoWriteView: View {
                                             
                                         }
                                         .padding(.bottom, 16)
-                                        Button {
-                                            
-                                        } label: {
-                                            HStack{
-                                                Button {
-                                                    
-                                                } label: {
-                                                    Image(systemName: "circle")
+                                        HStack{
+                                            Button {
+                                                ans_musicGenre = "기억나지 않아요"
+                                            } label: {
+                                                if ans_musicGenre == "기억나지 않아요"{
+                                                    Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
-                                                    
                                                 }
-                                                
-                                                Text("기억나지 않아요")
-                                                    .font(Font.custom("S-Core Dream", size: 8))
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
                                             }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
                                         }
                                         
                                     }
@@ -379,42 +495,57 @@ struct HelpInfoWriteView: View {
                                             .padding(.bottom, 10)
                                         HStack{
                                             Button {
-                                                
+                                                ans_light = buttonAns3[0]
                                             }label: {
-                                                ButtonLabelCreater(title: "밝았어요")
-                                                
+                                                if(ans_light == buttonAns3[0]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns3[0])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns3[0])
+                                                }
                                             }
                                             Button {
-                                                
+                                                ans_light = buttonAns3[1]
                                             }label: {
-                                                ButtonLabelCreater(title: "적당했어요")
+                                                if(ans_light == buttonAns3[1]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns3[1])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns3[1])
+                                                }
                                             }
                                             Button {
-                                                
+                                                ans_light = buttonAns3[2]
                                             }label: {
-                                                ButtonLabelCreater(title: "어두웠어요")
+                                                if(ans_light == buttonAns3[2]){
+                                                    ButtonLabelCreaterChosen(title: buttonAns3[2])
+                                                }
+                                                else{
+                                                    ButtonLabelCreater(title: buttonAns3[2])
+                                                }
                                             }
                                             
                                         }
                                         .padding(.bottom, 16)
-                                        Button {
-                                            
-                                        } label: {
-                                            HStack{
-                                                Button {
-                                                    
-                                                } label: {
-                                                    Image(systemName: "circle")
+                                        HStack{
+                                            Button {
+                                                ans_light = "기억나지 않아요"
+                                            } label: {
+                                                if ans_light == "기억나지 않아요"{
+                                                    Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
-                                                    
                                                 }
-                                                
-                                                Text("기억나지 않아요")
-                                                    .font(Font.custom("S-Core Dream", size: 8))
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
                                             }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
                                         }
                                         
                                     }
@@ -437,7 +568,7 @@ struct HelpInfoWriteView: View {
                                         HStack{
                                             
                                             VStack{
-                                                TextField ("ex) 조용한", text : $ans_restroomLocation)
+                                                TextField ("ex) 조용한", text : $ans_atmosphere)
                                                     .font(Font.custom("S-Core Dream", size: 10))
                                                     .multilineTextAlignment(.center)
                                                     .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
@@ -455,24 +586,25 @@ struct HelpInfoWriteView: View {
                                             
                                         }
                                         .padding(.bottom, 16)
-                                        Button {
-                                            
-                                        } label: {
-                                            HStack{
-                                                Button {
-                                                    
-                                                } label: {
-                                                    Image(systemName: "circle")
+                                        HStack{
+                                            Button {
+                                                ans_atmosphere = "기억나지 않아요"
+                                            } label: {
+                                                if ans_atmosphere == "기억나지 않아요"{
+                                                    Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
-                                                    
                                                 }
-                                                
-                                                Text("기억나지 않아요")
-                                                    .font(Font.custom("S-Core Dream", size: 8))
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
+                                                else {Image(systemName: "circle")
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(CustomColors.primary05)
+                                                }
                                             }
+                                            
+                                            Text("기억나지 않아요")
+                                                .font(Font.custom("S-Core Dream", size: 8))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.24))
                                         }
                                         
                                     }
@@ -495,8 +627,22 @@ struct HelpInfoWriteView: View {
                     .overlay(alignment: .top){
                         headerView()
                     }
+                    // @Environment(\.dismiss) private var dismiss
+                    
+                    //                    @State private var datePickerIsTapped = false
+                    //                    @State private var selectedDate = Date()
+                    //                    @State  var ans_congestion : String = ""
+                    //                    @State  var ans_deskSize : String = ""
+                    //                    @State  var ans_outletLocation : String = ""
+                    //                    @State  var ans_outletCount : String = ""
+                    //                    @State  var ans_light : String = ""
+                    //                    @State  var ans_restroomLocation : String = ""
+                    //                    @State  var ans_musicGenre : String = ""
+                    //                    @State  var ans_atmosphere : String = ""
+                    //                    private var shopId : Int
                     Button {
                         print("ans sender tapped")
+                        postUserHelpInfo(shopId:shopId, visitDateTime: formatter.string(from: selectedDate), congestion: ans_congestion, deskSize: ans_deskSize, outletCount: ans_outletCount, light: ans_light, outletLocation: ans_outletLocation, restroomLocation: ans_restroomLocation, musicGenre: ans_musicGenre, atmosphere: ans_atmosphere, imageUrls: ["String"])
                     } label: {
                         if ansAllInput {
                             
@@ -756,15 +902,10 @@ struct ButtonQuestion {
 
 
 
+//
+//struct HelpInfoWriteView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HelpInfoWriteView(ans_congestion: "1", ans_deskSize: "1", ans_outletLocation: "1", ans_outletCount: "1", ans_light: "1", ans_restroomLocation: "1", ans_musicGenre: "1", ans_atmosphere: "1")
+//    }
+//}
 
-@ViewBuilder
-//string
-func ButtonQuestionCreater (question : String, ans1 : String, ans2 : String, ans3 : String, ansTarget : String) -> some View{
-    
-}
-
-struct HelpInfoWriteView_Previews: PreviewProvider {
-    static var previews: some View {
-        HelpInfoWriteView(ans_congestion: "1", ans_deskSize: "1", ans_outletLocation: "1", ans_outletCount: "1", ans_light: "1", ans_restroomLocation: "1", ans_musicGenre: "1", ans_atmosphere: "1")
-    }
-}

@@ -35,6 +35,33 @@ struct User: Codable {
     let signUpType: String?
 }
 
+// Define your models to parse the JSON response
+struct APIResponse: Codable {
+    let isSuccess: Bool
+    let code: String
+    let message: String
+    let result: ResultData
+}
+
+struct ResultData: Codable {
+    let userHelpInfoDtoList: [UserHelpInfo]
+    let listSize: Int
+    let totalPage: Int
+    let currentPage: Int
+    let totalElements: Int
+    let isFirst: Bool
+    let isLast: Bool
+}
+
+
+
+
+struct Like: Codable {
+    let likeCount: Int
+    let userLike: Bool
+}
+
+
 //커스텀 - 희주꺼
 //struct UserHelpInfo: Identifiable{
 //    var id=UUID()

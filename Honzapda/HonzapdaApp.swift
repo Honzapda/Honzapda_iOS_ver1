@@ -32,7 +32,8 @@ struct ApplicationSwitcher: View {
     var body: some View {
         if vm.isLoggedIn {
             if vm.selectedTaste == false{
-                CafeTasteView()
+            //    HelpInfoWriteView(ShopId: 1)
+                HelpInfoWriteView(ShopId: 1)
             }
             else {
                 MainTapView()
