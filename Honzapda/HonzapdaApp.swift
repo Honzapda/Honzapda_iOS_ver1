@@ -11,6 +11,7 @@ import SwiftUI
 struct HonzapdaApp: App {
     
     @StateObject var userStateViewModel = UserStateViewModel()
+    let shopViewModel = ShopViewModel()
     
     var body: some Scene {
         WindowGroup{
@@ -21,6 +22,7 @@ struct HonzapdaApp: App {
             }
             .navigationViewStyle(.stack)
             .environmentObject(userStateViewModel)
+            .environmentObject(shopViewModel)
              
         }
     }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0505FE502B7C888100114C7A /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0505FE4F2B7C888100114C7A /* SearchResultsView.swift */; };
+		0505FE542B7C890600114C7A /* ShopSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0505FE532B7C890600114C7A /* ShopSearch.swift */; };
+		0595C29E2B7CCBB300F5EFE6 /* SearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595C29D2B7CCBB300F5EFE6 /* SearchDetailView.swift */; };
+		0595C2A02B7D305A00F5EFE6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595C29F2B7D305A00F5EFE6 /* SearchViewModel.swift */; };
+		0595C2A32B7D51FA00F5EFE6 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0595C2A22B7D51FA00F5EFE6 /* URLImage */; };
+		0595C2A52B7D51FA00F5EFE6 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 0595C2A42B7D51FA00F5EFE6 /* URLImageStore */; };
 		16472AA8DED336080741E7DA /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		190625972B7D2F4800549D94 /* AverageCongestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190625962B7D2F4800549D94 /* AverageCongestion.swift */; };
 		190625992B7D2F5400549D94 /* DayCongestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190625982B7D2F5400549D94 /* DayCongestion.swift */; };
@@ -85,6 +91,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0505FE4F2B7C888100114C7A /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		0505FE532B7C890600114C7A /* ShopSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSearch.swift; sourceTree = "<group>"; };
+		0595C29D2B7CCBB300F5EFE6 /* SearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailView.swift; sourceTree = "<group>"; };
+		0595C29F2B7D305A00F5EFE6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1397630C6448EE408F849471 /* Pods-Honzapda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honzapda.release.xcconfig"; path = "Target Support Files/Pods-Honzapda/Pods-Honzapda.release.xcconfig"; sourceTree = "<group>"; };
 		190625962B7D2F4800549D94 /* AverageCongestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageCongestion.swift; sourceTree = "<group>"; };
 		190625982B7D2F5400549D94 /* DayCongestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCongestion.swift; sourceTree = "<group>"; };
@@ -170,7 +180,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0595C2A52B7D51FA00F5EFE6 /* URLImageStore in Frameworks */,
 				16472AA8DED336080741E7DA /* (null) in Frameworks */,
+				0595C2A32B7D51FA00F5EFE6 /* URLImage in Frameworks */,
 				F906C9C1F012689838A02DE5 /* Pods_Honzapda.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +190,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0505FE4E2B7C886400114C7A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0505FE4F2B7C888100114C7A /* SearchResultsView.swift */,
+				0595C29D2B7CCBB300F5EFE6 /* SearchDetailView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		190791C82B57AAC500F78D48 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +237,7 @@
 				BB1805402B719DE600B27333 /* ReviewImage.swift */,
 				19F56C172B74F0C500BC5BB6 /* UserLogin.swift */,
 				19B3BF752B77EF2B0063EB35 /* ShopDetail.swift */,
+				0505FE532B7C890600114C7A /* ShopSearch.swift */,
 				190625962B7D2F4800549D94 /* AverageCongestion.swift */,
 				190625982B7D2F5400549D94 /* DayCongestion.swift */,
 			);
@@ -239,6 +261,7 @@
 		1971AD552B51C2FF000053F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0505FE4E2B7C886400114C7A /* Search */,
 				BB1805552B788DEF00B27333 /* UserFeedback */,
 				1980CD2A2B74C89200ACF7FD /* HelpInfoWrite */,
 				19C48FF72B7113B7005FC902 /* ReviewWrite */,
@@ -259,6 +282,7 @@
 			children = (
 				1980CD252B74C0A400ACF7FD /* ReviewViewModel.swift */,
 				19B3BF702B77BF810063EB35 /* UserStateViewModel.swift */,
+				0595C29F2B7D305A00F5EFE6 /* SearchViewModel.swift */,
 				1906259A2B7D300600549D94 /* ShopDetailViewModel.swift */,
 			);
 			path = ViewModel;
@@ -465,6 +489,10 @@
 			dependencies = (
 			);
 			name = Honzapda;
+			packageProductDependencies = (
+				0595C2A22B7D51FA00F5EFE6 /* URLImage */,
+				0595C2A42B7D51FA00F5EFE6 /* URLImageStore */,
+			);
 			productName = Honzapda;
 			productReference = DD6001292B46C0DD00DFEE98 /* Honzapda.app */;
 			productType = "com.apple.product-type.application";
@@ -493,6 +521,9 @@
 				Base,
 			);
 			mainGroup = DD6001202B46C0DD00DFEE98;
+			packageReferences = (
+				0595C2A12B7D51FA00F5EFE6 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = DD60012A2B46C0DD00DFEE98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -596,6 +627,7 @@
 				BB1805642B78A7ED00B27333 /* UserFeedbackUnlikeAPI.swift in Sources */,
 				BB1927D72B7183BF00A07824 /* CafeCardViewSetup.swift in Sources */,
 				19C48FF92B7113C9005FC902 /* ImagePicker.swift in Sources */,
+				0595C2A02B7D305A00F5EFE6 /* SearchViewModel.swift in Sources */,
 				BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */,
 				BB1927DE2B7183D700A07824 /* GetCafeFromKakaoMap.swift in Sources */,
 				190791C22B579CEC00F78D48 /* SearchView.swift in Sources */,
@@ -609,6 +641,7 @@
 				19B3BF712B77BF810063EB35 /* UserStateViewModel.swift in Sources */,
 				BB18055E2B788FF700B27333 /* UserFeedbackGetAPI.swift in Sources */,
 				1980CD262B74C0A400ACF7FD /* ReviewViewModel.swift in Sources */,
+				0505FE542B7C890600114C7A /* ShopSearch.swift in Sources */,
 				192005562B5C35D700CFB80D /* ShopDetailView.swift in Sources */,
 				BB1805682B7BD25100B27333 /* UserFeedBackModel.swift in Sources */,
 				BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */,
@@ -617,6 +650,7 @@
 				BB1927E12B7183D700A07824 /* GetPosition.swift in Sources */,
 				190625992B7D2F5400549D94 /* DayCongestion.swift in Sources */,
 				19995B6D2B604F9A00A73023 /* DensityInfo.swift in Sources */,
+				0595C29E2B7CCBB300F5EFE6 /* SearchDetailView.swift in Sources */,
 				BB1927E02B7183D700A07824 /* GetCafeFromServer.swift in Sources */,
 				1919357D2B56F38600396056 /* ColorCollection.swift in Sources */,
 				BB1927DF2B7183D700A07824 /* KMSetup.swift in Sources */,
@@ -633,6 +667,7 @@
 				BB1927D82B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift in Sources */,
 				BB1805512B77EB3900B27333 /* PostAndDeleteCafeSave.swift in Sources */,
 				19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */,
+				0505FE502B7C888100114C7A /* SearchResultsView.swift in Sources */,
 				BB1805602B789EAF00B27333 /* UserFeedbackCellView.swift in Sources */,
 				BB1805362B71936000B27333 /* CafeTasteView.swift in Sources */,
 				1980CD292B74C43D00ACF7FD /* WebService.swift in Sources */,
@@ -783,7 +818,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Honzapda/Preview Content\"";
-				DEVELOPMENT_TEAM = 2DF5SKQK2R;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Honzapda/Info.plist;
@@ -817,7 +852,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Honzapda/Preview Content\"";
-				DEVELOPMENT_TEAM = 2DF5SKQK2R;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Honzapda/Info.plist;
@@ -864,6 +899,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0595C2A12B7D51FA00F5EFE6 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0595C2A22B7D51FA00F5EFE6 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0595C2A12B7D51FA00F5EFE6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		0595C2A42B7D51FA00F5EFE6 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0595C2A12B7D51FA00F5EFE6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DD6001212B46C0DD00DFEE98 /* Project object */;
 }
