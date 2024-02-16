@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-/*
+
 struct ReviewWriteView: View {
     @Environment(\.dismiss) private var dismiss
     
@@ -25,6 +25,8 @@ struct ReviewWriteView: View {
     @State private var cameraIsPresented = false
     
     @State private var reviewSaved = false
+    
+    let shopName: String
     
     var body: some View{
         NavigationView{
@@ -64,11 +66,11 @@ struct ReviewWriteView: View {
                                     return myDateFormatter.string(from: selectedDate)
                                 }
                                 
-                                let newReview = Review(profile: Image("로고"), name: "사용자", rating: selectedRating, visitDate: date, reviewBody: reviewBody, reviewImage: selectedPhotos)
+                                //let newReview = Review(profile: Image("로고"), name: "사용자", rating: selectedRating, visitDate: date, reviewBody: reviewBody, reviewImage: selectedPhotos)
                                 
-                                reviews.append(newReview)
-                                print(reviews.count)
-                                reviewSaved = true
+                                //reviews.append(newReview)
+                                //print(reviews.count)
+                                //reviewSaved = true
                             }
                         } label: {
                             if(selectedRating > 0) && (reviewBody.count > 0) {
@@ -129,7 +131,7 @@ struct ReviewWriteView: View {
                 .padding(.leading)
                 //.padding(.vertical, 0)
                 
-                Text(shops[0].shopName)
+                Text(shopName)
                     .font(Font.custom("S-Core Dream", size: 14))
                     .foregroundStyle(.black)
                     .padding(.vertical, 12)
@@ -370,7 +372,3 @@ struct ReviewWriteView: View {
     }
 }
 
-#Preview {
-    ReviewWriteView()
-}
-*/
