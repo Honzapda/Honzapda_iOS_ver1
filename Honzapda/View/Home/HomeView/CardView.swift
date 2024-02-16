@@ -85,7 +85,7 @@ struct CardView: View {
                                 VStack{
                                     if savedChecker{
                                         Image("Flag")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(CustomColors.primary05)
                                     }
                                     else{
                                         Image("Flag")

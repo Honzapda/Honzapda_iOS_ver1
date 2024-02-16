@@ -11,6 +11,7 @@ import SwiftUI
 struct HonzapdaApp: App {
     
     @StateObject var userStateViewModel = UserStateViewModel()
+   // @ObservedObject var homeViewModel = HomeViewModel()
     let shopViewModel = ShopViewModel()
     
     var body: some Scene {
@@ -18,11 +19,12 @@ struct HonzapdaApp: App {
             
             
             NavigationView{
-                ApplicationSwitcher()
+                UserHelpInfoView()
             }
             .navigationViewStyle(.stack)
             .environmentObject(userStateViewModel)
             .environmentObject(shopViewModel)
+            //.environmentObject(homeViewModel)
              
         }
     }
