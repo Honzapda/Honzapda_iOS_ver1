@@ -131,10 +131,12 @@ func createIntegratedCafe(fromHonzapda honzapdaCafe: HonzapdaCafe) -> Integrated
         cafeImage: honzapdaCafe.photoUrl,
         phoneCall: honzapdaCafe.shopPhoneNumber,
         discription: honzapdaCafe.description,
+        posFromStation: (honzapdaCafe.posFromStation),
         rating: String(honzapdaCafe.rating!),
         reviewCount: String(honzapdaCafe.reviewCount!),
         x: String(honzapdaCafe.x!),
-        y: String(honzapdaCafe.y!)
+        y: String(honzapdaCafe.y!),
+        densityOfDays : (honzapdaCafe.densityOfDays)
     )
 }
 
