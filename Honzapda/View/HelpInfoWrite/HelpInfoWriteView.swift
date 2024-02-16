@@ -34,10 +34,13 @@ struct HelpInfoWriteView: View  {
     @State  var ans_atmosphere : String = ""
     private var shopId : Int
     private var formatter : DateFormatter
-   
-    let buttonAns1 : [String] = ["large", "medium", "small", "none"]
-    let buttonAns2 : [String] = ["enough", "adequate", "lack","none"]
-    let buttonAns3 : [String] = ["bright", "adequate", "dark","none"]
+    
+//    let buttonAns1 : [String] = ["large", "medium", "small", "none"]
+//    let buttonAns2 : [String] = ["enough", "adequate", "lack","none"]
+//    let buttonAns3 : [String] = ["bright", "adequate", "dark","none"]
+    let buttonAns1 : [String] = ["넓었어요", "적당했어요", "작았어요", "none"]
+    let buttonAns2 : [String] = ["넉넉했어요", "적당했어요", "부족했어요","none"]
+    let buttonAns3 : [String] = ["밝았어요", "적당했어요", "어두웠어요","none"]
     let congestionPercent : [String] = ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]
     init (ShopId : Int){
         shopId = ShopId
@@ -56,6 +59,18 @@ struct HelpInfoWriteView: View  {
         !ans_atmosphere.isEmpty &&
         datePickerIsTapped
     }
+    private func dateStringChanger(date: Date)  -> String{
+        let dateFormatter = DateFormatter()
+        // 한국 시간대로 DateFormatter의 TimeZone 설정
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        // 출력 포맷 설정
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        
+        // 입력받은 Date를 한국 시간 문자열로 변환
+        let kstDateString = dateFormatter.string(from: date)
+        print("KST Date String: \(kstDateString)")
+        return kstDateString
+    }
     
     //  var answerContainer : UserHelpInfo
     
@@ -69,6 +84,7 @@ struct HelpInfoWriteView: View  {
                                 datePickerView()
                                     .onChange(of: selectedDate) { _ in
                                         datePickerIsTapped = true
+                                        print(selectedDate)
                                     }
                             }//1stvstckend
                             
@@ -79,6 +95,7 @@ struct HelpInfoWriteView: View  {
                                 Text ("등록해주시는 정보는 다른 유저들에게 큰 힘이 돼요! \n최대한 정확하게 작성해주세요 :)")
                                     .font(Font.custom("S-Core Dream", size: 9))
                                     .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
+                                    .padding(.bottom, 20)
                                 
                                 //con
                                 ZStack{//congestion
@@ -93,42 +110,43 @@ struct HelpInfoWriteView: View  {
                                             .font(Font.custom("S-Core Dream", size: 12))
                                             .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
                                         HStack{
-                                        
+                                            
                                             ForEach(congestionPercent, id: \.self){ percent in
                                                 
                                                 Button {
                                                     ans_congestion = percent
+                                                    print(ans_congestion , " Chosen")
                                                 } label: {
                                                     if ans_congestion == percent{
                                                         Image(systemName: "circle.inset.filled")
-                                                            .frame(width: 5, height: 5)
+                                                            .frame(width: 10, height: 10)
                                                             .foregroundColor(CustomColors.primary05)
                                                             .padding(.trailing, -3)
                                                         
                                                     }
                                                     else{
                                                         Image(systemName: "circle")
-                                                            .frame(width: 5, height: 5)
+                                                            .frame(width: 10, height: 10)
                                                             .foregroundColor(CustomColors.primary05)
                                                             .padding(.trailing, -3)
-
+                                                        
                                                     }
                                                 }
                                                 if(percent != "100"){
-                                                    Rectangle().frame(width: 12, height: 1)
+                                                    Rectangle().frame(width:10, height: 1)
                                                         .foregroundStyle(CustomColors.primary05)
                                                         .padding(.trailing, -3)
-
+                                                    
                                                     
                                                 }
-
+                                                
                                             }
                                         }
                                         HStack{
                                             Button {
-                                                ans_deskSize = "none"
+                                                ans_congestion = "none"
                                             } label: {
-                                                if ans_deskSize == "none"{
+                                                if ans_congestion == "none"{
                                                     Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
@@ -146,6 +164,7 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
+                                    .frame(width: 345-40, alignment: .leading)
                                 }
                                 
                                 
@@ -153,7 +172,7 @@ struct HelpInfoWriteView: View  {
                                 
                                 
                                 
-                                ZStack{//desksize
+                                ZStack(){//desksize
                                     Rectangle()
                                         .foregroundColor(.clear)
                                         .frame(width: 345, height: 119)
@@ -202,9 +221,9 @@ struct HelpInfoWriteView: View  {
                                         .padding(.bottom, 16)
                                         HStack{
                                             Button {
-                                                ans_deskSize = "기억나지 않아요"
+                                                ans_deskSize = "none"
                                             } label: {
-                                                if ans_deskSize == "기억나지 않아요"{
+                                                if ans_deskSize == "none"{
                                                     Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
@@ -222,7 +241,8 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
-                                    .padding(.leading, -40)
+                                    .frame(width: 345-40, alignment: .leading)
+                                    
                                     
                                 }//zstackend
                                 
@@ -275,9 +295,9 @@ struct HelpInfoWriteView: View  {
                                         .padding(.bottom, 16)
                                         HStack{
                                             Button {
-                                                ans_outletCount = "기억나지 않아요"
+                                                ans_outletCount = "none"
                                             } label: {
-                                                if ans_outletCount == "기억나지 않아요"{
+                                                if ans_outletCount == "none"{
                                                     Image(systemName: "circle.inset.filled")
                                                         .frame(width: 10, height: 10)
                                                         .foregroundColor(CustomColors.primary05)
@@ -295,7 +315,8 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
-                                    .padding(.leading, -40)
+                                    .frame(width: 305, alignment: .leading)
+                                    
                                     
                                 }//2nd zstackend
                                 
@@ -357,7 +378,7 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
-                                    .offset(x: -40)
+                                    .frame(width: 345-40, alignment: .leading)
                                     
                                 }
                                 ZStack{// 장실
@@ -418,8 +439,9 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
-                                    .offset(x: -40)
+                                    .frame(width: 305, alignment: .leading)
                                 }
+                                
                                 ZStack{// 노래
                                     Rectangle()
                                         .foregroundColor(.clear)
@@ -478,9 +500,10 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
-                                    .offset(x:-20)
+                                    .frame(width: 305, alignment: .leading)
                                     
                                 }
+                                
                                 ZStack{//조명
                                     Rectangle()
                                         .foregroundColor(.clear)
@@ -549,7 +572,7 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
-                                    .padding(.leading, -40)
+                                    .frame(width: 305, alignment: .leading)
                                     
                                 }
                                 ZStack{// 분위기
@@ -608,7 +631,7 @@ struct HelpInfoWriteView: View  {
                                         }
                                         
                                     }
-                                    .offset(x:-20)
+                                    .frame(width: 305, alignment: .leading)
                                     
                                 }
                                 
@@ -627,22 +650,32 @@ struct HelpInfoWriteView: View  {
                     .overlay(alignment: .top){
                         headerView()
                     }
-                    // @Environment(\.dismiss) private var dismiss
-                    
-                    //                    @State private var datePickerIsTapped = false
-                    //                    @State private var selectedDate = Date()
-                    //                    @State  var ans_congestion : String = ""
-                    //                    @State  var ans_deskSize : String = ""
-                    //                    @State  var ans_outletLocation : String = ""
-                    //                    @State  var ans_outletCount : String = ""
-                    //                    @State  var ans_light : String = ""
-                    //                    @State  var ans_restroomLocation : String = ""
-                    //                    @State  var ans_musicGenre : String = ""
-                    //                    @State  var ans_atmosphere : String = ""
-                    //                    private var shopId : Int
+                  
                     Button {
                         print("ans sender tapped")
-                        postUserHelpInfo(shopId:shopId, visitDateTime: formatter.string(from: selectedDate), congestion: ans_congestion, deskSize: ans_deskSize, outletCount: ans_outletCount, light: ans_light, outletLocation: ans_outletLocation, restroomLocation: ans_restroomLocation, musicGenre: ans_musicGenre, atmosphere: ans_atmosphere, imageUrls: ["String"])
+                        print("shopId: \(shopId)")
+                        print("visitDateTime: \(dateStringChanger(date: selectedDate))")
+                        print("congestion: \(ans_congestion)")
+                        print("deskSize: \(ansChangerForButton1(title: ans_deskSize))")
+                        print("outletCount: \(ansChangerForButton23(title: ans_outletCount))")
+                        print("light: \(ansChangerForButton23(title: ans_light))")
+                        print("outletLocation: \(ansChnager(title: ans_outletLocation))")
+                        print("restroomLocation: \(ansChnager(title: ans_restroomLocation))")
+                        print("musicGenre: \(ansChnager(title: ans_musicGenre))")
+                        print("atmosphere: \(ansChnager(title: ans_atmosphere))")
+                        print("imageUrls: \(["String"])")
+
+                        postUserHelpInfo(shopId:shopId,
+                                         visitDateTime: dateStringChanger(date: selectedDate),
+                                         congestion: ans_congestion,
+                                         deskSize: ansChangerForButton1(title: ans_deskSize) ,
+                                         outletCount: ansChangerForButton23(title: ans_outletCount) ,
+                                         light:ansChangerForButton23(title: ans_light) ,
+                                         outletLocation:ansChnager(title: ans_outletLocation) ,
+                                         restroomLocation: ansChnager(title: ans_restroomLocation),
+                                         musicGenre: ansChnager(title: ans_musicGenre) ,
+                                         atmosphere:  ansChnager(title: ans_atmosphere),
+                                         imageUrls: ["String"]) // 예상 답변 ->
                     } label: {
                         if ansAllInput {
                             
@@ -673,6 +706,7 @@ struct HelpInfoWriteView: View  {
                         }
                     }
                 }
+                .background(Color.white)
             }
         }
     }
@@ -898,9 +932,51 @@ struct ButtonQuestion {
     
 }
 
-
-
-
+private func ansChnager(title : String) -> String{
+    if title == "기억나지 않아요"{
+        return "none"
+    }
+    else {return title}
+}
+private func ansChangerForButton23 (title : String) -> String { // ans2,3
+    
+    switch title {
+    case "넉넉했어요":
+        return "enough"
+    case "적당했어요":
+        return "adequate"
+    case "부족했어요":
+        return "lack"
+    case "밝았어요":
+        return "bright"
+    case "어두웠어요":
+        return "dark"
+    default:
+        return "none"
+    }
+    
+}
+private func ansChangerForButton1 (title : String) -> String { // ans2,3
+    
+    switch title {
+    case "넓었어요":
+        return "large"
+    case "적당했어요":
+        return "medium"
+    case "작았어요":
+        return "small"
+    
+    default:
+        return "none"
+    }
+    
+}
+////    let buttonAns1 : [String] = ["large", "medium", "small", "none"]
+////    let buttonAns2 : [String] = ["enough", "adequate", "lack","none"]
+////    let buttonAns3 : [String] = ["bright", "adequate", "dark","none"]
+//    let buttonAns1 : [String] = ["넓었어요", "적당했어요", "작았어요", "none"]
+//    let buttonAns2 : [String] = ["넉넉했어요", "적당했어요", "부족했어요","none"]
+//    let buttonAns3 : [String] = ["밝았어요", "적당했어요", "어두웠어요","none"]
 
 //
 //struct HelpInfoWriteView_Previews: PreviewProvider {

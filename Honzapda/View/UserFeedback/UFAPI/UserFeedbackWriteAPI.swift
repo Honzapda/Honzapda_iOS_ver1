@@ -35,7 +35,7 @@ func postUserHelpInfo(shopId: Int, visitDateTime: String, congestion: String, de
     
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-   // request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     
     
     let body: [String: Any] = [

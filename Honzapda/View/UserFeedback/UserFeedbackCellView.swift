@@ -23,6 +23,10 @@ import SwiftUI
 
 struct UserFeedbackCellView : View {
     let dataset : UserHelpInfo
+    var inputFormatter = DateFormatter()
+    var visitedDay: String {
+            convertDateTimeToDayHourFormat(dateTimeString: dataset.visitDateTime) ?? ""
+        }
     var body: some View {
         ZStack{
             Rectangle()
@@ -60,9 +64,20 @@ struct UserFeedbackCellView : View {
                         Text(dataset.user.name)
                             .font(Font.custom("S-Core Dream", size: 12))
                             .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                        Text(dataset.visitDateTime)
-                            .font(Font.custom("S-Core Dream", size: 8))
-                            .foregroundColor(Color(red: 0.44, green: 0.44, blue: 0.44))
+                            .padding(.bottom, 2)
+                        HStack{
+                            Text("이 카페를 ")
+                                .font(Font.custom("S-Core Dream", size: 8))
+                                .foregroundColor(Color(red: 0.44, green: 0.44, blue: 0.44))
+                            Text(visitedDay)
+                                .font(Font.custom("S-Core Dream", size: 8))
+                                .foregroundColor(CustomColors.primary05)
+                                .padding(.horizontal,-8)
+                            Text("에 방문했어요")
+                                .font(Font.custom("S-Core Dream", size: 8))
+                                .foregroundColor(Color(red: 0.44, green: 0.44, blue: 0.44))
+                        }
+                        
                     }
                     Spacer()
                     VStack {
@@ -244,6 +259,27 @@ struct UserFeedbackCellView : View {
         }
         
     }
+    func convertDateTimeToDayHourFormat(dateTimeString: String) -> String? {
+        
+        self.inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        self.inputFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        // 문자열을 Date 객체로 변환
+        guard let date = inputFormatter.date(from: dateTimeString) else {
+            print("날짜 변환 실패")
+            return nil
+        }
+        
+        // 요일과 시간 정보를 포함하는 문자열로 포맷
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "EE요일 HH시"
+        outputFormatter.locale = Locale(identifier: "ko_KR") // 한국어 요일 이름으로 설정
+        outputFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        // 변환된 문자열 반환
+        return outputFormatter.string(from: date)
+    }
+
 }
 
 
