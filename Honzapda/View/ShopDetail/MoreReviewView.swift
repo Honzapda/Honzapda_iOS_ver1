@@ -44,6 +44,7 @@ struct MoreReviewView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
         .onAppear {
             vm.getReivewOnServer(shopId: 1)
         }
@@ -89,7 +90,6 @@ struct MoreReviewView: View {
         }
         .background(CustomColors.white)
         .frame(height: 45)
-        //.padding(.top, safeArea.top)
     }
     
     @ViewBuilder
@@ -188,7 +188,7 @@ struct MoreReviewView: View {
                         Text(review.user.name)
                             .font(Font.custom("S-CoreDream-6Bold", size: 12))
                             .foregroundStyle(CustomColors.gray09)
-                        Text("별점 \(review.score)점")
+                        Text("별점" + String(format: "%.0f", review.score) + "점")
                             .font(Font.custom("S-Core Dream", size: 8))
                             .foregroundStyle(CustomColors.primary04)
                     }
@@ -243,11 +243,9 @@ struct MoreReviewView: View {
     }
     
     func getUrl(from urlString: String) -> URL? {
-        
             guard let url = URL(string: urlString) else {
               return nil
             }
-        
         return url
 
     }
