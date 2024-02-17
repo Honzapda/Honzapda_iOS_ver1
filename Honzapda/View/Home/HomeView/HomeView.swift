@@ -23,6 +23,8 @@ struct HomeView: View {
     @GestureState private var dragOffset: CGFloat = 0
     @State public var isSheetVisible = false // 뷰의 표시 여부를 결정하는 상태 변수
     @ObservedObject var homeViewModel : HomeViewModel
+    @State var detailShopId : Int = 0
+    @State var gotoDetailBool : Bool  = false
     
   //  var tempDataSetArr: [IntegratedCafe] //임시 데이터용
     
@@ -32,112 +34,124 @@ struct HomeView: View {
     }
     @MainActor
     
-    
-
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
-                KakaoMapView(draw: $homeViewModel.draw, locationManager: locationManager, homeViewModel: homeViewModel)
-                    .zIndex(1)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
-                    .ignoresSafeArea()
-                    .onAppear {
-                        print("KM on appear")
-                        homeViewModel.loadCafesAndDraw()
-                   //     homeViewModel.kakaoCafeViewModel.fetchData()
-                        homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
-                        homeViewModel.draw = true
-                    }
-                    .onDisappear {
-                        homeViewModel.draw = false
-                    }
-                if homeViewModel.CardViewIsShowing{
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack{
-                            ForEach(0..<homeViewModel.integratedCafeArr.count, id: \.self) { index in
-                                GeometryReader { itemGeometry in
-                                    CardView(homeViewModel: homeViewModel, dataset: homeViewModel.integratedCafeArr[index])
-                                        
-                                        .scaleEffect(scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
-                                        .animation(.easeInOut(duration: 0.1), value: scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
-                                        .transition(.opacity)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 8 / 10, height: UIScreen.main.bounds.height * 5 / 10)
-                                .shadow(radius: 15)
-                                .padding(.horizontal, 20)
-                                //   .border(Color.blue)
-                            }
+        NavigationView{
+            
+            
+            
+            ZStack {
+                NavigationLink(destination: ShopDetailView(shopId: detailShopId), isActive: $gotoDetailBool) {
+                           EmptyView()
+                       }
+
+                GeometryReader { geometry in
+                    KakaoMapView(draw: $homeViewModel.draw, locationManager: locationManager, homeViewModel: homeViewModel)
+                        .zIndex(1)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
+                        .ignoresSafeArea()
+                        .onAppear {
+                            print("KM on appear")
+                            homeViewModel.loadCafesAndDraw()
+                            //     homeViewModel.kakaoCafeViewModel.fetchData()
+                            homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
+                            homeViewModel.draw = true
                         }
-                        .offset(y: 50)
-                        .padding(.horizontal) // 첫 번째 및 마지막 카드가 중앙에 오도록 패딩 조정
-                    }
-                    .zIndex(2)
-                    .offset(y : 200)
-                    .frame(height: UIScreen.main.bounds.height * 5 / 10)
-                    .onAppear(){
+                        .onDisappear {
+                            homeViewModel.draw = false
+                        }
+                    if homeViewModel.CardViewIsShowing{
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack{
+                                ForEach(0..<homeViewModel.integratedCafeArr.count, id: \.self) { index in
+                                    GeometryReader { itemGeometry in
+                                        CardView(homeViewModel: homeViewModel, 
+                                                 dataset: homeViewModel.integratedCafeArr[index],
+                                                 shopID: homeViewModel.integratedCafeArr[index].dataFromId,
+                                                 gotoDetailBool: $gotoDetailBool,
+                                                 detailShopId: $detailShopId
+                                            )
+                                        
+                                            .scaleEffect(scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
+                                            .animation(.easeInOut(duration: 0.1), value: scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
+                                            .transition(.opacity)
+                                    }
+                                    .frame(width: UIScreen.main.bounds.width * 8 / 10, height: UIScreen.main.bounds.height * 5 / 10)
+                                    .shadow(radius: 15)
+                                    .padding(.horizontal, 20)
+                                    //   .border(Color.blue)
+                                }
+                            }
+                            .offset(y: 50)
+                            .padding(.horizontal) // 첫 번째 및 마지막 카드가 중앙에 오도록 패딩 조정
+                        }
+                        .zIndex(2)
+                        .offset(y : 200)
+                        .frame(height: UIScreen.main.bounds.height * 5 / 10)
+                        .onAppear(){
+                            
+                        }
+                        
                         
                     }
                     
+                    //방법2
+                    if isSheetVisible{
+                        HomeBottomSheetView(homeViewModel: homeViewModel)
+                            .zIndex(3)
+                            .transition(.move(edge: .bottom))
+                            .offset(y : UIScreen.main.bounds.height/2)
+                    }
                     
                 }
                 
-                //방법2
-                if isSheetVisible{
-                    HomeBottomSheetView(homeViewModel: homeViewModel)
-                        .zIndex(3)
-                        .transition(.move(edge: .bottom))
-                        .offset(y : UIScreen.main.bounds.height/2)
-                }
-                
-            }
-            
-            VStack{
-                Button {
-                    print("centerIcon tapp")
-                    print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
-
-                } label: {
-                    Image("CenterIcon")
-                }
-                .padding(.bottom, -10)
-                Button {
-                    homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
-                    print("Saved icon tapped")
-                    withAnimation(.easeInOut(duration: 0.1)) {
-                        isSheetVisible.toggle()
+                VStack{
+                    Button {
+                        print("centerIcon tapp")
+                        print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
+                        
+                    } label: {
+                        Image("CenterIcon")
                     }
-                    // isSheetVisible.toggle()
-                } label: {
-                    Image("SaveIcon")
+                    .padding(.bottom, -10)
+                    Button {
+                        homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
+                        print("Saved icon tapped")
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            isSheetVisible.toggle()
+                        }
+                        // isSheetVisible.toggle()
+                    } label: {
+                        Image("SaveIcon")
+                    }
+                    
                 }
+                //방법 1
+                //            .sheet(isPresented: $isSheetVisible){
+                //
+                //
+                //                if #available(iOS 16.0, *) {
+                //
+                //
+                //                                HomeBottomSheetView()
+                //                                    .presentationDetents([.medium, .large]) // iOS 16 이상에서 사용할 수 있는 기능
+                //
+                //                            } else {
+                //                                // iOS 15 이하에서는 기본 시트 사용
+                //                                HomeBottomSheetView()
+                //                            }
+                //
+                //            }
                 
+                .offset(x : 170, y : -200)
             }
-            //방법 1
-            //            .sheet(isPresented: $isSheetVisible){
-            //
-            //
-            //                if #available(iOS 16.0, *) {
-            //
-            //
-            //                                HomeBottomSheetView()
-            //                                    .presentationDetents([.medium, .large]) // iOS 16 이상에서 사용할 수 있는 기능
-            //
-            //                            } else {
-            //                                // iOS 15 이하에서는 기본 시트 사용
-            //                                HomeBottomSheetView()
-            //                            }
-            //
-            //            }
             
-            .offset(x : 170, y : -200)
-        }
-        
-        .onAppear {
-            print("HomeView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
-            
-            locationManager.requestLocationAuthorization()
-            // 데이터 로딩 및 기타 초기화 작업...
+            .onAppear {
+                //            print("HomeView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
+                //
+                locationManager.requestLocationAuthorization()
+                // 데이터 로딩 및 기타 초기화 작업...
+            }
         }
     }
     

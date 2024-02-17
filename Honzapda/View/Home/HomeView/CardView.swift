@@ -11,7 +11,11 @@ import SwiftUI
 struct CardView: View {
     @ObservedObject var homeViewModel : HomeViewModel
     @State var savedChecker : Bool = false
+    
     var dataset: IntegratedCafe
+    let shopID : Int
+    @Binding var gotoDetailBool: Bool
+    @Binding var detailShopId: Int
     var body: some View {
         
         VStack(){
@@ -26,12 +30,22 @@ struct CardView: View {
                         .frame(width: UIScreen.main.bounds.width * 8 / 10, height: UIScreen.main.bounds.height * 0.23)
                         .clipped()
                         .overlay(Color.black.opacity(0.3))
+                        .onTapGesture {
+                            self.gotoDetailBool = true
+                            self.detailShopId = shopID
+                            
+                        }
                 } placeholder: {
                     // 이미지 로드 중 또는 URL이 nil인 경우 표시할 뷰
                     Image("CafeSampleIMG")
                         .scaledToFill()
                         .frame(width: UIScreen.main.bounds.width * 0.8) // 최외곽 VStack의 너비에 맞춤
                         .clipped() // VStack의 경계를 넘어가는 부분을 잘라냄
+                        .onTapGesture {
+                            self.gotoDetailBool = true
+                            self.detailShopId = shopID
+                            
+                        }
                 }
                 .clipped()
                 
@@ -85,7 +99,7 @@ struct CardView: View {
                                 VStack{
                                     if savedChecker{
                                         Image("Flag")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(CustomColors.primary05)
                                     }
                                     else{
                                         Image("Flag")

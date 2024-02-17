@@ -8,11 +8,24 @@
 import Foundation
 import SwiftUI
 
-// MARK: temporary density inf/
-let temp:[String: Int] = ["월":1, "화":3, "수":1, "목": 2, "금": 1, "토":3, "일":3 ]
+enum DaysOfWeek: String{
+    case MONDAY = "월"
+    case TUESDAY = "화"
+    case WEDNESDAY = "수"
+    case THURSDAY = "목"
+    case FRIDAY = "금"
+    case SATURDAY = "토"
+    case SUNDAY = "일"
+    
+    var selfValue: String {
+        String(describing: self)
+    }
+}
 
 struct DensityInfoView: View {
-    let days:[String] = ["월", "화", "수", "목", "금", "토", "일"]
+    @ObservedObject var vm: ShopDetailViewModel
+    
+    let days: [DaysOfWeek] = [DaysOfWeek.MONDAY, DaysOfWeek.TUESDAY, DaysOfWeek.WEDNESDAY, DaysOfWeek.THURSDAY, DaysOfWeek.FRIDAY, DaysOfWeek.SATURDAY, DaysOfWeek.SUNDAY]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -63,8 +76,8 @@ struct DensityInfoView: View {
                     Spacer(minLength: 24)
                 }
                 HStack{
-                    avgDensityCell(title: "평일", 18, 20)
-                    avgDensityCell(title: "주말", 14, 16)
+                    avgDensityCell(title: "평일")
+                    avgDensityCell(title: "주말")
                 }
                 .padding(.horizontal)
                 
@@ -91,7 +104,7 @@ struct DensityInfoView: View {
                                 HStack(spacing: 32){
                                     VStack(alignment:.trailing, spacing: 5){
                                         HStack(spacing:0){
-                                            Text("shops[0].shopName")
+                                            Text(vm.shopDetail?.result.shopName ?? "")
                                                 .font(Font.custom("S-CoreDream-6Bold", size: 14))
                                                 .foregroundStyle(CustomColors.primary05)
                                             Text("의")
@@ -106,7 +119,7 @@ struct DensityInfoView: View {
                                     Divider()
                                         .frame(height:80)
                                     
-                                    Text("23개")
+                                    Text(String(vm.shopDetail?.result.totalSeatCount ?? -1))
                                         .font(Font.custom("S-CoreDream-6Bold", size: 22))
                                         .foregroundStyle(CustomColors.gray09)
                                 }
@@ -131,7 +144,7 @@ struct DensityInfoView: View {
                                             .foregroundStyle(CustomColors.gray08)
                                             .padding(.bottom, 19)
                                         
-                                        Text("4개")
+                                        Text(String(vm.shopDetail?.result.cameraCount ?? -1))
                                             .padding(0)
                                             .font(Font.custom("S-CoreDream-6Bold", size: 18))
                                             .foregroundStyle(CustomColors.gray08)
@@ -152,7 +165,7 @@ struct DensityInfoView: View {
                                             .foregroundStyle(CustomColors.gray08)
                                             .padding(.bottom, 19)
                                         
-                                        Text("6개")
+                                        Text(String(vm.shopDetail?.result.wifiCount ?? -1))
                                             .padding(0)
                                             .font(Font.custom("S-CoreDream-6Bold", size: 18))
                                             .foregroundStyle(CustomColors.gray08)
@@ -168,10 +181,8 @@ struct DensityInfoView: View {
     }
     
     @ViewBuilder
-    func dayCell(_ dayVar: String)->some View{
+    func dayCell(_ dayVar: DaysOfWeek)->some View{
         // MARK: dayVar값으로 각 이미지의 색 뿌려주기
-        let src: String = "icon_cup_red"
-
         Rectangle()
             .foregroundColor(.clear)
             .frame(width: 42,height: 61)
@@ -180,16 +191,36 @@ struct DensityInfoView: View {
             .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 4)
             .overlay{
                 VStack{
-                    Text(dayVar)
+                    Text(dayVar.rawValue)
                         .font(Font.custom("S-Core Dream", size: 8))
                         .foregroundStyle(CustomColors.gray08)
-                    Image(src)
+                    getCongestionByDay(dayOfWeek: dayVar)
                 }
             }
     }
     
+    func getCongestionByDay(dayOfWeek day: DaysOfWeek) -> Image {
+        if let dayCongestions = vm.shopDetail?.result.dayCongestions{
+            for i in dayCongestions {
+                if i.dayOfWeek == day.selfValue {
+                    if i.congestionLevel == "COMFORTABLE"{
+                        return Image("icon_cup_violet")
+                    }
+                    else if i.congestionLevel == "NORMAL"{
+                        return Image("icon_cup_yellow")
+                    }
+                    else if i.congestionLevel == "BUSY"{
+                        return Image("icon_cup_red")
+                    }
+                }
+            }
+        }
+        
+        return Image("icon")
+    }
+    
     @ViewBuilder
-    func avgDensityCell(title text:String, _ from: Int, _ to: Int)->some View{
+    func avgDensityCell(title text:String)->some View{
         Rectangle()
             .foregroundColor(.clear)
             .frame(width: 148, height: 115)
@@ -204,7 +235,7 @@ struct DensityInfoView: View {
                         .foregroundStyle(CustomColors.gray08)
                         .padding(.vertical, 8)
                     HStack(spacing: 2){
-                        Text("\(from)"+"시")
+                        getAverageCongestion(title: text, "from")
                             .font(Font.custom("S-CoreDream-6Bold", size: 18))
                             .foregroundStyle(CustomColors.primary05)
                         Text("부터")
@@ -212,7 +243,7 @@ struct DensityInfoView: View {
                             .foregroundStyle(CustomColors.gray06)
                     }
                     HStack(spacing: 2){
-                        Text("\(to)"+"시")
+                        getAverageCongestion(title: text, "to")
                             .font(Font.custom("S-CoreDream-6Bold", size: 18))
                             .foregroundStyle(CustomColors.primary05)
                         Text("까지")
@@ -223,4 +254,42 @@ struct DensityInfoView: View {
                 }
             }
     }
+    
+    func getAverageCongestion(title day: String, _ w: String) -> Text{
+        var temp = Text("")
+        
+        if let averageCongestions = vm.shopDetail?.result.averageCongestions{
+            if day == "평일" {
+                
+                    for i in averageCongestions {
+                        if i.weekend == false {
+                            if w == "from" {
+                                return Text(String(i.startTime) + "시")
+                            }
+                            else {
+                                return Text(String(i.endTime) + "시")
+                            }
+                        }
+                    }
+                
+            }
+            else if day == "주말" {
+                
+                    for i in averageCongestions {
+                        if i.weekend == true {
+                            if w == "from" {
+                                return Text(String(i.startTime) + "시")
+                            }
+                            else {
+                                return Text(String(i.endTime) + "시")
+                            }
+                        }
+                    }
+                }
+            
+        }
+        
+        return temp
+    }
+     
 }

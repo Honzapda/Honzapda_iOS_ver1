@@ -37,6 +37,8 @@ struct HonzapdaCafe: Codable, Identifiable {
     let photoUrl: String?
     let rating: Double?
     let reviewCount: Int?
+    let posFromStation : String?
+    let densityOfDays : [Int]?
     let x: Double?
     let y: Double?
 
@@ -57,6 +59,8 @@ struct HonzapdaCafe: Codable, Identifiable {
         case reviewCount
         case x
         case y
+        case posFromStation
+        case densityOfDays
     }
 }
 

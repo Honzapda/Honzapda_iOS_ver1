@@ -12,6 +12,8 @@ struct ShopDetailMainView: View{
     @Environment(\.dismiss) var dismiss
     
     @ObservedObject var vm: ShopDetailViewModel
+    @ObservedObject var reviewVm: ReviewViewModel
+    @ObservedObject var helpInfoVm: UserHelpInfoViewModel
     
     let shopId: Int
     var safeArea: EdgeInsets
@@ -34,6 +36,7 @@ struct ShopDetailMainView: View{
                     headerView()
                 }
             }
+            .navigationBarBackButtonHidden()
             .coordinateSpace(name: "SCROLL")
     }
     
@@ -46,7 +49,7 @@ struct ShopDetailMainView: View{
             let minY = proxy.frame(in: .named("SCROLL")).minY
             let progress = minY / (height * (minY > 0 ? 0.5 : 0.8 ))
             
-            AsyncImage(url: URL(string:"https://storage.googleapis.com/honzapda-bucket/84a1b150-acfb-4278-8941-e4ab9b73e6ad.png")) { phase in
+            AsyncImage(url: URL(string:vm.shopDetail?.result.mainImage ?? "")) { phase in
                 switch phase {
                 case .success(let image):
                     image
@@ -167,6 +170,8 @@ struct ShopDetailMainView: View{
                             VStack{
                                 Image("icon_marker")
                                 Text(vm.shopDetail?.result.stationDistance ?? "")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 50)
                             }
                             Spacer()
                             VStack{
@@ -210,20 +215,20 @@ struct ShopDetailMainView: View{
                     .frame(minWidth: size.width)
                     .foregroundStyle(CustomColors.gray01)
                 
-                DensityInfoView()
+                DensityInfoView(vm: self.vm)
                 
                 Rectangle()
                     .frame(minWidth: size.width)
                     .foregroundStyle(CustomColors.gray01)
                 
-                //HelpInfoView()
-                //    .padding(.vertical, 40)
+                HelpInfoView(vm: self.vm, helpInfoVm: helpInfoVm)
+                    .padding(.vertical, 40)
                 
                 Rectangle()
                     .frame(minWidth: size.width)
                     .foregroundStyle(CustomColors.gray01)
                 
-                ReviewView(vm: self.vm)
+                ReviewView(vm: self.vm, reviewVm: reviewVm, shopId: shopId)
                     .padding(.vertical, 40)
         }
         .padding(25)
@@ -287,6 +292,7 @@ struct ShopDetailMainView: View{
                     Divider()
                 }
                 .frame(height: 45)
+                //.offset(y: -titleProgress > 1 ? 00 : 35)
                 .offset(y: -titleProgress > 1 ? 00 : 35)
                 .clipped()
                 .animation(.easeInOut(duration: 0.05), value: -titleProgress > 1)

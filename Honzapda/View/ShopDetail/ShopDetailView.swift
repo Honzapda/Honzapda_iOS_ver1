@@ -10,6 +10,9 @@ import SwiftUI
 
 struct ShopDetailView: View {
     @ObservedObject var vm: ShopDetailViewModel = ShopDetailViewModel()
+    @ObservedObject var reviewVm: ReviewViewModel = ReviewViewModel()
+    @ObservedObject var helpInfoVm: UserHelpInfoViewModel = UserHelpInfoViewModel()
+    
     let shopId: Int
     
     var body: some View {
@@ -17,15 +20,16 @@ struct ShopDetailView: View {
             GeometryReader{
                 let safeArea = $0.safeAreaInsets
                 let size = $0.size
-                ShopDetailMainView(vm: vm, shopId: shopId, safeArea: safeArea, size:size)
+                ShopDetailMainView(vm: vm, reviewVm: reviewVm, helpInfoVm: helpInfoVm, shopId: shopId, safeArea: safeArea, size:size)
                     .ignoresSafeArea(.container, edges: .top)
                     .navigationBarBackButtonHidden()
             }
        }
         .navigationBarBackButtonHidden()
         .onAppear{
-            print(vm.shopDetail?.result.mainImage ?? "")
             vm.getShopDetailOnSrever(shopId: shopId)
+            reviewVm.doBoth(shopId: shopId)
+            helpInfoVm.getHelpInfoOnServer(shopId: shopId)
         }
     }
 }

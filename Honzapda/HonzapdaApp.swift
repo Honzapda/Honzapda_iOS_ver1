@@ -11,6 +11,7 @@ import SwiftUI
 struct HonzapdaApp: App {
     
     @StateObject var userStateViewModel = UserStateViewModel()
+   // @ObservedObject var homeViewModel = HomeViewModel()
     let shopViewModel = ShopViewModel()
     
     var body: some Scene {
@@ -23,6 +24,7 @@ struct HonzapdaApp: App {
             .navigationViewStyle(.stack)
             .environmentObject(userStateViewModel)
             .environmentObject(shopViewModel)
+            //.environmentObject(homeViewModel)
              
         }
     }
@@ -37,7 +39,7 @@ struct ApplicationSwitcher: View {
             /*
             if vm.selectedTaste == false{
             //    HelpInfoWriteView(ShopId: 1)
-                HelpInfoWriteView(ShopId: 1)
+               MainTapView()
             }
             else {
                 ShopDetailView(shopId: 1)

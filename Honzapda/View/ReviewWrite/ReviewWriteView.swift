@@ -26,14 +26,18 @@ struct ReviewWriteView: View {
     
     @State private var reviewSaved = false
     
-    let shopName: String
+    let shopId: Int?
+    let shopName: String?
     
     var body: some View{
         NavigationView{
             GeometryReader{proxy in
                 
                 let size = proxy.size
+                let safeArea = proxy.safeAreaInsets
+                let minY = proxy.frame(in: .global).minY
                 
+                ZStack(alignment: .top){
                 ScrollView{
                     VStack(alignment: .leading, spacing: 40){
                         imagePickerView()
@@ -66,11 +70,6 @@ struct ReviewWriteView: View {
                                     return myDateFormatter.string(from: selectedDate)
                                 }
                                 
-                                //let newReview = Review(profile: Image("로고"), name: "사용자", rating: selectedRating, visitDate: date, reviewBody: reviewBody, reviewImage: selectedPhotos)
-                                
-                                //reviews.append(newReview)
-                                //print(reviews.count)
-                                //reviewSaved = true
                             }
                         } label: {
                             if(selectedRating > 0) && (reviewBody.count > 0) {
@@ -79,10 +78,10 @@ struct ReviewWriteView: View {
                                     .frame(width: 361, height: 45)
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
                                     .overlay{
-                                    Text("리뷰 게시하기")
-                                        .font(Font.custom("S-CoreDream-6Bold", size: 14))
-                                        .foregroundStyle(CustomColors.white)
-                                }
+                                        Text("리뷰 게시하기")
+                                            .font(Font.custom("S-CoreDream-6Bold", size: 14))
+                                            .foregroundStyle(CustomColors.white)
+                                    }
                             }
                             else{
                                 RoundedRectangle(cornerRadius: 8)
@@ -90,10 +89,10 @@ struct ReviewWriteView: View {
                                     .frame(width: 361, height: 45)
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
                                     .overlay{
-                                    Text("리뷰 게시하기")
-                                        .font(Font.custom("S-CoreDream-6Bold", size: 14))
-                                        .foregroundStyle(CustomColors.white)
-                                }
+                                        Text("리뷰 게시하기")
+                                            .font(Font.custom("S-CoreDream-6Bold", size: 14))
+                                            .foregroundStyle(CustomColors.white)
+                                    }
                             }
                         }
                         .padding(.horizontal)
@@ -109,11 +108,15 @@ struct ReviewWriteView: View {
                 .padding(.bottom, 80)
                 .navigationBarBackButtonHidden(true)
                 .offset(y: 45 + 32)
-                .overlay(alignment:.top){
+                
+                    
                     headerView()
-                }
+                        .padding(.top, safeArea.top)
+                        .offset(y: -minY)
+                
             }
         }
+    }
         .navigationBarBackButtonHidden()
     }
     
@@ -132,7 +135,7 @@ struct ReviewWriteView: View {
                 .padding(.leading)
                 //.padding(.vertical, 0)
                 
-                Text(shopName)
+                Text(shopName ?? "")
                     .font(Font.custom("S-Core Dream", size: 14))
                     .foregroundStyle(.black)
                     .padding(.vertical, 12)
