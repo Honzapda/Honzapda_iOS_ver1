@@ -22,7 +22,7 @@ struct CurationView : View {
      
         NavigationView{
             VStack{
-                NavigationLink(destination: CurationTestView(gotoTest: $gotoTest), isActive: $gotoTest) {
+                NavigationLink(destination: CurationTestView(gotoTest: $gotoTest, mood: "none", keyword: "none", menu: "none", atmosphare: "none"), isActive: $gotoTest) {
                     EmptyView()
                 }
                 HStack{ // header

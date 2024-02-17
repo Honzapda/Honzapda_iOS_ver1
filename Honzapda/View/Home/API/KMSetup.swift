@@ -96,7 +96,7 @@ struct KakaoMapView: UIViewRepresentable {
             let poiStyle1 = PoiStyle(styleID: "Unselected", styles: [perLevelStyle1])
             manager.addPoiStyle(poiStyle1)
             
-            let icon2 = PoiIconStyle(symbol: UIImage(named: "icon_marker.svg"), anchorPoint: CGPoint(x: 0.5, y: 0.7))
+            let icon2 = PoiIconStyle(symbol: UIImage(named: "MarkerSelected.png"), anchorPoint: CGPoint(x: 0.5, y: 0.7))
             let perLevelStyle2 = PerLevelPoiStyle(iconStyle: icon2, level: 0)
             let poiStyle2 = PoiStyle(styleID: "Selected", styles: [perLevelStyle2])
             manager.addPoiStyle(poiStyle2)

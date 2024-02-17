@@ -80,6 +80,7 @@
 		BB6F297E2B7FA19C00872680 /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F297D2B7FA19C00872680 /* Carousel.swift */; };
 		BB6F29802B7FF57C00872680 /* CurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F297F2B7FF57C00872680 /* CurationViewModel.swift */; };
 		BB6F29822B7FF6C400872680 /* CurationTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F29812B7FF6C400872680 /* CurationTestView.swift */; };
+		BB6F29842B8159B100872680 /* CuViewFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F29832B8159B100872680 /* CuViewFrame.swift */; };
 		BB9C77282B5BE3A100076880 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C77272B5BE3A100076880 /* OnboardingView.swift */; };
 		BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */; };
 		BB9C772F2B5BE6E500076880 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C772E2B5BE6E500076880 /* SplashView.swift */; };
@@ -166,6 +167,7 @@
 		BB6F297D2B7FA19C00872680 /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		BB6F297F2B7FF57C00872680 /* CurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationViewModel.swift; sourceTree = "<group>"; };
 		BB6F29812B7FF6C400872680 /* CurationTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationTestView.swift; sourceTree = "<group>"; };
+		BB6F29832B8159B100872680 /* CuViewFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuViewFrame.swift; sourceTree = "<group>"; };
 		BB9C77272B5BE3A100076880 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BB9C772B2B5BE6AC00076880 /* OnboardingFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFont.swift; sourceTree = "<group>"; };
 		BB9C772E2B5BE6E500076880 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				BB6F297D2B7FA19C00872680 /* Carousel.swift */,
 				BB6F297F2B7FF57C00872680 /* CurationViewModel.swift */,
 				BB6F29812B7FF6C400872680 /* CurationTestView.swift */,
+				BB6F29832B8159B100872680 /* CuViewFrame.swift */,
 			);
 			path = CurationFolder;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				BB1927DF2B7183D700A07824 /* KMSetup.swift in Sources */,
 				BB1805412B719DE600B27333 /* ReviewImage.swift in Sources */,
 				19C48FFD2B7113D3005FC902 /* ReviewTextFieldStyle.swift in Sources */,
+				BB6F29842B8159B100872680 /* CuViewFrame.swift in Sources */,
 				1906259B2B7D300600549D94 /* ShopDetailViewModel.swift in Sources */,
 				1980CD2E2B74C97800ACF7FD /* HelpInfoWriteView.swift in Sources */,
 				BB1805662B7B819600B27333 /* GetSavedCafe.swift in Sources */,
