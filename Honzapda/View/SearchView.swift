@@ -8,7 +8,7 @@ struct SearchView: View{
     @State private var isSearchResultViewPresented = false
     @EnvironmentObject var shopViewModel: ShopViewModel
     @State private var isSearchDetailViewActive = false
-    
+
     var body: some View {
         NavigationView{
             GeometryReader { geometry in
@@ -53,7 +53,7 @@ struct SearchView: View{
                                 isActive: $isSearchResultViewPresented
                             ) {
                                 EmptyView().hidden()
-                            })
+                            }).navigationBarHidden(true)
                         
                         HStack{
                             Text("최근 검색어").font(.custom("S-CoreDream-6Bold", size: 18)).foregroundColor(CustomColors.primary06).padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
@@ -67,7 +67,7 @@ struct SearchView: View{
                         
                         NavigationLink(destination: SearchDetailView(searchText: $searchText, shopViewModel: _shopViewModel, searchTitlesManager: searchTitlesManager), isActive: $isSearchDetailViewActive) {
                             EmptyView()
-                        }
+                        }.navigationBarHidden(true)
                         
                         if isEditButtonEnabled {
                             HStack {
@@ -139,11 +139,3 @@ struct SearchView: View{
         .navigationBarBackButtonHidden(true)
     }
 }
-
-
-struct SearchView_Previews: PreviewProvider{
-    static var previews: some View{
-        return SearchView()
-    }
-}
-

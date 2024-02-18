@@ -3,6 +3,7 @@ import SwiftUI
 
 class ShopViewModel: ObservableObject {
     @Published var shops: [SearchShop] = []
+    
     static func searchShops(with searchText: String, latitude: String, longitude: String, page: Int, size: Int, sortColumn: String, distance: Int, completion: @escaping (Result<[SearchShop], Error>) -> Void) {
         let urlString = "https://honzapda-bbbx74bapq-uc.a.run.app/shop/search?page=\(page)&size=\(size)"
         
@@ -43,9 +44,9 @@ class ShopViewModel: ObservableObject {
             }
             
 //            데이터 출력
-//            if let jsonString = String(data: data, encoding: .utf8) {
-//                   print("Received JSON data: \(jsonString)")
-//               }
+            if let jsonString = String(data: data, encoding: .utf8) {
+                   print("Received JSON data: \(jsonString)")
+               }
 //            
             // API 호출 성공 시 데이터 파싱
             do {

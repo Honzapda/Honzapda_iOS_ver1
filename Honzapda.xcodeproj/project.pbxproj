@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0505FE502B7C888100114C7A /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0505FE4F2B7C888100114C7A /* SearchResultsView.swift */; };
 		0505FE542B7C890600114C7A /* ShopSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0505FE532B7C890600114C7A /* ShopSearch.swift */; };
+		0531CBD52B80A4C700322A63 /* MyPageCafeTasteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531CBD42B80A4C700322A63 /* MyPageCafeTasteView.swift */; };
+		0531CBD92B80AC1200322A63 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531CBD82B80AC1200322A63 /* MyProfile.swift */; };
+		0531CBDB2B80C38800322A63 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531CBDA2B80C38800322A63 /* MyProfileViewModel.swift */; };
+		0531CBDD2B813E3C00322A63 /* MyPageSavedCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531CBDC2B813E3C00322A63 /* MyPageSavedCafe.swift */; };
+		0531CBDF2B8146AE00322A63 /* SavedCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531CBDE2B8146AD00322A63 /* SavedCafe.swift */; };
+		0531CBE12B8146C100322A63 /* SavedCafeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531CBE02B8146C100322A63 /* SavedCafeViewModel.swift */; };
 		0595C29E2B7CCBB300F5EFE6 /* SearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595C29D2B7CCBB300F5EFE6 /* SearchDetailView.swift */; };
 		0595C2A02B7D305A00F5EFE6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595C29F2B7D305A00F5EFE6 /* SearchViewModel.swift */; };
 		0595C2A32B7D51FA00F5EFE6 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0595C2A22B7D51FA00F5EFE6 /* URLImage */; };
@@ -98,6 +104,12 @@
 /* Begin PBXFileReference section */
 		0505FE4F2B7C888100114C7A /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		0505FE532B7C890600114C7A /* ShopSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSearch.swift; sourceTree = "<group>"; };
+		0531CBD42B80A4C700322A63 /* MyPageCafeTasteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCafeTasteView.swift; sourceTree = "<group>"; };
+		0531CBD82B80AC1200322A63 /* MyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
+		0531CBDA2B80C38800322A63 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
+		0531CBDC2B813E3C00322A63 /* MyPageSavedCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSavedCafe.swift; sourceTree = "<group>"; };
+		0531CBDE2B8146AD00322A63 /* SavedCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCafe.swift; sourceTree = "<group>"; };
+		0531CBE02B8146C100322A63 /* SavedCafeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCafeViewModel.swift; sourceTree = "<group>"; };
 		0595C29D2B7CCBB300F5EFE6 /* SearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailView.swift; sourceTree = "<group>"; };
 		0595C29F2B7D305A00F5EFE6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1397630C6448EE408F849471 /* Pods-Honzapda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honzapda.release.xcconfig"; path = "Target Support Files/Pods-Honzapda/Pods-Honzapda.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +221,15 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		0531CBD32B80A4A300322A63 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				0531CBD42B80A4C700322A63 /* MyPageCafeTasteView.swift */,
+				0531CBDC2B813E3C00322A63 /* MyPageSavedCafe.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		190791C82B57AAC500F78D48 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +270,8 @@
 				0505FE532B7C890600114C7A /* ShopSearch.swift */,
 				190625962B7D2F4800549D94 /* AverageCongestion.swift */,
 				190625982B7D2F5400549D94 /* DayCongestion.swift */,
+				0531CBD82B80AC1200322A63 /* MyProfile.swift */,
+				0531CBDE2B8146AD00322A63 /* SavedCafe.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +292,7 @@
 		1971AD552B51C2FF000053F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0531CBD32B80A4A300322A63 /* MyPage */,
 				BB6F297C2B7F882800872680 /* CurationFolder */,
 				0505FE4E2B7C886400114C7A /* Search */,
 				BB1805552B788DEF00B27333 /* UserFeedback */,
@@ -292,6 +316,8 @@
 				19B3BF702B77BF810063EB35 /* UserStateViewModel.swift */,
 				0595C29F2B7D305A00F5EFE6 /* SearchViewModel.swift */,
 				1906259A2B7D300600549D94 /* ShopDetailViewModel.swift */,
+				0531CBDA2B80C38800322A63 /* MyProfileViewModel.swift */,
+				0531CBE02B8146C100322A63 /* SavedCafeViewModel.swift */,
 				194D02912B81457D006E9970 /* ReviewWriteViewModel.swift */,
 				194D02932B81487A006E9970 /* ReviewImageViewModel.swift */,
 			);
@@ -644,6 +670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB18055A2B788F7B00B27333 /* UserFeedbackWriteAPI.swift in Sources */,
+				0531CBD92B80AC1200322A63 /* MyProfile.swift in Sources */,
 				192005582B5C377B00CFB80D /* ShopDetailMainView.swift in Sources */,
 				190625972B7D2F4800549D94 /* AverageCongestion.swift in Sources */,
 				19249B712B5D9FB400CF7DAD /* DensityInfoView.swift in Sources */,
@@ -653,6 +680,7 @@
 				BB6F297E2B7FA19C00872680 /* Carousel.swift in Sources */,
 				19C48FF92B7113C9005FC902 /* ImagePicker.swift in Sources */,
 				0595C2A02B7D305A00F5EFE6 /* SearchViewModel.swift in Sources */,
+				0531CBDF2B8146AE00322A63 /* SavedCafe.swift in Sources */,
 				BB9C772C2B5BE6AC00076880 /* OnboardingFont.swift in Sources */,
 				BB1927DE2B7183D700A07824 /* GetCafeFromKakaoMap.swift in Sources */,
 				190791C22B579CEC00F78D48 /* SearchView.swift in Sources */,
@@ -687,12 +715,15 @@
 				1980CD2E2B74C97800ACF7FD /* HelpInfoWriteView.swift in Sources */,
 				BB1805662B7B819600B27333 /* GetSavedCafe.swift in Sources */,
 				BB1927E22B7183D700A07824 /* POI.swift in Sources */,
+				0531CBDD2B813E3C00322A63 /* MyPageSavedCafe.swift in Sources */,
+				0531CBE12B8146C100322A63 /* SavedCafeViewModel.swift in Sources */,
 				BB1805532B78895700B27333 /* CurationView.swift in Sources */,
 				BB18055C2B788FDB00B27333 /* UserFeedbakDeleteAPI.swift in Sources */,
 				190791C62B579D0300F78D48 /* MyPageView.swift in Sources */,
 				BB1927D82B7183BF00A07824 /* KakaoHonzapInteCafeModel.swift in Sources */,
 				BB1805512B77EB3900B27333 /* PostAndDeleteCafeSave.swift in Sources */,
 				19995B6B2B604F7B00A73023 /* UserHelpInfo.swift in Sources */,
+				0531CBDB2B80C38800322A63 /* MyProfileViewModel.swift in Sources */,
 				194D02942B81487A006E9970 /* ReviewImageViewModel.swift in Sources */,
 				0505FE502B7C888100114C7A /* SearchResultsView.swift in Sources */,
 				BB1805602B789EAF00B27333 /* UserFeedbackCellView.swift in Sources */,
@@ -706,6 +737,7 @@
 				19249B6F2B5D9FA400CF7DAD /* ReviewView.swift in Sources */,
 				19249B732B5DA05000CF7DAD /* HelpInfoView.swift in Sources */,
 				19C48FFB2B7113CC005FC902 /* PHPicker.swift in Sources */,
+				0531CBD52B80A4C700322A63 /* MyPageCafeTasteView.swift in Sources */,
 				190791DE2B57AC2300F78D48 /* CustomFonts.swift in Sources */,
 				BB1805462B7364B000B27333 /* HomeViewSuper.swift in Sources */,
 				19C48FF52B711221005FC902 /* MoreReviewView.swift in Sources */,
@@ -858,6 +890,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = /Users/hwangjuyeon/space/UMC_IOS/project/searchapi/logo_honzapda.svg;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -897,6 +930,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = /Users/hwangjuyeon/space/UMC_IOS/project/searchapi/logo_honzapda.svg;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

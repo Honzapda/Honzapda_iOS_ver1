@@ -21,7 +21,7 @@ struct SearchDetailView: View {
             }
         }
     }
-
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -57,7 +57,7 @@ struct SearchDetailView: View {
                                 }) {
                                     Image("icon_search_search_fill")
                                 }
-                                .padding(.leading, 260)
+                                .padding(.leading, 300)
                             }
                         }.background(.white)
                             .onTapGesture {
@@ -104,7 +104,7 @@ struct SearchDetailView: View {
                                     .background(RoundedRectangle(cornerRadius: 20)
                                         .foregroundColor(sortColumn == "distance" ? CustomColors.primary05 : CustomColors.white)
                                         .overlay(RoundedRectangle(cornerRadius: 20)
-                                        .stroke(CustomColors.primary05, lineWidth: 1.3)))
+                                            .stroke(CustomColors.primary05, lineWidth: 1.3)))
                             }.padding(3)
                             Button(action: {
                                 sortColumn = "review"
@@ -128,7 +128,7 @@ struct SearchDetailView: View {
                                     .background(RoundedRectangle(cornerRadius: 20)
                                         .foregroundColor(sortColumn == "review" ? CustomColors.primary05 : CustomColors.white)
                                         .overlay(RoundedRectangle(cornerRadius: 20)
-                                        .stroke(CustomColors.primary05, lineWidth: 1.3)))
+                                            .stroke(CustomColors.primary05, lineWidth: 1.3)))
                             }.padding(3)
                             Button(action: {
                                 sortColumn = "bookmark"
@@ -152,7 +152,7 @@ struct SearchDetailView: View {
                                     .background(RoundedRectangle(cornerRadius: 20)
                                         .foregroundColor(sortColumn == "bookmark" ? CustomColors.primary05 : CustomColors.white)
                                         .overlay(RoundedRectangle(cornerRadius: 20)
-                                        .stroke(CustomColors.primary05, lineWidth: 1.3)))
+                                            .stroke(CustomColors.primary05, lineWidth: 1.3)))
                             }.padding(3)
                             Button(action: {
                                 sortColumn = "recommend"
@@ -176,7 +176,7 @@ struct SearchDetailView: View {
                                     .background(RoundedRectangle(cornerRadius: 20)
                                         .foregroundColor(sortColumn == "recommend" ? CustomColors.primary05 : CustomColors.white)
                                         .overlay(RoundedRectangle(cornerRadius: 20)
-                                        .stroke(CustomColors.primary05, lineWidth: 1.3)))
+                                            .stroke(CustomColors.primary05, lineWidth: 1.3)))
                             }.padding(3)
                             
                             Spacer()
@@ -185,7 +185,15 @@ struct SearchDetailView: View {
                     }.background(Color.white)
                     
                     Spacer()
-                    ScrollView {
+                  
+                    if shopViewModel.shops.count == 0{
+                        Text("검색 결과가 없어요 :(")
+                            .foregroundColor(CustomColors.gray05)
+                            .font(.custom("S-CoreDream-5Medium", size: 12))
+                        Spacer()
+                    }
+                    else{
+                 ScrollView {
                         LazyVStack(spacing: 8) {
                             ForEach(shopViewModel.shops) { shop in
                                 // 상세 뷰로 이동
@@ -194,12 +202,13 @@ struct SearchDetailView: View {
                                 ) {
                                     ShopCardView(shop: shop)
                                         .buttonStyle(PlainButtonStyle())
+                                    }
                                 }
                             }
                             .padding(8)
                         }
                     }
-
+                    
                 }.frame(height: UIScreen.main.bounds.height-115)
             }
         }
@@ -245,4 +254,3 @@ struct ShopCardView: View {
         .padding(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
     }
 }
-
