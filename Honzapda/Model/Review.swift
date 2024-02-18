@@ -40,7 +40,11 @@ import SwiftUI
      var id: Int {return reviewId}
  }
 
- struct Image_: Codable {
+ struct Image_: Codable, Identifiable {
      let imageId: Int
      let url: String
+     
+     var id: Int {
+         return imageId
+     }
  }

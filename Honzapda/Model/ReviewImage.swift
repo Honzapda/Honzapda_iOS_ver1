@@ -15,10 +15,43 @@
 import Foundation
 import SwiftUI
 
-struct ReviewImage: Identifiable{
-    var id = UUID()
-
-    var reviewImage: Image
+struct ReviewImage: Codable{
+    let isSuccess: Bool
+    let code: String
+    let message: String
+    let result: ImageDtoList
 }
 
-let img: [ReviewImage] = [ReviewImage(reviewImage: Image("cafe_image")), ReviewImage(reviewImage: Image("cafe_image")), ReviewImage(reviewImage: Image("cafe_image")), ReviewImage(reviewImage: Image("cafe_image")),ReviewImage(reviewImage: Image("cafe_image")),ReviewImage(reviewImage: Image("cafe_image")),ReviewImage(reviewImage: Image("cafe_image"))]
+struct ImageDtoList: Codable {
+    let imageDtoList: [Image_]?
+    let getNumberOfElements: Int
+    let hasNext: Bool
+    let hasPrevious: Bool
+}
+
+/*
+ {
+     "isSuccess": true,
+     "code": "COMMON200",
+     "message": "성공입니다.",
+     "result": {
+         "imageDtoList": [
+             {
+                 "imageId": 28,
+                 "url": "23"
+             },
+             {
+                 "imageId": 27,
+                 "url": "2"
+             },
+             {
+                 "imageId": 26,
+                 "url": "123"
+             }
+         ],
+         "getNumberOfElements": 3, // 현재 조회 리스트 요소 갯수
+           "hasNext": true, // 다음 페이지 여부
+         "hasPrevious": false // 이전 페이지 여부
+     }
+ }
+ */

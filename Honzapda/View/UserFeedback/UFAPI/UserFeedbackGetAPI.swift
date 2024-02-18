@@ -3,7 +3,7 @@
 
 import SwiftUI
 import Combine
-
+/*
 struct UserHelpInfoView: View {
     @StateObject private var viewModel = UserHelpInfoViewModel()
 
@@ -27,17 +27,14 @@ struct UserHelpInfoView: View {
         }
     }
 }
-
-struct UserHelpInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserHelpInfoView()
-    }
-}
+*/
 
 class UserHelpInfoViewModel: ObservableObject {
-    @Published var userHelpInfoList = [UserHelpInfo]()
-    private var cancellables = Set<AnyCancellable>()
+   // @Published var userHelpInfoList = [UserHelpInfo]()
+    @Published var apiResponse: APIResponse?
     
+    private var cancellables = Set<AnyCancellable>()
+    /*
     func fetchUserHelpInfo(shopId: String, page: Int) {
         guard let url = URL(string: "https://honzapda-bbbx74bapq-uc.a.run.app/userHelpInfo?shopId=\(shopId)&page=\(page)") else { return }
         var request = URLRequest(url: url)
@@ -58,7 +55,6 @@ class UserHelpInfoViewModel: ObservableObject {
                 switch completion {
                 
                 case .finished:
-                    print("요청 성공")
                     break
                 case .failure(let error):
                     print("요청 실패")
@@ -66,7 +62,44 @@ class UserHelpInfoViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] response in
                 self?.userHelpInfoList = response.result.userHelpInfoDtoList
+                print("helpInfo: " + String(self?.userHelpInfoList.count ?? 0))
+
             })
             .store(in: &cancellables)
+    }
+    */
+    func getHelpInfoOnServer(shopId: Int) {
+        guard let url = URL(string: "https://honzapda-bbbx74bapq-uc.a.run.app/userHelpInfo?shopId=\(shopId)") else {
+            print ("Invalid URL")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("error fetching tasks")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print ("HTTP request failed")
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let decodedData = try JSONDecoder().decode(APIResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.apiResponse = decodedData
+                        print("userHelpInfos: " + String(self.apiResponse?.result.userHelpInfoDtoList.count ?? 0))
+
+                    }
+                } catch {
+                    print("Error decoding JSON")
+                }
+            }
+        } .resume()
     }
 }

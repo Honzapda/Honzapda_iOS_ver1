@@ -19,7 +19,7 @@ struct HonzapdaApp: App {
             
             
             NavigationView{
-                OnboardingView()
+                ApplicationSwitcher()
             }
             .navigationViewStyle(.stack)
             .environmentObject(userStateViewModel)
@@ -35,6 +35,8 @@ struct ApplicationSwitcher: View {
     
     var body: some View {
         if vm.isLoggedIn {
+            MainTapView()
+            /*
             if vm.selectedTaste == false{
             //    HelpInfoWriteView(ShopId: 1)
                MainTapView()
@@ -42,6 +44,7 @@ struct ApplicationSwitcher: View {
             else {
                 ShopDetailView(shopId: 1)
             }
+             */
         }
         else {
             OnboardingView()

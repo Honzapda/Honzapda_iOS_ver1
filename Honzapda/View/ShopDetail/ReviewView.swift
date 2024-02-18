@@ -11,18 +11,22 @@ import SwiftUI
 
 struct ReviewView: View {
     @ObservedObject var vm: ShopDetailViewModel
+    @ObservedObject var reviewVm: ReviewViewModel
+    
+    var inputFormatter = DateFormatter()
+    var shopId: Int
     
     var body: some View {
             VStack{
                 VStack(alignment: .leading){
-                    HStack(alignment:.center, spacing: 110){
+                    HStack(alignment:.center){
                         VStack(alignment: .leading, spacing: 8){
                             HStack{
                                 Text("리뷰")
                                     .font(Font.custom("S-CoreDream-6Bold", size: 16))
                                     .foregroundStyle(CustomColors.gray09)
                                 NavigationLink{
-                                    ReviewWriteView(shopName: vm.shopDetail?.result.shopName ?? "")
+                                    ReviewWriteView(shopId: shopId, shopName: vm.shopDetail?.result.shopName ?? "")
                                 }label: {
                                     Text("리뷰 작성하기")
                                         .font(Font.custom("S-CoreDream-5Medium", size: 9))
@@ -36,8 +40,10 @@ struct ReviewView: View {
                             
                         }
                         
+                        Spacer()
+                        
                         NavigationLink{
-                            MoreReviewView()
+                            MoreReviewView(vm: reviewVm, shopId: shopId)
                         }label: {
                             Text("리뷰 더 보기")
                                 .font(Font.custom("S-CoreDream-5Medium", size: 9))
@@ -120,11 +126,11 @@ struct ReviewView: View {
                     .multilineTextAlignment(.leading)
                     .font(Font.custom("S-Core Dream", size: 9))
                     .foregroundStyle(CustomColors.black)
-                /*
-                Text(review.visitDate + " 방문")
+                
+                Text(convertDateTimeToDayHourFormat(dateTimeString:review.visitedAt) ?? "")
                     .font(Font.custom("S-Core Dream", size: 8))
                     .foregroundStyle(CustomColors.gray07)
-                 */
+                 
             }
             .frame(width: 297, alignment: .leading)
             .padding(.horizontal, 24)
@@ -140,6 +146,27 @@ struct ReviewView: View {
               return nil
             }
         return url
+    }
+    
+    func convertDateTimeToDayHourFormat(dateTimeString: String) -> String? {
+        
+        self.inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        self.inputFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        // 문자열을 Date 객체로 변환
+        guard let date = inputFormatter.date(from: dateTimeString) else {
+            print("날짜 변환 실패")
+            return nil
+        }
+        
+        // 요일과 시간 정보를 포함하는 문자열로 포맷
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "yyyy.MM.dd 방문"
+        outputFormatter.locale = Locale(identifier: "ko_KR") // 한국어 요일 이름으로 설정
+        outputFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        // 변환된 문자열 반환
+        return outputFormatter.string(from: date)
     }
 }
 

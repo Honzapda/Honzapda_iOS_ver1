@@ -1,19 +1,19 @@
 //
-//  ShopDetailViewModel.swift
+//  ReviewImageViewModel.swift
 //  Honzapda
 //
-//  Created by 이희주 on 2024/02/15.
+//  Created by 이희주 on 2024/02/18.
 //
 
 import Foundation
 import SwiftUI
 
-class ShopDetailViewModel: ObservableObject{
-    @Published var shopDetail: ShopDetail?
+class ReviewImageViewModel: ObservableObject{
+    @Published var reviewImages: ReviewImage?
     
-    func getShopDetailOnSrever(shopId: Int) {
-        guard let url = URL(string: "https://honzapda-bbbx74bapq-uc.a.run.app/shop/\(shopId)") else {
-            print ("Invalid URL")
+    func getReviewImagesOnServer(shopId: Int){
+        guard let url = URL(string: "https://honzapda-bbbx74bapq-uc.a.run.app/review/image?shopId=\(shopId)") else {
+            print("Invalid URL")
             return
         }
         var request = URLRequest(url: url)
@@ -22,25 +22,26 @@ class ShopDetailViewModel: ObservableObject{
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                print("error fetching tasks")
+                print ("error fetching tasks")
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                print ("HTTP request failed")
+                print("HTTP request failed")
                 return
             }
             
             if let data = data {
                 do {
-                    let decodedData = try JSONDecoder().decode(ShopDetail.self, from: data)
+                    let decodedData = try JSONDecoder().decode(ReviewImage.self, from: data)
                     DispatchQueue.main.async {
-                        self.shopDetail = decodedData
+                        self.reviewImages = decodedData
+                        print("review image loaded")
                     }
                 } catch {
-                    print("Error decoding JSON \(error)")
+                    print("Error decoding JSON")
                 }
             }
-        } .resume()
+        }.resume()
     }
 }

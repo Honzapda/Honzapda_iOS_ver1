@@ -190,8 +190,7 @@ struct SearchDetailView: View {
                             ForEach(shopViewModel.shops) { shop in
                                 // 상세 뷰로 이동
                                 NavigationLink(
-                                    destination: SearchView()
-                                    // ShopDetail(shopId: shop.shopId)
+                                    destination: ShopDetailView(shopId: shop.shopId)
                                 ) {
                                     ShopCardView(shop: shop)
                                         .buttonStyle(PlainButtonStyle())
