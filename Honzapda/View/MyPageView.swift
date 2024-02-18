@@ -1,3 +1,13 @@
+// 미완
+// 카페취향뷰에서 선택된 버튼들 따로 저장하기
+
+// 검색
+// 키보드 활성화되면 화면이 밀려서 텍스트필드가 안보임 - searchresultsview
+
+// 마이페이지
+// 프로필 사진 추가 없음 & 로그아웃 없음 & 토스트 메시지 없음
+// 찜한카페 하트 눌렀다 취소 가능하게
+
 import Foundation
 import SwiftUI
 import URLImage
@@ -201,9 +211,9 @@ struct MyPageView: View {
                         myProfileViewModel.profileImage = profileResult.profileImage
                         myProfileViewModel.name = profileResult.name
                         profileImage = true
-                        print("DDDD----")
-                        print(profileImage)
-                        print(myProfileViewModel.profileImage)
+//                        print("DDDD----")
+//                        print(profileImage)
+//                        print(myProfileViewModel.profileImage)
                     }
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
