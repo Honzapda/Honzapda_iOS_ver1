@@ -9,6 +9,7 @@ struct SearchResultView: View {
     @State private var isSearchDetailViewActive = false
     @EnvironmentObject var shopViewModel: ShopViewModel
     
+    @State private var keyboardHeight: CGFloat = 0 // 키보드 높이를 저장할 변수
     
     var backButton: some View {
         Button {
@@ -47,7 +48,7 @@ struct SearchResultView: View {
                             ) {
                                 EmptyView()
                             }
-
+                            
                             Button(action: {
                                 isSearchDetailViewActive = true
                                 searchTitlesManager.addSearchTitle(searchText)
@@ -76,7 +77,6 @@ struct SearchResultView: View {
                     Text("검색어를 입력해주세요!").font(.custom("S-CoreDream-5Medium", size: 12)).foregroundColor(CustomColors.gray05)
                     Spacer()
                 }.frame(height: UIScreen.main.bounds.height-110) // 115
-                
             }
         }
         .navigationBarBackButtonHidden(true)

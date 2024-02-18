@@ -12,6 +12,8 @@ struct HonzapdaApp: App {
     
     @StateObject var userStateViewModel = UserStateViewModel()
     let shopViewModel = ShopViewModel()
+    let myProfileViewModel = MyProfileViewModel()
+    
     
     var body: some Scene {
         WindowGroup{
@@ -23,6 +25,7 @@ struct HonzapdaApp: App {
             .navigationViewStyle(.stack)
             .environmentObject(userStateViewModel)
             .environmentObject(shopViewModel)
+            .environmentObject(myProfileViewModel)
              
         }
     }
