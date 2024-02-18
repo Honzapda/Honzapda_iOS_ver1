@@ -44,9 +44,9 @@ class ShopViewModel: ObservableObject {
             }
             
 //            데이터 출력
-            if let jsonString = String(data: data, encoding: .utf8) {
-                   print("Received JSON data: \(jsonString)")
-               }
+//            if let jsonString = String(data: data, encoding: .utf8) {
+//                   print("Received JSON data: \(jsonString)")
+//               }
 //            
             // API 호출 성공 시 데이터 파싱
             do {

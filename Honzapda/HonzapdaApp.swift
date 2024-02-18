@@ -14,7 +14,7 @@ struct HonzapdaApp: App {
    // @ObservedObject var homeViewModel = HomeViewModel()
     let shopViewModel = ShopViewModel()
     let myProfileViewModel = MyProfileViewModel()
-    
+    let savedCafeViewModel = SavedCafeViewModel()
     
     var body: some Scene {
         WindowGroup{
@@ -28,6 +28,7 @@ struct HonzapdaApp: App {
             .environmentObject(shopViewModel)
             .environmentObject(myProfileViewModel)
             //.environmentObject(homeViewModel)
+            .environmentObject(savedCafeViewModel)
              
         }
     }

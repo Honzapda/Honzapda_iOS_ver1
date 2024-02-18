@@ -34,9 +34,9 @@ class MyProfileViewModel: ObservableObject {
             }
             
 //          데이터 출력
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("Received JSON data: \(jsonString)")
-            }
+//            if let jsonString = String(data: data, encoding: .utf8) {
+//                print("Received JSON data: \(jsonString)")
+//            }
             
             do {
                 let myProfileResponse = try JSONDecoder().decode(MyProfileResponse.self, from: data)

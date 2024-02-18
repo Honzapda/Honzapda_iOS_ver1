@@ -4,38 +4,41 @@ struct SavedCafeResponse: Codable {
     let isSuccess: Bool
     let code: String
     let message: String
-    let result: SavedCafeResult
+    let result: [SavedCafeResult]
 }
 
-struct SavedCafeResult: Codable {
-    let content: [SavedCafeList]
-    let pageable: SavedCafePageable
-    let first: Bool
-    let last: Bool
-    let size: Int
-    let number: Int
-    let sort: [String]
-    let numberOfElements: Int
-    let empty: Bool
-}
-
-struct SavedCafeList: Codable {
+struct SavedCafeResult: Codable, Identifiable {
     let shopId: Int
     let shopName: String
+    let description: String
+    let shopPhoneNumber: String
+    let mainImage: String
+    let reviewCount: Int?
+    let rating: Double
     let address: String
     let address_spec: String
+    let stationDistance: String
     let openNow: Bool
-    let mainImage: String?
-    let bookMarkCount: Int
-    let reviewCount: Int
-    let distance: Double
+    let userLike: Bool
+    let inactiveDate: String
+    let userHelpInfoDtoList: [String]?
+    let reviewList: [String]?
+    let businessHours: [BusinessHours]
+    let latitude: String?
+    let longitude: String?
+    let averageCongestions: String?
+    let dayCongestions: String?
+    let totalSeatCount: Int
+    let cameraCount: Int
+    let wifiCount: Int
+    var id: Int {
+           return shopId
+       }
 }
 
-struct SavedCafePageable: Codable {
-    let pageNumber: Int
-    let pageSize: Int
-    let sort: [String]
-    let offset: Int
-    let paged: Bool
-    let unpaged: Bool
+struct BusinessHours: Codable {
+    let dayOfWeek: String
+    let openHours: String?
+    let closeHours: String?
+    let isOpen: Bool
 }
