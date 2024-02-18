@@ -12,7 +12,11 @@ import SwiftUI
 struct MoreReviewView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @ObservedObject var vm: ReviewViewModel = ReviewViewModel()
+    @ObservedObject var vm: ReviewViewModel
+    
+    var shopId: Int
+    var shopName: String?
+    var inputFormatter = DateFormatter()
     
     var body: some View{
         NavigationView{
@@ -23,14 +27,21 @@ struct MoreReviewView: View {
                 ZStack(alignment:.top){
                     ScrollView{
                         VStack{
-                            reviewImageView(img)
-                                .padding(.vertical, 40)
+                            if let res = vm.reviewWithImage.reviewImage?.result.imageDtoList {
+                                reviewImageView(res)
+                                    .zIndex(0)
+                                    .padding(.vertical, 40)
+                            }
+                            else {
+                                Text("WRONG!!!!")
+                            }
                             
                             Rectangle()
                                 .frame(minWidth: proxy.size.width)
                                 .foregroundStyle(CustomColors.gray01)
                             
                             reviewView()
+                                .zIndex(1)
                                 .padding(.vertical, 40)
                         }
                         .offset(y: minY)
@@ -43,11 +54,34 @@ struct MoreReviewView: View {
                         .offset(y:-minY)
                 }
             }
+            .onAppear {
+                vm.doBoth(shopId: shopId)
+            }
         }
-        .onAppear {
-            vm.getReivewOnServer(shopId: 1)
-        }
+        .navigationBarBackButtonHidden()
     }
+    
+    func convertDateTimeToDayHourFormat(dateTimeString: String) -> String? {
+        
+        self.inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        self.inputFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        // 문자열을 Date 객체로 변환
+        guard let date = inputFormatter.date(from: dateTimeString) else {
+            print("날짜 변환 실패")
+            return nil
+        }
+        
+        // 요일과 시간 정보를 포함하는 문자열로 포맷
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "yyyy.MM.dd 방문"
+        outputFormatter.locale = Locale(identifier: "ko_KR") // 한국어 요일 이름으로 설정
+        outputFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        // 변환된 문자열 반환
+        return outputFormatter.string(from: date)
+    }
+
     
     @ViewBuilder
     func headerView()->some View{
@@ -64,7 +98,7 @@ struct MoreReviewView: View {
                 .padding(.leading)
                  
                 // MARK: 가게 이름
-                Text("스테이 어도러블")
+                Text(shopName ?? "")
                     .font(Font.custom("S-Core Dream", size: 14))
                     .foregroundStyle(.black)
                     .padding(.vertical, 12)
@@ -92,7 +126,7 @@ struct MoreReviewView: View {
     }
     
     @ViewBuilder
-    func reviewImageView(_ reviewImages: [ReviewImage])->some View{
+    func reviewImageView(_ reviewImages: [Image_])->some View{
         VStack(alignment: .leading, spacing: 20){
             HStack{
                 Text("사진 모아보기")
@@ -113,11 +147,16 @@ struct MoreReviewView: View {
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 4){
                     ForEach(reviewImages) { reviewImage in
-                        reviewImage.reviewImage
-                            .resizable()
-                            .frame(width: 120, height: 120)
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        AsyncImage(url: getUrl(from: reviewImage.url)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 120, height: 120)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            } placeholder: {
+                                ProgressView()
+                            }
+                     
                     }
                 }
             }
@@ -132,7 +171,7 @@ struct MoreReviewView: View {
                 HStack(spacing: 0){
                     Text("리뷰 ")
                         .foregroundStyle(CustomColors.gray09)
-                    Text(String(vm.review?.result.totalElements ?? 0))
+                    Text(String(vm.reviewWithImage.review?.result.totalElements ?? 0))
                         .foregroundStyle(CustomColors.primary05)
                     Text("개")
                         .foregroundStyle(CustomColors.gray09)
@@ -142,7 +181,7 @@ struct MoreReviewView: View {
                 Spacer()
                 
                 NavigationLink{
-                    //ReviewWriteView()
+                    ReviewWriteView(shopId: shopId, shopName: shopName ?? "")
                 } label: {
                     Text("리뷰 작성하기")
                         .font(Font.custom("S-Core Dream", size: 9))
@@ -156,13 +195,12 @@ struct MoreReviewView: View {
                 .foregroundStyle(CustomColors.gray06)
                 .padding(.bottom, 12)
             
-            if let review = vm.review?.result.reviews {
+            if let review = vm.reviewWithImage.review?.result.reviews {
                 ForEach(review){cell in
                     reviewCell(cell)
                         .padding(.bottom, 4)
                 }
-            } else {}
-             
+            }
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 40)
@@ -226,11 +264,11 @@ struct MoreReviewView: View {
                     .multilineTextAlignment(.leading)
                     .font(Font.custom("S-Core Dream", size: 9))
                     .foregroundStyle(CustomColors.black)
-                /*
-                Text(review.visitedAt + " 방문")
+                
+                Text(convertDateTimeToDayHourFormat(dateTimeString: review.visitedAt) ?? "")
                     .font(Font.custom("S-Core Dream", size: 8))
                     .foregroundStyle(CustomColors.gray07)
-                 */
+                 
             }
             .frame(width: 297, alignment: .leading)
             .padding(.horizontal, 24)
@@ -248,6 +286,4 @@ struct MoreReviewView: View {
         return url
 
     }
-
-    
 }

@@ -43,5 +43,4 @@ class ShopDetailViewModel: ObservableObject{
             }
         } .resume()
     }
-    
 }

@@ -185,7 +185,7 @@ struct SearchDetailView: View {
                     }.background(Color.white)
                     
                     Spacer()
-                    
+                  
                     if shopViewModel.shops.count == 0{
                         Text("검색 결과가 없어요 :(")
                             .foregroundColor(CustomColors.gray05)
@@ -193,16 +193,15 @@ struct SearchDetailView: View {
                         Spacer()
                     }
                     else{
-                        ScrollView {
-                            LazyVStack(spacing: 8) {
-                                ForEach(shopViewModel.shops) { shop in
-                                    // 상세 뷰로 이동
-                                    NavigationLink(
-                                        destination: SearchView()
-                                        // ShopDetail(shopId: shop.shopId)
-                                    ) {
-                                        ShopCardView(shop: shop)
-                                            .buttonStyle(PlainButtonStyle())
+                 ScrollView {
+                        LazyVStack(spacing: 8) {
+                            ForEach(shopViewModel.shops) { shop in
+                                // 상세 뷰로 이동
+                                NavigationLink(
+                                    destination: ShopDetailView(shopId: shop.shopId)
+                                ) {
+                                    ShopCardView(shop: shop)
+                                        .buttonStyle(PlainButtonStyle())
                                     }
                                 }
                             }

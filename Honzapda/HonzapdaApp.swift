@@ -27,6 +27,7 @@ struct HonzapdaApp: App {
             .environmentObject(userStateViewModel)
             .environmentObject(shopViewModel)
             .environmentObject(myProfileViewModel)
+            //.environmentObject(homeViewModel)
              
         }
     }
@@ -37,6 +38,8 @@ struct ApplicationSwitcher: View {
     
     var body: some View {
         if vm.isLoggedIn {
+            MainTapView()
+            /*
             if vm.selectedTaste == false{
             //    HelpInfoWriteView(ShopId: 1)
                MainTapView()
@@ -44,6 +47,7 @@ struct ApplicationSwitcher: View {
             else {
                 ShopDetailView(shopId: 1)
             }
+             */
         }
         else {
             OnboardingView()

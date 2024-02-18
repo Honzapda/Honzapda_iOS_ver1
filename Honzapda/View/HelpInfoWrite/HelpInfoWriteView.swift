@@ -706,6 +706,7 @@ struct HelpInfoWriteView: View  {
                         }
                     }
                 }
+                .navigationBarBackButtonHidden()
                 .background(Color.white)
             }
         }
@@ -928,6 +929,7 @@ struct ButtonQuestion {
             .padding(.leading, -40)
             
         }
+        .navigationBarBackButtonHidden()
     }
     
 }
