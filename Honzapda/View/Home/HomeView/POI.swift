@@ -10,10 +10,9 @@ import KakaoMapsSDK
 struct poiData : Identifiable{
     
     let mapPoint : MapPoint
-    let id : String
-    
-    
+    let id : Int
 }
+
 var mapPoints: [MapPoint] = []
 var poiArr : [poiData] = []
 func createMapPointsKakao(from document : KakaoCafe){
@@ -31,13 +30,13 @@ func createMapPointsKakao(from document : KakaoCafe){
 func createMapPointsHonzapda(from document : HonzapdaCafe){
     let long = document.x!
     let lati = document.y!
-    print(document.id as Any)
-    print(document.placeName as Any)
-//    let poi_id = document.id
-   let newMapPoint = MapPoint(longitude: long, latitude: lati)
-//    let newPoidata = poiData(mapPoint: newMapPoint, id: poi_id!)
-//    poiArr.append(newPoidata)
-
-    mapPoints.append(newMapPoint)
+    let newMapPoint = MapPoint(longitude: long, latitude: lati)
+    let poi_id = document.id
+    let newPoidata = poiData(mapPoint: newMapPoint, id: poi_id!)
+    if !mapPoints.contains(newMapPoint) {
+            mapPoints.append(newMapPoint)
+            print("\(poi_id) ====== storeID and \(newMapPoint)")
+        
+        }
    
 }

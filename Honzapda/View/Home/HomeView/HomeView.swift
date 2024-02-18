@@ -25,13 +25,20 @@ struct HomeView: View {
     @ObservedObject var homeViewModel : HomeViewModel
     @State var detailShopId : Int = 0
     @State var gotoDetailBool : Bool  = false
+    @State var startingIndex : Int = 0
     
-  //  var tempDataSetArr: [IntegratedCafe] //임시 데이터용
+    //  var tempDataSetArr: [IntegratedCafe] //임시 데이터용
     
     init( homeViewModel: HomeViewModel) {
         self.homeViewModel = homeViewModel
         
     }
+    func isDetailShopIdSaved() -> Bool {
+        return homeViewModel.savedCafeModel.savedCafeList.contains { cafe in
+            cafe.id == detailShopId
+        }
+    }
+    
     @MainActor
     
     var body: some View {
@@ -41,11 +48,11 @@ struct HomeView: View {
             
             ZStack {
                 NavigationLink(destination: ShopDetailView(shopId: detailShopId), isActive: $gotoDetailBool) {
-                           EmptyView()
-                       }
-
+                    EmptyView()
+                }
+                
                 GeometryReader { geometry in
-                    KakaoMapView(draw: $homeViewModel.draw, locationManager: locationManager, homeViewModel: homeViewModel)
+                    KakaoMapView(draw: $homeViewModel.draw, startingIndex: $startingIndex, locationManager: locationManager, homeViewModel: homeViewModel)
                         .zIndex(1)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
                         .ignoresSafeArea()
@@ -60,39 +67,30 @@ struct HomeView: View {
                             homeViewModel.draw = false
                         }
                     if homeViewModel.CardViewIsShowing{
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack{
-                                ForEach(0..<homeViewModel.integratedCafeArr.count, id: \.self) { index in
-                                    GeometryReader { itemGeometry in
-                                        CardView(homeViewModel: homeViewModel, 
-                                                 dataset: homeViewModel.integratedCafeArr[index],
-                                                 shopID: homeViewModel.integratedCafeArr[index].dataFromId,
-                                                 gotoDetailBool: $gotoDetailBool,
-                                                 detailShopId: $detailShopId
-                                            )
-                                        
-                                            .scaleEffect(scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
-                                            .animation(.easeInOut(duration: 0.1), value: scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
-                                            .transition(.opacity)
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 8 / 10, height: UIScreen.main.bounds.height * 5 / 10)
-                                    .shadow(radius: 15)
-                                    .padding(.horizontal, 20)
-                                    //   .border(Color.blue)
-                                }
+                        VStack{
+                            Spacer()
+                            Carousel(pageCount: homeViewModel.integratedCafeArr.count, visibleEdgeSpace: 30, spacing: 0, startingIndex: startingIndex) { index in
+                                // Carousel에서 각 페이지에 해당하는 CardView를 생성
+                                CardView(
+                                    homeViewModel: homeViewModel,
+                                    savedChecker: isDetailShopIdSaved(), // 예시로 false를 지정, 실제 사용 시 적절한 상태값 전달 필요
+                                    dataset: homeViewModel.integratedCafeArr[index],
+                                    shopID: homeViewModel.integratedCafeArr[index].dataFromId,
+                                    gotoDetailBool: $gotoDetailBool,
+                                    detailShopId: $detailShopId
+                                    
+                                )
+                                .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.5)
+                                .cornerRadius(15)
+                                .shadow(radius: 3)
+                                
                             }
-                            .offset(y: 50)
-                            .padding(.horizontal) // 첫 번째 및 마지막 카드가 중앙에 오도록 패딩 조정
+                            .frame(height: UIScreen.main.bounds.height * 0.5 + 10)
+                            .offset(y: -1)
                         }
                         .zIndex(2)
-                        .offset(y : 200)
-                        .frame(height: UIScreen.main.bounds.height * 5 / 10)
-                        .onAppear(){
-                            
-                        }
-                        
-                        
+                        .frame(maxHeight: .infinity, alignment: .bottom)
+                        .padding(.bottom, 100)
                     }
                     
                     //방법2
@@ -126,6 +124,8 @@ struct HomeView: View {
                     }
                     
                 }
+                .offset(x : 170, y : -200)
+                
                 //방법 1
                 //            .sheet(isPresented: $isSheetVisible){
                 //
@@ -143,12 +143,9 @@ struct HomeView: View {
                 //
                 //            }
                 
-                .offset(x : 170, y : -200)
             }
             
             .onAppear {
-                //            print("HomeView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
-                //
                 locationManager.requestLocationAuthorization()
                 // 데이터 로딩 및 기타 초기화 작업...
             }

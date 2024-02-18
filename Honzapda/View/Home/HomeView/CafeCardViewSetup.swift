@@ -76,3 +76,30 @@ func imageName(value: Int) -> String {
         default: return ""
         }
     }
+//ScrollView(.horizontal, showsIndicators: false) {
+//    HStack{
+//        ForEach(0..<homeViewModel.integratedCafeArr.count, id: \.self) { index in
+//            GeometryReader { itemGeometry in
+//                CardView(homeViewModel: homeViewModel,
+//                         dataset: homeViewModel.integratedCafeArr[index],
+//                         shopID: homeViewModel.integratedCafeArr[index].dataFromId,
+//                         gotoDetailBool: $gotoDetailBool,
+//                         detailShopId: $detailShopId
+//                    )
+//                
+//                    .scaleEffect(scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
+//                    .animation(.easeInOut(duration: 0.1), value: scaleValue(globalMinX: itemGeometry.frame(in: .global).minX, geometrySize: geometry.size))
+//                    .transition(.opacity)
+//            }
+//            .frame(width: UIScreen.main.bounds.width * 8 / 10, height: UIScreen.main.bounds.height * 5 / 10)
+//            .shadow(radius: 15)
+//            .padding(.horizontal, 20)
+//            //   .border(Color.blue)
+//        }
+//    }
+//    .offset(y: 50)
+//    .padding(.horizontal) // 첫 번째 및 마지막 카드가 중앙에 오도록 패딩 조정
+//}
+//.zIndex(2)
+//.offset(y : 200)
+//.frame(height: UIScreen.main.bounds.height * 5 / 10)

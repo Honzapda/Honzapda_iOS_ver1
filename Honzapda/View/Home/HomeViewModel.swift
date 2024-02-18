@@ -17,6 +17,7 @@ class HomeViewModel : ObservableObject {
     @Published var integratedCafeArr : [IntegratedCafe] = []
     @Published var draw: Bool = false
     private var cancellables : Set<AnyCancellable> = []
+    @Published var dictCardPoi : [String : Int] = [:]
     @MainActor
     init() {
         honzapdaCafeViewModel = HonzapdaCafeViewModel()

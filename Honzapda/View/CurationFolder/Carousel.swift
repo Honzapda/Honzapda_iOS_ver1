@@ -3,25 +3,27 @@ import SwiftUI
 
 struct Carousel<Content: View>: View {
     typealias PageIndex = Int
-    
+   // var start : CGFloat = 2
     let pageCount: Int
     let visibleEdgeSpace: CGFloat
     let spacing: CGFloat
     let content: (PageIndex) -> Content
     
     @GestureState var dragOffset: CGFloat = 0
-    @State var currentIndex: Int = 0
-    
+    @State var currentIndex: Int
+   
     init(
         pageCount: Int,
         visibleEdgeSpace: CGFloat,
         spacing: CGFloat,
+        startingIndex : Int = 0,
         @ViewBuilder content: @escaping (PageIndex) -> Content
     ) {
         self.pageCount = pageCount
         self.visibleEdgeSpace = visibleEdgeSpace
         self.spacing = spacing
         self.content = content
+        _currentIndex = State(initialValue: startingIndex)
     }
     
     var body: some View {
@@ -40,7 +42,7 @@ struct Carousel<Content: View>: View {
                 }
                 .contentShape(Rectangle())
             }
-            .offset(x: offsetX)
+            .offset(x: offsetX  )
             .gesture(
                 DragGesture()
                     .updating($dragOffset) { value, out, _ in
@@ -58,7 +60,7 @@ struct Carousel<Content: View>: View {
 }
 struct Carousel_Previews: PreviewProvider {
     static var previews: some View {
-        Carousel(pageCount: 3, visibleEdgeSpace: 30, spacing: 10) { index in
+        Carousel(pageCount: 5, visibleEdgeSpace: 30, spacing: 10) { index in
             Text("Page \(index)")
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.red)

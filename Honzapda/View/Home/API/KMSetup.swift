@@ -17,6 +17,7 @@ import KakaoMapsSDK
 
 struct KakaoMapView: UIViewRepresentable {
     @Binding var draw: Bool
+    @Binding var startingIndex : Int // 카드뷰 선택용
     @ObservedObject var locationManager : LocationManager
     @ObservedObject  var homeViewModel: HomeViewModel // HomeViewModel 참조 추가
     @StateObject private var viewModel = KakaoCafeViewModel() // DataViewModel 객체 생성
@@ -96,7 +97,7 @@ struct KakaoMapView: UIViewRepresentable {
             let poiStyle1 = PoiStyle(styleID: "Unselected", styles: [perLevelStyle1])
             manager.addPoiStyle(poiStyle1)
             
-            let icon2 = PoiIconStyle(symbol: UIImage(named: "icon_marker.svg"), anchorPoint: CGPoint(x: 0.5, y: 0.7))
+            let icon2 = PoiIconStyle(symbol: UIImage(named: "MarkerSelected.svg"), anchorPoint: CGPoint(x: 0.5, y: 0.7))
             let perLevelStyle2 = PerLevelPoiStyle(iconStyle: icon2, level: 0)
             let poiStyle2 = PoiStyle(styleID: "Selected", styles: [perLevelStyle2])
             manager.addPoiStyle(poiStyle2)
@@ -110,14 +111,19 @@ struct KakaoMapView: UIViewRepresentable {
         
         
         func poiTappedHandlerAdded(_ param: PoiInteractionEventParam) {
-            homeViewModel.CardViewIsShowing.toggle()
-          //  print(homeViewModel.CardViewIsShowing)
-          
-            param.poiItem.changeStyle(styleID: "Selected", enableTransition: true)
+            DispatchQueue.main.async{
+                
+                self.homeViewModel.CardViewIsShowing = true
+              //  print(homeViewModel.CardViewIsShowing)
+              
+                param.poiItem.changeStyle(styleID: "Selected", enableTransition: true)
+                
+                print( "poi item \(param.poiItem.itemID) // type is \(type(of: param.poiItem.itemID))")
+                
+               
+             //   print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(self.homeViewModel).toOpaque())")
+            }
             
-            print( "poi item \(param.poiItem.itemID) // type is \(type(of: param.poiItem.itemID))")
-           
-            print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(homeViewModel).toOpaque())")
             
         
        
@@ -153,21 +159,27 @@ struct KakaoMapView: UIViewRepresentable {
             var pois = layer?.addPois(option: poiOption1, at: mapPoints)
 //
 //            poiArr.forEach { poiData in
+//                print("여기여")
 //                let poiId = poiData.id
 //                let poiMapPoint = poiData.mapPoint
 //                let newPoiOption = PoiOptions(styleID: "Unselected", poiID: String(poiId))
-//                var newPoi = layer?.addPoi(option: poiOption1, at: poiData.mapPoint)
+//                var newPoi = layer?.addPoi(option: poiOption1, at: poiMapPoint)
+//                print(newPoi?.itemID, " < - poi itemId / storeID - >", poiData.id)
 //                let _ = newPoi?.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
 //                
 //            }
-            layer?.showAllPois()
+//            
             guard let pois = pois else { return }
             for poi in pois {
                 // 여기에서 poi 사용
-                print(poi.itemID)
+                print("\(poi.itemID) === poiItemID  //  ")
+                
                 
                 let _ = poi.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
             }
+            
+            
+            layer?.showAllPois()
             
         }
         
@@ -181,7 +193,7 @@ struct KakaoMapView: UIViewRepresentable {
         func addViews() {
             
             
-            let defaultPosition: MapPoint = MapPoint(longitude: locationManager.lon ?? 127.1, latitude: locationManager.lat ?? 37.2)
+            let defaultPosition: MapPoint = MapPoint(longitude: Double(lon) ?? 127.1, latitude: Double(lat) ?? 37.2)
             let mapviewInfo: MapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition)
             
             if controller?.addView(mapviewInfo) == Result.OK {
@@ -191,10 +203,7 @@ struct KakaoMapView: UIViewRepresentable {
             let mapView = controller?.getView("mapview") as! KakaoMap
             _mapTapEventHandler = mapView.addMapTappedEventHandler(target: self, handler: KakaoMapCoordinator.mapDidTapped)
             _terrainTapEventHandler = mapView.addTerrainTappedEventHandler(target: self, handler: KakaoMapCoordinator.terrainTapped)
-            
-            
-           
-            
+
             createLabelLayer()
             createPoiStyle()
             createPois()
@@ -212,7 +221,7 @@ struct KakaoMapView: UIViewRepresentable {
                 let cameraUpdate: CameraUpdate = CameraUpdate.make(
                     target: MapPoint(longitude: Double(lon)!,
                                      latitude: Double(lat)!),
-                    zoomLevel: 17, mapView: mapView!)
+                    zoomLevel: 16, mapView: mapView!)
                 
                 
                 mapView?.moveCamera(cameraUpdate)
@@ -224,24 +233,44 @@ struct KakaoMapView: UIViewRepresentable {
             auth = true
         }
         func mapDidTapped(_ param: ViewInteractionEventParam) {
-            let mapView = param.view as! KakaoMap
-            let position = mapView.getPosition(param.point)
             
-            
-            print("Tapped: \(position.wgsCoord.latitude), \(position.wgsCoord.latitude)")
-            
-            if homeViewModel.CardViewIsShowing {
-                homeViewModel.CardViewIsShowing = false
+            DispatchQueue.main.async {
+                let mapView = param.view as! KakaoMap
+                let position = mapView.getPosition(param.point)
+                let view = self.controller?.getView("mapview") as! KakaoMap
+                let manager = view .getLabelManager()
+                let layer = manager.getLabelLayer(layerID: "PoiLayer")
+                let poiList = layer?.getAllPois()
+                print("Tapped: \(position.wgsCoord.latitude), \(position.wgsCoord.latitude)")
+                if self.homeViewModel.CardViewIsShowing {
+                    self.homeViewModel.CardViewIsShowing = false
+                    poiList?.forEach({ Poi in
+                        Poi.changeStyle(styleID: "Unselected", enableTransition: true)
+                        Poi.show()
+                    })
+                    
+                }
             }
+       
         }
         
         func terrainTapped(_ param: TerrainInteractionEventParam) {
-            let position = param.position.wgsCoord
-            print("Terrain Tapped: \(position.longitude), \(position.latitude)")
-            if homeViewModel.CardViewIsShowing {
-                homeViewModel.CardViewIsShowing = false
+            DispatchQueue.main.async {
+                let position = param.position.wgsCoord
+                let view = self.controller?.getView("mapview") as! KakaoMap
+                let manager = view .getLabelManager()
+                let layer = manager.getLabelLayer(layerID: "PoiLayer")
+                let poiList = layer?.getAllPois()
+                print("Terrain Tapped: \(position.longitude), \(position.latitude)")
+                if self.homeViewModel.CardViewIsShowing {
+                    self.homeViewModel.CardViewIsShowing = false
+                    poiList?.forEach({ Poi in
+                        Poi.changeStyle(styleID: "Unselected", enableTransition: true)
+                        Poi.show()
+                    })
+                    
+                }
             }
-            
         }
     }
 }

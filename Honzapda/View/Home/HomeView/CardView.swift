@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CardView: View {
     @ObservedObject var homeViewModel : HomeViewModel
-    @State var savedChecker : Bool = false
+    @State var savedChecker : Bool
     
     var dataset: IntegratedCafe
     let shopID : Int
@@ -167,7 +167,7 @@ struct CardView: View {
                         Image("Star")
                             .resizable()
                             .frame(width: 18, height: 22)
-                        Text("\(dataset.rating!) / 5")
+                        Text("\(String(format: "%.2f", Double(dataset.rating!) ?? 0.0)) / 5")
                             .frame(maxWidth: .infinity)
                             .font(Font.custom("S-Core Dream", size: 7))
                             .multilineTextAlignment(.center)

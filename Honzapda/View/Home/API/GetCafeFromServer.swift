@@ -25,7 +25,7 @@ class HonzapdaCafeViewModel: ObservableObject {
                         
                         self.cafes .forEach { HonzapdaCafe in
                             createMapPointsHonzapda(from: HonzapdaCafe)
-                            print(HonzapdaCafe)
+                           // print(HonzapdaCafe)
                         } // here ** 받아온 카페 정보를 이용해 맵포인트 생성 로직검사 필요
                     }
 //                    print("[honzapda] mappoints")
