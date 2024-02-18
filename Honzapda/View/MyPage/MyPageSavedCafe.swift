@@ -7,6 +7,7 @@ struct MyPageSavedCafeView: View {
     @State private var sortColumn: String = ""
     @EnvironmentObject var myProfileViewModel: MyProfileViewModel
     @EnvironmentObject var shopViewModel: ShopViewModel
+    @EnvironmentObject var savedCafeViewModel: SavedCafeViewModel
     
     var backButton: some View {
         Button {
@@ -28,8 +29,7 @@ struct MyPageSavedCafeView: View {
                     backButton.padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
                     Divider()
                     
-//                    Text("\(myProfileViewModel.likeShops.count)개의 찜한 카페")
-                    Text("4개의 찜한 카페")
+                    Text("\(myProfileViewModel.likeShops.count)개의 찜한 카페")
                         .foregroundColor(CustomColors.primary06)
                         .font(.custom("S-CoreDream-6Bold", size: 12))
                         .padding(EdgeInsets(top: 16, leading: 24, bottom: 2, trailing: 0))
@@ -38,11 +38,11 @@ struct MyPageSavedCafeView: View {
                         Button(action: {
                             sortColumn = "distance"
                             print(sortColumn)
-                            ShopViewModel.searchShops(with: "S", latitude: "37.520417", longitude: "126.887784", page: 0, size: 10, sortColumn: sortColumn, distance: 2) { result in
+                            SavedCafeViewModel.getSavedCafeList() { result in
                                 switch result {
                                 case .success(let shops):
                                     DispatchQueue.main.async {
-                                        shopViewModel.shops = shops
+                                        savedCafeViewModel.shops = shops
                                     }
                                 case .failure(let error):
                                     print("Error: \(error.localizedDescription)")
@@ -62,11 +62,11 @@ struct MyPageSavedCafeView: View {
                         Button(action: {
                             sortColumn = "review"
                             print(sortColumn)
-                            ShopViewModel.searchShops(with: "S", latitude: "37.520417", longitude: "126.887784", page: 0, size: 10, sortColumn: sortColumn, distance: 2) { result in
+                            SavedCafeViewModel.getSavedCafeList() { result in
                                 switch result {
                                 case .success(let shops):
                                     DispatchQueue.main.async {
-                                        shopViewModel.shops = shops
+                                        savedCafeViewModel.shops = shops
                                     }
                                 case .failure(let error):
                                     print("Error: \(error.localizedDescription)")
@@ -86,11 +86,11 @@ struct MyPageSavedCafeView: View {
                         Button(action: {
                             sortColumn = "bookmark"
                             print(sortColumn)
-                            ShopViewModel.searchShops(with: "S", latitude: "37.520417", longitude: "126.887784", page: 0, size: 10, sortColumn: sortColumn, distance: 2) { result in
+                            SavedCafeViewModel.getSavedCafeList() { result in
                                 switch result {
                                 case .success(let shops):
                                     DispatchQueue.main.async {
-                                        shopViewModel.shops = shops
+                                        savedCafeViewModel.shops = shops
                                     }
                                 case .failure(let error):
                                     print("Error: \(error.localizedDescription)")
@@ -110,11 +110,11 @@ struct MyPageSavedCafeView: View {
                         Button(action: {
                             sortColumn = "recommend"
                             print(sortColumn)
-                            ShopViewModel.searchShops(with: "S", latitude: "37.520417", longitude: "126.887784", page: 0, size: 10, sortColumn: sortColumn, distance: 2) { result in
+                            SavedCafeViewModel.getSavedCafeList() { result in
                                 switch result {
                                 case .success(let shops):
                                     DispatchQueue.main.async {
-                                        shopViewModel.shops = shops
+                                        savedCafeViewModel.shops = shops
                                     }
                                 case .failure(let error):
                                     print("Error: \(error.localizedDescription)")
@@ -141,12 +141,12 @@ struct MyPageSavedCafeView: View {
                 
                 ScrollView {
                     LazyVStack(spacing: 8) {
-                        ForEach(shopViewModel.shops) { shop in
+                        ForEach(savedCafeViewModel.shops) { shop in
                             // 상세 뷰로 이동
                             NavigationLink(
                                 destination: ShopDetailView(shopId: shop.shopId)
                             ) {
-                                ShopCardView(shop: shop)
+                                SavedCafeCardView(shop: shop)
                                     .buttonStyle(PlainButtonStyle())
                             }
                         }
@@ -177,20 +177,45 @@ struct MyPageSavedCafeView: View {
                     print("Error: \(error.localizedDescription)")
                 }
             }
+            
+            SavedCafeViewModel.getSavedCafeList() { result in
+                switch result {
+                case .success(let shops):
+                    DispatchQueue.main.async {
+                        savedCafeViewModel.shops = shops
+                    }
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
         }
     }
-    struct ShopCardView: View {
-        var shop: SearchShop
+    
+    struct SavedCafeCardView: View {
+        var shop: SavedCafeResult
         
         var body: some View {
             VStack {
                 VStack(alignment: .leading, spacing: 16) {
-                    
-                    URLImage(URL(string: shop.photoUrl)!) { image in
-                        image
-                            .resizable()
-                            .frame(width: 345, height: 160)
-                            .clipped()
+                    ZStack{
+                        URLImage(URL(string: shop.mainImage)!) { image in
+                            image
+                                .resizable()
+                                .frame(width: 345, height: 160)
+                                .clipped()
+                        }
+                        VStack(){
+                            Spacer()
+                            HStack{
+                                Spacer()
+                                VStack{
+                                    Image("icon_my_heart_fill")
+                                    Text("가게 찜")
+                                        .foregroundColor(CustomColors.white)
+                                        .font(.custom("S-CoreDream-5Medium", size: 4))
+                                }.padding(10)
+                            }
+                        }
                     }
                     
                     VStack(alignment: .leading, spacing: 8){
@@ -204,7 +229,7 @@ struct MyPageSavedCafeView: View {
                                 .background(RoundedRectangle(cornerRadius: 8).stroke(lineWidth: 0.5))
                                 .foregroundColor(CustomColors.gray08)
                         }
-                        Text(shop.address)
+                        Text(shop.address_spec)
                             .font(.custom("S-CoreDream-5Medium", size: 8))
                             .foregroundColor(CustomColors.gray07)
                             .padding(.bottom, 24)
