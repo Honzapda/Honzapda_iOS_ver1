@@ -217,7 +217,7 @@ struct CardView: View {
                             Image(imageName(value: dataset.densityOfDays![index]))
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20) // 예시 크기, 필요에 따라 조정
+                                .frame(width: 25, height: 20) // 예시 크기, 필요에 따라 조정
                             
                         }
                         .frame(width: 30, height: 48, alignment: .center)

@@ -83,7 +83,7 @@ struct HomeView: View {
                                 // Carousel에서 각 페이지에 해당하는 CardView를 생성
                                 CardView(
                                     homeViewModel: homeViewModel,
-                                    savedChecker: isDetailShopIdSaved(), // 예시로 false를 지정, 실제 사용 시 적절한 상태값 전달 필요
+                                    savedChecker: isDetailShopIdSaved(),
                                     dataset: homeViewModel.integratedCafeArr[index],
                                     shopID: homeViewModel.integratedCafeArr[index].dataFromId,
                                     gotoDetailBool: $gotoDetailBool,
@@ -103,7 +103,7 @@ struct HomeView: View {
                         }
                         .zIndex(2)
                         .frame(maxHeight: .infinity, alignment: .bottom)
-                        .padding(.bottom, 100)
+                        .padding(.bottom, 50)
                     }
                     
                     //방법2
