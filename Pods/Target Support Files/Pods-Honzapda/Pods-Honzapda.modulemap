@@ -1,6 +1,0 @@
-framework module Pods_Honzapda {
-  umbrella header "Pods-Honzapda-umbrella.h"
-
-  export *
-  module * { export * }
-}
