@@ -18,6 +18,7 @@ class HomeViewModel : ObservableObject {
     @Published var draw: Bool = false
     private var cancellables : Set<AnyCancellable> = []
     @Published var dictCardPoi : [String : Int] = [:]
+    @Published var startingStoreId : Int = 0
     @MainActor
     init() {
         honzapdaCafeViewModel = HonzapdaCafeViewModel()
@@ -25,7 +26,8 @@ class HomeViewModel : ObservableObject {
         savedCafeModel = SavedCafeModel()
         subscribeToCafeUpdatesHonzapda()
        // subscribeToCafeUpdateKakao()
-        honzapdaCafeViewModel.loadCafes()
+      //  honzapdaCafeViewModel.loadCafes()
+        loadCafesAndDraw()
         savedCafeModel.fetchShops(page: 0, size: 10) // 조건부로 횟수추가해야함
     }
     func checkInteCafe (){

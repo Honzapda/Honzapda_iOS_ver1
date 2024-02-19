@@ -25,18 +25,25 @@ struct HomeView: View {
     @ObservedObject var homeViewModel : HomeViewModel
     @State var detailShopId : Int = 0
     @State var gotoDetailBool : Bool  = false
-    @State var startingIndex : Int = 0
+  
+   
     
     //  var tempDataSetArr: [IntegratedCafe] //임시 데이터용
     
     init( homeViewModel: HomeViewModel) {
         self.homeViewModel = homeViewModel
-        
+       
     }
+    
     func isDetailShopIdSaved() -> Bool {
         return homeViewModel.savedCafeModel.savedCafeList.contains { cafe in
             cafe.id == detailShopId
         }
+    }
+    func getIndexOfStartingCard( startStore : Int) -> Int {
+        return homeViewModel.integratedCafeArr.firstIndex { cafe in
+               cafe.dataFromId == startStore
+        } ?? 0
     }
     
     @MainActor
@@ -52,13 +59,13 @@ struct HomeView: View {
                 }
                 
                 GeometryReader { geometry in
-                    KakaoMapView(draw: $homeViewModel.draw, startingIndex: $startingIndex, locationManager: locationManager, homeViewModel: homeViewModel)
+                    KakaoMapView(draw: $homeViewModel.draw, locationManager: locationManager, homeViewModel: homeViewModel)
                         .zIndex(1)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
                         .ignoresSafeArea()
                         .onAppear {
                             print("KM on appear")
-                            homeViewModel.loadCafesAndDraw()
+                            //homeViewModel.loadCafesAndDraw()
                             //     homeViewModel.kakaoCafeViewModel.fetchData()
                             homeViewModel.savedCafeModel.fetchShops(page: 0, size: 10)
                             homeViewModel.draw = true
@@ -69,7 +76,10 @@ struct HomeView: View {
                     if homeViewModel.CardViewIsShowing{
                         VStack{
                             Spacer()
-                            Carousel(pageCount: homeViewModel.integratedCafeArr.count, visibleEdgeSpace: 30, spacing: 0, startingIndex: startingIndex) { index in
+                            Carousel(pageCount: homeViewModel.integratedCafeArr.count,
+                                     visibleEdgeSpace: 30, 
+                                     spacing: 0,
+                                     startingIndex: getIndexOfStartingCard(startStore: homeViewModel.startingStoreId)) { index in
                                 // Carousel에서 각 페이지에 해당하는 CardView를 생성
                                 CardView(
                                     homeViewModel: homeViewModel,
@@ -87,6 +97,9 @@ struct HomeView: View {
                             }
                             .frame(height: UIScreen.main.bounds.height * 0.5 + 10)
                             .offset(y: -1)
+                            .onAppear(){
+                                print("carousel start at : \(getIndexOfStartingCard(startStore: homeViewModel.startingStoreId))")
+                            }
                         }
                         .zIndex(2)
                         .frame(maxHeight: .infinity, alignment: .bottom)

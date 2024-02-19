@@ -17,7 +17,7 @@ import KakaoMapsSDK
 
 struct KakaoMapView: UIViewRepresentable {
     @Binding var draw: Bool
-    @Binding var startingIndex : Int // 카드뷰 선택용
+    //@Binding var startingIndex : Int // 카드뷰 선택용
     @ObservedObject var locationManager : LocationManager
     @ObservedObject  var homeViewModel: HomeViewModel // HomeViewModel 참조 추가
     @StateObject private var viewModel = KakaoCafeViewModel() // DataViewModel 객체 생성
@@ -59,8 +59,9 @@ struct KakaoMapView: UIViewRepresentable {
     static func dismantleUIView(_ uiView: KMViewContainer, coordinator: KakaoMapCoordinator) {
         
     }
-
+    
     class KakaoMapCoordinator: NSObject, MapControllerDelegate, KakaoMapEventDelegate {
+        
         var _mapTapEventHandler: DisposableEventHandler?
         var _terrainTapEventHandler: DisposableEventHandler?
         var locationManager : LocationManager
@@ -68,13 +69,15 @@ struct KakaoMapView: UIViewRepresentable {
         var first: Bool
         var auth: Bool
         var homeViewModel: HomeViewModel // HomeViewModel 참조 추가
-       
+        
         init(locationManager: LocationManager, homeViewModel: HomeViewModel) {
             self.locationManager = locationManager
             self.homeViewModel = homeViewModel
+            
             first = true
             auth = false
             super.init()
+            
         }
         
         
@@ -114,23 +117,25 @@ struct KakaoMapView: UIViewRepresentable {
             DispatchQueue.main.async{
                 
                 self.homeViewModel.CardViewIsShowing = true
-              //  print(homeViewModel.CardViewIsShowing)
-              
+                print(self.homeViewModel.CardViewIsShowing)
                 param.poiItem.changeStyle(styleID: "Selected", enableTransition: true)
                 
-                print( "poi item \(param.poiItem.itemID) // type is \(type(of: param.poiItem.itemID))")
+                if let newStartingStoreId = Int(param.poiItem.itemID) {
+                    self.homeViewModel.startingStoreId = newStartingStoreId
+                  
+                } else {
+                    print("Error: poiItem.itemID cannot be converted to Int")
+                }
+                //print( "poi item \(param.poiItem.itemID) // type is \(type(of: param.poiItem.itemID))")
+                //print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(self.homeViewModel).toOpaque())")
+
                 
-               
-             //   print("KakaoMapView's HomeViewModel address: \(Unmanaged.passUnretained(self.homeViewModel).toOpaque())")
             }
-            
-            
-        
-       
         }
-      
+        
         //포이 생성
         func createPois(){
+            
             
             print("createPois")
             
@@ -150,33 +155,32 @@ struct KakaoMapView: UIViewRepresentable {
             poiOption2.rank = 3
             poiOption2.clickable = false
             
-//            var poiMyPos = layer?.addPoi(option:poiOptionMyPos, at: MapPoint(longitude: locationManager.lon ?? 126.978365,latitude: locationManager.lat ?? 37.566691))
+            //                        var poiMyPos = layer?.addPoi(option:poiOptionMyPos, at: MapPoint(longitude: locationManager.lon ?? 126.978365,latitude: locationManager.lat ?? 37.566691))
+            //
+            
+            poiArr.forEach { poiData in
+                let poiId = poiData.id
+                let poiMapPoint = poiData.mapPoint
+                let newPoiOption = PoiOptions(styleID: "Unselected", poiID: String(poiId))
+                newPoiOption.clickable = true
+                newPoiOption.rank = 1
+                let newPoi = layer?.addPoi(option: newPoiOption, at: poiMapPoint)
+                print(newPoi?.itemID, " < - poi itemId / storeID - >", poiData.id)
+                let _ = newPoi?.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
+            }
+            
+//                        var pois = layer?.addPois(option: poiOption1, at: mapPoints)
+//                        guard let pois = pois else { return }
+//                        for poi in pois {
+//                            // 여기에서 poi 사용
+//                            print("\(poi.itemID) === poiItemID  //  ")
+//                            let _ = poi.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
+//                        }
             var poiMyPos = layer?.addPoi(option:poiOptionMyPos, at: MapPoint(longitude: Double(lon)!,
                                                                              latitude: Double(lat)!))
             //Here!
-         
-          //  var poisWithMultiOpt = layer?.addPois(options: poiOptions, at: mapPoints) //
-            var pois = layer?.addPois(option: poiOption1, at: mapPoints)
-//
-//            poiArr.forEach { poiData in
-//                print("여기여")
-//                let poiId = poiData.id
-//                let poiMapPoint = poiData.mapPoint
-//                let newPoiOption = PoiOptions(styleID: "Unselected", poiID: String(poiId))
-//                var newPoi = layer?.addPoi(option: poiOption1, at: poiMapPoint)
-//                print(newPoi?.itemID, " < - poi itemId / storeID - >", poiData.id)
-//                let _ = newPoi?.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
-//                
-//            }
-//            
-            guard let pois = pois else { return }
-            for poi in pois {
-                // 여기에서 poi 사용
-                print("\(poi.itemID) === poiItemID  //  ")
-                
-                
-                let _ = poi.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandlerAdded(_:))
-            }
+            
+            //  var poisWithMultiOpt = layer?.addPois(options: poiOptions, at: mapPoints) //
             
             
             layer?.showAllPois()
@@ -203,7 +207,7 @@ struct KakaoMapView: UIViewRepresentable {
             let mapView = controller?.getView("mapview") as! KakaoMap
             _mapTapEventHandler = mapView.addMapTappedEventHandler(target: self, handler: KakaoMapCoordinator.mapDidTapped)
             _terrainTapEventHandler = mapView.addTerrainTappedEventHandler(target: self, handler: KakaoMapCoordinator.terrainTapped)
-
+            
             createLabelLayer()
             createPoiStyle()
             createPois()
@@ -214,10 +218,10 @@ struct KakaoMapView: UIViewRepresentable {
             mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: size)
             if first {
                 
-//                let cameraUpdate: CameraUpdate = CameraUpdate.make(
-//                    target: MapPoint(longitude: locationManager.lon ?? 126.978365,
-//                                     latitude: locationManager.lat ?? 37.566691),
-//                    zoomLevel: 17, mapView: mapView!)
+                //                let cameraUpdate: CameraUpdate = CameraUpdate.make(
+                //                    target: MapPoint(longitude: locationManager.lon ?? 126.978365,
+                //                                     latitude: locationManager.lat ?? 37.566691),
+                //                    zoomLevel: 17, mapView: mapView!)
                 let cameraUpdate: CameraUpdate = CameraUpdate.make(
                     target: MapPoint(longitude: Double(lon)!,
                                      latitude: Double(lat)!),
@@ -251,7 +255,7 @@ struct KakaoMapView: UIViewRepresentable {
                     
                 }
             }
-       
+            
         }
         
         func terrainTapped(_ param: TerrainInteractionEventParam) {
@@ -272,6 +276,58 @@ struct KakaoMapView: UIViewRepresentable {
                 }
             }
         }
+        //        func poiTouched(_ poi: Poi) {
+        //            print(poi.itemID)
+        //        }
+        //        func touchesBegan(_ touches: Set<AnyHashable>) {
+        //            if let touch = touches.first as? UITouch {
+        //                let radius = touch.majorRadius
+        //                let touchedCenter = touch.location(in: touch.window)
+        //                // touch major radius기준으로 거리 재기 위한 임시 Point
+        //                let withRadius = CGPoint(x: touchedCenter.x + radius, y: touchedCenter.y)
+        //                if let point = getPosition(touchedCenter),
+        //                   let withRadiusPoint = getPosition(withRadius)
+        //                {
+        //                    // 거리 계산
+        //                    let latdist = (point.wgsCoord.latitude - withRadiusPoint.wgsCoord.latitude)
+        //                    let longdist = (point.wgsCoord.longitude - withRadiusPoint.wgsCoord.longitude)
+        //                    let powdDist = latdist * latdist + longdist * longdist
+        //                    let dist = sqrt(powdDist) // radius의 map상에서의 거리
+        //
+        //                    if let touchedPoi = touchedPOI(point.wgsCoord, dist) {
+        //                        poiTouched(touchedPoi)
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        private func touchedPOI(_ coord: GeoCoordinate, _ dist: Double) -> Poi? {
+        //            if let map = controller?.getView("mapview") as? KakaoMap {
+        //                let manager = map.getLabelManager()
+        //                let layer = manager.getLabelLayer(layerID: "PoiLayer")
+        //                guard let pois = layer?.getAllPois() else {return nil}
+        //                var touchedPois: [Poi : Double] = [:] // value = distance
+        //                for poi in pois {
+        //                    let latdist = (coord.latitude - poi.position.wgsCoord.latitude)
+        //                    let longdist = (coord.longitude - poi.position.wgsCoord.longitude)
+        //                    let powdDist = latdist * latdist + longdist * longdist
+        //                    let distWithPoi = sqrt(powdDist)
+        //                    // touched radius 반경 안에 있는 경우
+        //                    if distWithPoi < dist {
+        //                        touchedPois[poi] = distWithPoi
+        //                    }
+        //                }
+        //                if touchedPois.isEmpty { return nil }
+        //                else { return touchedPois.sorted(by: {$0.value < $1.value}).first!.key} // 가장 가까운 poi를 리턴합니다.
+        //            }
+        //            return nil
+        //        }
+        //        private func getPosition(_ point: CGPoint) -> MapPoint? {
+        //            let mapView: KakaoMap? = controller?.getView("mapview") as? KakaoMap
+        //
+        //            guard let map = mapView else
+        //            {return nil}
+        //            return map.getPosition(point)
+        //        }
     }
 }
 
