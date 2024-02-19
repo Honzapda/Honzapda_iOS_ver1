@@ -90,7 +90,7 @@ struct CTView4 : View {
     @Binding var gotoTest : Bool
     var body: some View {
         ZStack(alignment: .top){
-            Image("Test_Background")
+            Image("TestBackground")
                 .resizable()
                 .scaledToFill()
            
