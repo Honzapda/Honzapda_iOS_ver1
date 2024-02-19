@@ -287,7 +287,7 @@ struct CTView1 : View {
     @Binding var mood : String
     var body: some View {
         ZStack(){
-            Image("Test_Background")
+            Image("TestBackground")
                 .resizable()
                 .scaledToFill()
             VStack(alignment: .leading, spacing: 30){
@@ -387,7 +387,7 @@ struct CTView2 : View {
     let choiceArr : [[String]] = [["휴식", "감성 사진 찍기"], ["여행", "활발한 대화"], ["회의", "독서", "업무"], ["핫플", "공부"]]
     var body: some View {
         ZStack(alignment: .top){
-            Image("Test_Background")
+            Image("TestBackground")
                 .resizable()
                 .scaledToFill()
             VStack(alignment: .leading, spacing: 30){
@@ -435,7 +435,7 @@ struct CTView3 : View {
     @Binding var menu : String
     var body: some View {
         ZStack(alignment : .top){
-            Image("Test_Background")
+            Image("TestBackground")
                 .resizable()
                 .scaledToFill()
             VStack(alignment: .leading, spacing: 30){
