@@ -210,18 +210,22 @@ struct CardView: View {
                 HStack{
                     ForEach(0..<dataset.densityOfDays!.count, id: \.self) { index in
                         VStack {
+                            
                             Text(dayOfWeek(index: index))
                                 .font(Font.custom("S-CoreDream-5Medium", size: 7))
                                 .padding(.bottom, -2)
+                                
+                                .onAppear(){
+                                    print(dayOfWeek(index: index))
+                                }
                             
                             Image(imageName(value: dataset.densityOfDays![index]))
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 25, height: 20) // 예시 크기, 필요에 따라 조정
+                                .frame(width: 20, height: 20) // 예시 크기, 필요에 따라 조정
                             
                         }
-                        .frame(width: 30, height: 48, alignment: .center)
-                        // VStack 내부의 요소들에 대한 패딩 추가
+                        .frame(width: 36, height: 52)
                         .background(Color.white) // VStack에 흰색 배경 적용
                         .cornerRadius(5) // 배경의 모서리를 둥글게 처리
                         .shadow(radius: 3) // 그림자 효과 적용

@@ -25,7 +25,7 @@ struct HomeView: View {
     @ObservedObject var homeViewModel : HomeViewModel
     @State var detailShopId : Int = 0
     @State var gotoDetailBool : Bool  = false
-  
+    @GestureState private var dragState = CGSize.zero // 드래그 상태를 관리하는 변수
    
     
     //  var tempDataSetArr: [IntegratedCafe] //임시 데이터용
@@ -109,6 +109,19 @@ struct HomeView: View {
                     //방법2
                     if isSheetVisible{
                         HomeBottomSheetView(homeViewModel: homeViewModel)
+                            .gesture(
+                                            DragGesture()
+                                                .updating($dragState) { value, state, _ in
+                                                    state = value.translation
+                                                }
+                                                .onEnded { value in
+                                                    if value.translation.height > 50 { // 드래그 길이가 50보다 크면 화면을 숨깁니다.
+                                                        withAnimation {
+                                                            isSheetVisible = false
+                                                        }
+                                                    }
+                                                }
+                                        )
                             .zIndex(3)
                             .transition(.move(edge: .bottom))
                             .offset(y : UIScreen.main.bounds.height/2)

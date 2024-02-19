@@ -14,13 +14,19 @@ struct HomeBottomSheetView: View {
  // let DataSetArr = tempDataSetArr
     
   var body: some View {
-      ZStack{
-          Image("Background_Onboarding")
+      ZStack(alignment: .top){
+          Image("bottomSheetBackground")
               .resizable() // 이미지 크기 조정 가능하도록 설정
               .aspectRatio(contentMode: .fill) // 이미지를 프레임에 꽉 차게 채움
               .clipped() // 프레임을 넘어서는 부분을 잘라냄
           
           VStack{
+              HStack{
+                  Rectangle()
+                      .foregroundColor(CustomColors.gray04)
+                      .frame(width: 100, height: 3)
+                      .padding(.top, 10)
+              }
               HStack{
                   Text("내가 저장한 카페")
                   .font(Font.custom("S-Core Dream", size: 20))
@@ -69,6 +75,8 @@ struct HomeBottomSheetView: View {
                   }
                   .padding()
               }
+            // .border(Color.red)
+             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.5, alignment: .center)
           }
           
       }
@@ -76,3 +84,8 @@ struct HomeBottomSheetView: View {
   }
 }
 
+struct Bottomsheet_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeBottomSheetView(homeViewModel: HomeViewModel())
+    }
+}
